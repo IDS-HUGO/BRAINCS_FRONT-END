@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { DocenteModule } from "./docente/docente.module";
 
+//Alumnos
+import { AlumnoModule } from './alumno/alumno.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +18,8 @@ import { DocenteModule } from "./docente/docente.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DocenteModule
+    DocenteModule,
+    AlumnoModule
 ],
   providers: [
     provideClientHydration()
