@@ -1,27 +1,26 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-group',
   templateUrl: './card-group.component.html',
-  styleUrl: './card-group.component.css'
+  styleUrls: ['./card-group.component.css']
 })
 export class CardGroupComponent {
   @Input() subjectName: string = 'Matematicas I';
   showModal: boolean = false;
 
+  constructor(private router: Router) {}
+
   toggleModal() {
     this.showModal = !this.showModal;
     console.log('showModal:', this.showModal);
-  }  
+  }
 
   handleOption(option: string) {
     if (option === 'inspect') {
       console.log('Inspeccionar opción seleccionada');
-    } else if (option === 'edit') {
-      console.log('Editar opción seleccionada');
-    } else if (option === 'delete') {
-      console.log('Eliminar opción seleccionada');
+      this.router.navigate(['/docente/view-group']);
     }
   }
-
 }
