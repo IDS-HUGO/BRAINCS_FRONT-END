@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -19,7 +19,8 @@ import { AlumnoModule } from './alumno/alumno.module';
     BrowserModule,
     AppRoutingModule,
     DocenteModule,
-    AlumnoModule
+    AlumnoModule,
+    RouterModule
 ],
   providers: [
     provideClientHydration()

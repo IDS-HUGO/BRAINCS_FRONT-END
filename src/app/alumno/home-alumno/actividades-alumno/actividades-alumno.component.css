@@ -1,0 +1,73 @@
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .logo {
+    height: 30px;
+  }
+  
+  .profile-icon i {
+    font-size: 24px;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .navbar nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .navbar span {
+    margin-right: auto;
+    font-weight: bold;
+  }
+  
+  /* Main Content */
+  .content {
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #00695c;
+  }
+  
+  .activity-list {
+    margin-top: 20px;
+  }
+  
+  .activity-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #00695c;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .create-button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #00695c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
