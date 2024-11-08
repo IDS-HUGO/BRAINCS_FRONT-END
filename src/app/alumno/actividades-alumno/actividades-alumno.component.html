@@ -1,23 +1,15 @@
-
-  
-  <div class="navbar">
-    <span>Matemáticas I &gt; 4D</span>
-    <nav>
-      <a [routerLink]="['/actividades']">Actividades</a>
-      <a [routerLink]="['/temario']">Temario</a>
-      <a [routerLink]="['/alumnos']">Alumnos</a>
-    </nav>
-  </div>
-  
-  <div class="content">
-    <h2>Actividades</h2>
-    <div class="activity-list">
-      <div class="activity-item">
-        <h3>Primer Parcial</h3>
-        <p>Hola Mundo: Primer Hola Mundo</p>
-        <i class="fa fa-ellipsis-v"></i>
-      </div>
+<app-nav-act class="w-full"></app-nav-act>
+<div class="flex flex-col items-center p-6">
+    
+    <div class="flex items-center justify-between w-10/12 px-6 py-3">
+        <p class="text-xl font-semibold text-[#004C4C]">Actividades</p>
     </div>
-    <button class="create-button">+ Crear</button>
-  </div>
-  
+
+    <div class="w-10/12">
+        <app-card-act class="w-full"></app-card-act>
+        <app-card-act class="w-full"></app-card-act>
+        <app-card-act class="w-full"></app-card-act>
+        <app-card-act class="w-full"></app-card-act>
+    </div>
+
+</div>

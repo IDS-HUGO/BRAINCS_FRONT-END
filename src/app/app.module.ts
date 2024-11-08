@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FooterComponent } from './layout/footer/footer.component';
-import { DocenteModule } from "./docente/docente.module";
+import { HeaderComponent } from './layout/header/header.component';
 
 //Alumnos
 import { AlumnoModule } from './alumno/alumno.module';
@@ -13,14 +13,12 @@ import { AlumnoModule } from './alumno/alumno.module';
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DocenteModule,
-    AlumnoModule,
-    RouterModule
 ],
   providers: [
     provideClientHydration()
@@ -28,3 +26,4 @@ import { AlumnoModule } from './alumno/alumno.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
