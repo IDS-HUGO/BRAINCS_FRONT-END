@@ -5,17 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FooterComponent } from './layout/footer/footer.component';
-import { DocenteModule } from "./docente/docente.module";
+import { HeaderComponent } from './layout/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DocenteModule
 ],
   providers: [
     provideClientHydration()
@@ -23,3 +23,4 @@ import { DocenteModule } from "./docente/docente.module";
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
