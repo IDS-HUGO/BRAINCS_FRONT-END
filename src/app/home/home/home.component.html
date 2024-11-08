@@ -1,8 +1,9 @@
+<app-header></app-header>
 <div>
-    <div>
-        <app-home-docente></app-home-docente>
-    </div>
-</div>
-<div>
+  <div *ngIf="role === 'docente'">
+    <app-home-docente></app-home-docente>
+  </div>
+  <div *ngIf="role === 'alumno'">
     <app-home-alumno></app-home-alumno>
+  </div>
 </div>
