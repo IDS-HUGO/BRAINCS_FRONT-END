@@ -1,4 +1,4 @@
-<div class="p-4">
+<div (click)="openModal(activity)" class="p-4 cursor-pointer">
   <div class="w-full h-full bg-white border-2 border-[#004C4C99] rounded-lg shadow-md p-6 relative">
     
     <div class="px-4 py-2 flex justify-between items-center rounded-lg">
@@ -10,9 +10,15 @@
     </div>
 
     <div class="absolute bottom-4 right-4">
-      <button class="text-gray-400 hover:text-gray-600">
-        <img src="./menu_1.png" alt="menu de opciones" class="w-auto h-8">
-      </button>
+      <img src="./menu_1.png" alt="menu de opciones" class="w-auto h-8">
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<app-modal-view-activity 
+  *ngIf="isModalVisible"
+  [activityDetails]="selectedActivity" 
+  (close)="closeModal()"
+  (submitActivity)="handleSubmitActivity($event)">
+</app-modal-view-activity>

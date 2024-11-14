@@ -1,16 +1,24 @@
-<div class="border rounded-lg border-[#004C4C80] p-4 max-w-md">
-    <div class="flex items-center mb-4">
-        <img src="" alt="tarea-icon" class="w-12 h-12 mr-3">
-        <h2 class="text-[#004C4C] font-semibold text-lg">Hola mundo</h2>
+<div class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+    <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 relative">
+
+        <div class="flex justify-start items-start mt-8">
+            <img src="/hacer-alt.png" alt="Tareas" class="w-10 h-10">
+            <h2 class="text-2xl font-semibold text-teal-800 ml-4">{{ activityDetails?.name }}</h2>
+          </div>
+          
+      <p class="text-gray-500 text-sm mt-4">Fecha Entrega: {{ activityDetails?.dueDate | date:'dd/MM/yyyy' }}</p>
+  
+      <div class="mt-4">
+        <p class="text-gray-700 text-lg">{{ activityDetails?.description }}</p>
+      </div>
+  
+      <div class="mt-6 flex justify-center space-x-2">
+        <button (click)="onSubmitActivity()" class="px-4 py-2 bg-[#004C4C] text-white rounded-lg hover:bg-teal-700 transition duration-300">
+          Contenido
+        </button>
+        <button (click)="onCloseModal()" class="ml-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300">
+          Entregas
+        </button>
+      </div>
     </div>
-    <div class="mb-4">
-        <p class="text-[#004C4C99] text-sm">Fecha de entrega: 30/10/2024</p>
-    </div>
-    <div class="mb-4">
-        <p class="text-gray-700">Crea un programa que imprima el mensaje "hola mundo" en Java.</p>
-    </div>
-    <div class="flex space-x-2">
-        <button class="bg-[#004C4C] text-white px-4 py-2 rounded-md hover:bg-[#003939] transition duration-300">Contenido</button>
-        <button class="bg-[#004C4C] text-white px-4 py-2 rounded-md hover:bg-[#003939] transition duration-300">Entregas</button>
-    </div>
-</div>
+  </div>
