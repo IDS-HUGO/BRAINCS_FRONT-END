@@ -15,6 +15,7 @@ import { DocenteModule } from './docente/docente.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HomeModule,
     AuthModule,
     DocenteModule,
     AlumnoModule
