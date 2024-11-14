@@ -15,6 +15,9 @@ import { HeaderComponent } from '../layout/header/header.component';
     CommonModule,
     DocenteModule,
     AlumnoModule
+],
+exports: [
+  HeaderComponent
 ]
 })
 export class HomeModule { }

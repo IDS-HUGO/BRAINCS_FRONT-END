@@ -10,14 +10,16 @@
 
   <div class="flex items-center space-x-4">
     <button 
-      (click)="toggleAddButton()" 
-      [ngClass]="{ 'bg-teal-600 rounded-full text-white w-8 h-8 flex items-center justify-center': isClicked }"
-      class="text-teal-600 hover:text-teal-800 focus:outline-none transition-all duration-200"
-    >
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-      </svg>
-    </button>
+    *ngIf="role !== 'alumno'"
+    (click)="toggleAddButton()" 
+    [ngClass]="{ 'bg-teal-600 rounded-full text-white w-8 h-8 flex items-center justify-center': isClicked }"
+    class="text-teal-600 hover:text-teal-800 focus:outline-none transition-all duration-200"
+  >
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+    </svg>
+  </button>
+
 
     <div class="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center hover:bg-teal-700">
       <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  isClicked = false; 
+  @Input() role: string | null = null;
+  isClicked = false;
 
   toggleAddButton() {
-    this.isClicked = !this.isClicked; 
+    this.isClicked = !this.isClicked;
   }
 }
