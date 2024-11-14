@@ -8,6 +8,7 @@ import { AuthModule } from '../auth/auth.module';
 import { RoutingDocenteModule } from './routing-docente/routing-docente.module';
 import { HeaderGroupComponent } from '../layout/header-group/header-group.component';
 import { HomeDocenteComponent } from './home-docente/home-docente.component';
+import { ModalViewActivityComponent } from './modal-view-activity/modal-view-activity.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeDocenteComponent } from './home-docente/home-docente.component';
     MenuModalComponent,
     ViewGroupComponent,
     CardActivityComponent,
-    HomeDocenteComponent
+    HomeDocenteComponent,
+    ModalViewActivityComponent
   ],
   imports: [
     CommonModule,
