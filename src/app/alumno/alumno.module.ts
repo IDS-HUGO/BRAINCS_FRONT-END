@@ -7,6 +7,10 @@ import { ActividadesAlumnoComponent } from './actividades-alumno/actividades-alu
 import { RoutingAlumnoModule } from './routing-alumno/routing-alumno.module';
 import { NavActComponent } from './actividades-alumno/nav-act/nav-act.component';
 import { CardActComponent } from './actividades-alumno/card-act/card-act.component';
+import { TemarioAlumnoComponent } from './temario-alumno/temario-alumno.component';
+import { EstudiantesAlumnosComponent } from './estudiantes-alumnos/estudiantes-alumnos.component';
+import { ChatbotAlumnoComponent } from './chatbot-alumno/chatbot-alumno.component';
+import { ActividadModalComponent } from './actividades-alumno/actividad-modal/actividad-modal.component';
 
 
 @NgModule({
@@ -15,7 +19,11 @@ import { CardActComponent } from './actividades-alumno/card-act/card-act.compone
     CardGruposAlumnoComponent,
     ActividadesAlumnoComponent,
     NavActComponent,
-    CardActComponent
+    CardActComponent,
+    TemarioAlumnoComponent,
+    EstudiantesAlumnosComponent,
+    ChatbotAlumnoComponent,
+    ActividadModalComponent
   ],
   imports: [
     CommonModule,
