@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ViewGroupComponent {
 
+  selectedView: string = 'activity';
+
+  onViewSelected(view: string) {
+    this.selectedView = view;
+  }
+
 }
