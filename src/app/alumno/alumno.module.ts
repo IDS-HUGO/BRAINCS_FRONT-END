@@ -11,6 +11,8 @@ import { TemarioAlumnoComponent } from './temario-alumno/temario-alumno.componen
 import { EstudiantesAlumnosComponent } from './estudiantes-alumnos/estudiantes-alumnos.component';
 import { ChatbotAlumnoComponent } from './chatbot-alumno/chatbot-alumno.component';
 import { ActividadModalComponent } from './actividades-alumno/actividad-modal/actividad-modal.component';
+import { CardTemComponent } from './temario-alumno/card-tem/card-tem.component';
+import { CardAlumComponent } from './estudiantes-alumnos/card-alum/card-alum.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { ActividadModalComponent } from './actividades-alumno/actividad-modal/ac
     CardGruposAlumnoComponent,
     ActividadesAlumnoComponent,
     NavActComponent,
+    CardAlumComponent,
     CardActComponent,
+    CardTemComponent,
     TemarioAlumnoComponent,
     EstudiantesAlumnosComponent,
     ChatbotAlumnoComponent,

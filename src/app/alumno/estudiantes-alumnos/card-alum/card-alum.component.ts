@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-card-alumno',
-  templateUrl: './card-alumno.component.html',
-  styleUrl: './card-alumno.component.css'
+  selector: 'app-card-alum',
+  templateUrl: './card-alum.component.html',
+  styleUrl: './card-alum.component.css'
 })
-export class CardAlumnoComponent {
-
+export class CardAlumComponent {
+    
   alumnos = [
     { nombre: 'Alesandra Guadalupe Ulloa Lopez' },
     { nombre: 'Jesus Eduardo Gutierrez Mandujano' },
     { nombre: 'Hugo Francisco Luis Inclan' }
 ];
+
 
 }
