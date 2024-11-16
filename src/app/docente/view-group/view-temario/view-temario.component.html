@@ -5,8 +5,7 @@
   </div>
 
   <div class="w-10/12 space-y-4">
-      <app-card-temario class="w-full"></app-card-temario>
-      <app-card-temario class="w-full"></app-card-temario>
-      <app-card-temario class="w-full"></app-card-temario>
-  </div>
+    <app-generic-card *ngFor="let temario of temarios" [cardData]="temario" cardType="temario" class="w-full"></app-generic-card>
+  </div>  
+
 </div>

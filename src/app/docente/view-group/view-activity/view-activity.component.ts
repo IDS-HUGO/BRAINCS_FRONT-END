@@ -5,6 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './view-activity.component.html',
   styleUrl: './view-activity.component.css'
 })
+
 export class ViewActivityComponent {
+
+  activities = [
+    { title: 'Primer parcial', description: 'Hola mundo' },
+    { title: 'Segundo parcial', description: 'Otra actividad' },
+  ];
 
 }

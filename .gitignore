@@ -43,6 +43,7 @@ Thumbs.db
 
 #Archivo de produccion
 /dist
+Brainiasc_front.pem
 
 #llave instancio
 AlphabrainPEM.pem
