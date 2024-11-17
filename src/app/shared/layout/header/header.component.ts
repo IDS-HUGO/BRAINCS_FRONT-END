@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input,Output,EventEmitter } from '@angular/core';
+import { ModalService } from '../../modals/services/modal.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() role: string | null = null;
+  @Output() addGroup = new EventEmitter<void>();
   isClicked = false;
 
-  toggleAddButton() {
-    this.isClicked = !this.isClicked;
+  constructor(private modalService: ModalService) {}
+
+  onAddGroup() {
+    this.addGroup.emit();
+    this.modalService.openModal()
   }
 }
