@@ -13,6 +13,7 @@ import { ChatbotAlumnoComponent } from './chatbot-alumno/chatbot-alumno.componen
 import { ActividadModalComponent } from './actividades-alumno/actividad-modal/actividad-modal.component';
 import { CardTemComponent } from './temario-alumno/card-tem/card-tem.component';
 import { CardAlumComponent } from './estudiantes-alumnos/card-alum/card-alum.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { CardAlumComponent } from './estudiantes-alumnos/card-alum/card-alum.com
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
     RoutingAlumnoModule
   ],
   exports : [
