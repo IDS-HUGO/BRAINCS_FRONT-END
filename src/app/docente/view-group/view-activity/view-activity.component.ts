@@ -3,14 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-view-activity',
   templateUrl: './view-activity.component.html',
-  styleUrl: './view-activity.component.css'
+  styleUrls: ['./view-activity.component.css']
 })
-
 export class ViewActivityComponent {
 
   activities = [
-    { title: 'Primer parcial', description: 'Hola mundo', dueDate : '2024-11-16' },
-    { title: 'Segundo parcial', description: 'Otra actividad', dueDate : '2024-11-17' },
+    { title: 'Primer parcial', description: 'Hola mundo', dueDate: '2024-11-16' },
+    { title: 'Segundo parcial', description: 'Otra actividad', dueDate: '2024-11-17' },
   ];
 
   selectedActivity: any = null;
@@ -24,5 +23,4 @@ export class ViewActivityComponent {
   closeActivityModal() {
     this.isModalOpen = false;
   }
-
 }

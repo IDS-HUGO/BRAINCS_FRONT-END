@@ -1,13 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-modal-view-activity',
-  templateUrl: './modal-view-activity.component.html',
-  styleUrl: './modal-view-activity.component.css'
+  selector: 'app-card-activity',
+  templateUrl: './card-activity.component.html',
+  styleUrls: ['./card-activity.component.css']
 })
-export class ModalViewActivityComponent {
+export class CardActivityComponent {
   @Input() activityDetails: any;
-  @Output() close = new EventEmitter<void>();  
+  @Input() userType: string = 'alumno';
+  @Output() close = new EventEmitter<void>();
   @Output() submitActivity = new EventEmitter<File>();
 
   selectedFile: File | null = null;
@@ -29,5 +30,13 @@ export class ModalViewActivityComponent {
     } else {
       alert('Por favor selecciona un archivo antes de subirlo.');
     }
+  }
+
+  onContentClick() {
+    console.log("Contenido clicked - acción específica para docentes");
+  }
+
+  onEntregasClick() {
+    console.log("Entregas clicked - acción específica para docentes");
   }
 }

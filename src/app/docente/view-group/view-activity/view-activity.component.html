@@ -13,11 +13,11 @@
   </app-generic-card>
 </div>
 
-<app-modal-view-activity 
-  *ngIf="isModalOpen" 
-  [activityDetails]="selectedActivity" 
+<app-card-activity
+  *ngIf="isModalOpen"
+  [activityDetails]="selectedActivity"
+  userType="docente"
   (close)="closeActivityModal()"
->
-</app-modal-view-activity>
+></app-card-activity>
 
 </div>

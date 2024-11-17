@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { AlumnoModule } from './alumno/alumno.module';
 import { DocenteModule } from './docente/docente.module';
+import { SharedModule } from "./shared/shared.module";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { DocenteModule } from './docente/docente.module';
     HomeModule,
     AuthModule,
     DocenteModule,
-    AlumnoModule
+    AlumnoModule,
+    SharedModule
 ],
   providers: [
     provideClientHydration()
