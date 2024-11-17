@@ -9,5 +9,6 @@ export class ViewAlumnosComponent {
   alumnos = [
     { nombre: 'Juan Perez' },
     { nombre: 'Ana Martinez' },
+    { nombre : 'Hugo Francisco'}
   ];
 }
