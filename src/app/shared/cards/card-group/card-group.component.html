@@ -11,5 +11,11 @@
         <img class="h-8" src="./menu_1.png" alt="Menú de opciones" />
       </button>
     </div>
+    
+    <app-menu-modals
+      *ngIf="showModal"
+      (closeModal)="showModal = false"
+      (optionSelected)="handleOption($event)">
+    </app-menu-modals>  
   </div>
 </div>

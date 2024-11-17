@@ -14,14 +14,25 @@ export class CardGroupComponent {
   constructor(private router: Router) {}
 
   toggleModal() {
-    this.showModal = !this.showModal;
-    console.log('showModal:', this.showModal);
-  }
+    if (this.userType === 'director' || this.userType === 'docente') {
+      this.showModal = !this.showModal;
+      console.log('Modal status:', this.showModal);
+    }
+  }  
 
   handleOption(option: string) {
-    if (option === 'inspect') {
-      console.log('Inspeccionar opción seleccionada');
-      this.router.navigate(['/docente/view-group']);
+    switch(option) {
+      case 'inspect':
+        console.log('Inspeccionar opción seleccionada');
+        this.router.navigate(['/docente/view-group']);
+        break;
+      case 'edit':
+        console.log('Editar opción seleccionada');
+        break;
+      case 'delete':
+        console.log('Eliminar opción seleccionada');
+        break;
     }
+    this.showModal = false;
   }
 }

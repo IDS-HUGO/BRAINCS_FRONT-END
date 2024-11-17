@@ -1,14 +1,11 @@
-import { Component } from '@angular/core';
-import { EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-menu-modals',
   templateUrl: './menu-modals.component.html',
-  styleUrl: './menu-modals.component.css'
+  styleUrls: ['./menu-modals.component.css']
 })
 export class MenuModalsComponent {
-
-  @Input() showModal: boolean = false;
   @Output() closeModal = new EventEmitter<void>();
   @Output() optionSelected = new EventEmitter<string>();
 
@@ -20,5 +17,4 @@ export class MenuModalsComponent {
     this.optionSelected.emit(option);
     this.closeModalPopup();
   }
-
 }
