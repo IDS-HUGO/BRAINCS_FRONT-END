@@ -4,10 +4,11 @@ import { HeaderComponent } from './layout/header/header.component';
 import { HeaderGroupComponent } from './layout/header-group/header-group.component';
 import { GenericCardComponent } from './cards/generic-card/generic-card.component';
 import { CardGroupComponent } from './cards/card-group/card-group.component';
-import { GenericModalComponent } from './modals/generic-modal/generic-modal.component';
-import { GenericModalProcessComponent } from './modals/generic-modal-process/generic-modal-process.component';
 import { MenuModalsComponent } from './modals/menu-modals/menu-modals.component';
 import { CardActivityComponent } from './cards/card-activity/card-activity.component';
+import { FormAddModalComponent } from './modals/form-add-modal/form-add-modal.component';
+import { FormUpdateModalComponent } from './modals/form-update-modal/form-update-modal.component';
+import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
 
 
 
@@ -17,10 +18,11 @@ import { CardActivityComponent } from './cards/card-activity/card-activity.compo
     HeaderGroupComponent,
     GenericCardComponent,
     CardGroupComponent,
-    GenericModalComponent,
-    GenericModalProcessComponent,
     MenuModalsComponent,
-    CardActivityComponent
+    CardActivityComponent,
+    FormAddModalComponent,
+    FormUpdateModalComponent,
+    DeleteModalComponent
   ],
   imports: [
     CommonModule
@@ -30,7 +32,8 @@ import { CardActivityComponent } from './cards/card-activity/card-activity.compo
     HeaderGroupComponent,
     GenericCardComponent,
     CardGroupComponent,
-    CardActivityComponent
+    CardActivityComponent,
+    FormAddModalComponent
   ]
 })
 export class SharedModule { }

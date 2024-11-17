@@ -1,9 +1,9 @@
 <div class="bg-white rounded-lg shadow-md relative">
-  <div class="bg-[#004C4C] text-white px-4 py-2 flex justify-between items-center">
+  <div class="bg-[#004C4C] text-white px-4 py-2 flex justify-between items-center rounded-t-lg">
     <h3 class="text-lg font-semibold">{{ subjectName }}</h3>
   </div>
 
-  <div class="p-4 relative min-h-[200px]">
+  <div class="p-4 relative min-h-[200px] rounded-b-lg">
     <p class="text-gray-600">Contenido de la tarjeta.</p>
 
     <div *ngIf="userType === 'director' || userType === 'docente'" class="absolute bottom-4 right-4">
