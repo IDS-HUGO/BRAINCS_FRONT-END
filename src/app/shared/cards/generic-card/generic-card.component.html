@@ -1,12 +1,10 @@
 <div 
   class="p-4 cursor-pointer mb-4" 
-  [ngClass]="{
-    'bg-white border-[#004C4C99] shadow-md rounded-lg': cardType === 'activity' || cardType === 'temario',
-    'bg-[#B2D9D866] rounded-lg p-4': cardType === 'alumno'
-  }">
+  [ngClass]="{ 'bg-[#B2D9D866] rounded-lg p-4': cardType === 'alumno'}"
+  (click)="onCardClick()">
 
-  <div *ngIf="cardType === 'activity' || cardType === 'temario'" class="w-full h-full border-2 p-6 relative">
-    <div class="flex justify-between items-center rounded-lg">
+  <div *ngIf="cardType === 'activity' || cardType === 'temario'" class="w-full h-full p-6 relative rounded-lg border-2 border-[#004C4C99]">
+    <div class="flex justify-between items-center">
       <h3 class="text-lg font-semibold text-[#00000099]">{{ cardData?.title || 'Título' }}</h3>
     </div>
     <div class="p-4">

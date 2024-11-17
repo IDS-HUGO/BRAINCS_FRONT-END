@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-generic-card',
@@ -7,5 +7,12 @@ import { Component, Input } from '@angular/core';
 })
 export class GenericCardComponent {
   @Input() cardData: any;
-  @Input() cardType: 'activity' | 'temario' | 'alumno' | undefined;
+  @Input() cardType: 'activity' | 'temario' | 'alumno' = 'activity';
+  @Output() openModal = new EventEmitter<any>();
+
+  onCardClick() {
+    if (this.cardType === 'activity' || this.cardType === 'temario') {
+      this.openModal.emit(this.cardData);
+    }
+  }
 }
