@@ -35,4 +35,8 @@ export class CardGroupComponent {
     }
     this.showModal = false;
   }
+ 
+  navigateToDetail() {
+    this.router.navigate(['alumno/view']); 
+  }
 }

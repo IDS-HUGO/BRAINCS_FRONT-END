@@ -10,21 +10,20 @@
     <div class="p-2 px-8">
       <p class="text-black font-semibold text-lg">{{ cardData?.description || 'Descripción de actividad' }}</p>
     </div>
-    <div class="absolute bottom-4 right-4">
+    <div class="absolute bottom-4 right-4" *ngIf="userType !== 'alumno'">
       <img src="./menu_1.png" alt="menu de opciones" class="w-auto h-8">
     </div>
   </div>
 
-  <div *ngIf="cardType === 'temario'"  class="py-2 px-12">
-    <div  class="w-full flex items-center h-16 bg-white border-2 border-[#004C4C99] rounded-lg shadow-md relative">
+  <div *ngIf="cardType === 'temario'" class="py-2 px-12">
+    <div class="w-full flex items-center h-16 bg-white border-2 border-[#004C4C99] rounded-lg shadow-md relative">
       <div class="px-4 flex justify-start items-center rounded-lg">
         <h3 class="text-lg font-semibold text-[#000000]">{{ cardData?.title || 'Título del temario' }}</h3>
       </div>
-
-    <div class="absolute bottom-4 right-4">
-      <img src="./menu_1.png" alt="menu de opciones" class="w-auto h-8">
+      <div class="absolute bottom-4 right-4" *ngIf="userType !== 'alumno'">
+        <img src="./menu_1.png" alt="menu de opciones" class="w-auto h-8">
+      </div>
     </div>
-  </div>
   </div>
 
   <div *ngIf="cardType === 'alumno'" class="flex flex-col items-center w-full">
@@ -32,6 +31,5 @@
       <img src="user.png" alt="icon.user" class="w-10 h-10 rounded-full mr-4">
       <p class="text-base font-semibold text-[#004C4C] flex-grow">{{ alumno.nombre }}</p>
     </div>
-    
   </div>
 </div>

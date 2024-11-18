@@ -1,0 +1,6 @@
+<app-header-group class="w-full" (viewSelected)="onViewSelected($event)"></app-header-group>
+<div class="flex flex-col items-center">
+   <app-act-alumn *ngIf="selectedView === 'activity'" class="w-full"></app-act-alumn>
+   <app-tem-alumn *ngIf="selectedView === 'temario'" class="w-full"></app-tem-alumn>
+   <app-students-alumn *ngIf="selectedView === 'alumnos'" class="w-full"></app-students-alumn>
+</div>

@@ -21,23 +21,39 @@
       </div>
   
       <div *ngIf="userType === 'alumno'" class="mt-6">
-        <label for="file-upload" class="block text-sm font-medium text-gray-700">Subir Actividad</label>
-        <input
-          type="file"
-          id="file-upload"
-          (change)="onFileSelected($event)"
-          class="mt-2 block w-full text-sm text-gray-500
-                 file:mr-4 file:py-2 file:px-4 
-                 file:rounded-lg file:border-0
-                 file:text-sm file:font-semibold
-                 file:bg-teal-600 file:text-white
-                 hover:file:bg-teal-700 cursor-pointer"
-        />
-        <div class="mt-6 flex justify-end space-x-2">
-          <button (click)="onSubmitActivity()" class="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition duration-300">
-            Subir Actividad
+        
+        <div class="mt-6">
+          <button class="flex items-center bg-teal-50 text-teal-600 px-4 py-2 rounded-lg hover:bg-teal-100 transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6m-3 3l-3-3m3 3l3-3" />
+            </svg>
+            Contenido de Apoyo
           </button>
         </div>
+    
+        <div class="mt-8 bg-teal-50 p-6 rounded-lg">
+          <h3 class="text-teal-800 font-semibold mb-4">Subir Actividad</h3>
+          
+          <div class="flex flex-col space-y-4">
+            <label
+              for="file-upload"
+              class="block bg-teal-600 text-white text-center font-medium py-2 rounded-lg cursor-pointer hover:bg-teal-700 transition duration-300"
+            >
+              Seleccionar Archivo
+            </label>
+            <input id="file-upload" type="file" (change)="onFileSelected($event)" class="hidden">
+            
+            <p class="text-gray-500 text-center">Sin archivos seleccionados</p>
+    
+            <button
+              (click)="onSubmitActivity()"
+              class="bg-teal-600 text-white text-center font-medium py-2 rounded-lg hover:bg-teal-700 transition duration-300"
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+      
       </div>
   
       <div *ngIf="userType === 'docente'" class="mt-6 flex justify-center space-x-2">

@@ -2,33 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeAlumnoComponent } from './home-alumno/home-alumno.component';
 import { RouterModule } from '@angular/router';
-import { CardGruposAlumnoComponent } from './home-alumno/card-grupos-alumno/card-grupos-alumno.component';
-import { ActividadesAlumnoComponent } from './actividades-alumno/actividades-alumno.component';
 import { RoutingAlumnoModule } from './routing-alumno/routing-alumno.module';
-import { NavActComponent } from './actividades-alumno/nav-act/nav-act.component';
-import { CardActComponent } from './actividades-alumno/card-act/card-act.component';
-import { TemarioAlumnoComponent } from './temario-alumno/temario-alumno.component';
-import { EstudiantesAlumnosComponent } from './estudiantes-alumnos/estudiantes-alumnos.component';
-import { ChatbotAlumnoComponent } from './chatbot-alumno/chatbot-alumno.component';
-import { ActividadModalComponent } from './actividades-alumno/actividad-modal/actividad-modal.component';
-import { CardTemComponent } from './temario-alumno/card-tem/card-tem.component';
-import { CardAlumComponent } from './estudiantes-alumnos/card-alum/card-alum.component';
 import { SharedModule } from '../shared/shared.module';
-
+import { ViewGroupAlumnComponent } from './view-group-alumn/view-group-alumn.component';
+import { ActAlumnComponent } from './view-group-alumn/act-alumn/act-alumn.component';
+import { TemAlumnComponent } from './view-group-alumn/tem-alumn/tem-alumn.component';
+import { StudentsAlumnComponent } from './view-group-alumn/students-alumn/students-alumn.component';
+import { ChatbotAlumnComponent } from './view-group-alumn/chatbot-alumn/chatbot-alumn.component';
 
 @NgModule({
   declarations: [
     HomeAlumnoComponent,
-    CardGruposAlumnoComponent,
-    ActividadesAlumnoComponent,
-    NavActComponent,
-    CardAlumComponent,
-    CardActComponent,
-    CardTemComponent,
-    TemarioAlumnoComponent,
-    EstudiantesAlumnosComponent,
-    ChatbotAlumnoComponent,
-    ActividadModalComponent
+    ViewGroupAlumnComponent,
+    ActAlumnComponent,
+    TemAlumnComponent,
+    StudentsAlumnComponent,
+    ChatbotAlumnComponent
   ],
   imports: [
     CommonModule,

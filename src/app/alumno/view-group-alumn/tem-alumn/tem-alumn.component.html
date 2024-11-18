@@ -1,0 +1,18 @@
+<div class="flex flex-col items-center p-4">
+    <div class="flex items-center justify-between w-10/12 px-6 py-3">
+      <div>
+        <p class="text-3xl font-bold text-[#004C4C] mb-2">Temario</p>
+        <p class="text-2xl font-semibold px-6 text-[#008081]">Parcial 1</p>
+      </div>
+    </div>
+  
+    <div class="w-10/12">
+      <app-generic-card 
+        *ngFor="let temario of temarios" 
+        [cardData]="temario" 
+        cardType="temario" 
+        class="w-full">
+      </app-generic-card>
+    </div>  
+  </div>
+  

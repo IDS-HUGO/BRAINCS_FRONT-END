@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderGroupComponent {
   @Output() viewSelected = new EventEmitter<string>();
+  @Input() userType: string = 'alumno';
 
   constructor(private router: Router) {}
 

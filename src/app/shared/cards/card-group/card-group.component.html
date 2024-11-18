@@ -1,5 +1,8 @@
 <div class="bg-white rounded-lg shadow-md relative">
-  <div class="bg-[#004C4C] text-white px-4 py-2 flex justify-between items-center rounded-t-lg">
+  <div 
+    class="bg-[#004C4C] cursor-pointer text-white px-4 py-2 flex justify-between items-center"
+    [ngClass]="{'cursor-pointer': userType === 'alumno'}"
+    (click)="userType === 'alumno' && navigateToDetail()">
     <h3 class="text-lg font-semibold">{{ subjectName }}</h3>
   </div>
 
