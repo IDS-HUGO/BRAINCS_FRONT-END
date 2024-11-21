@@ -7,37 +7,38 @@
     <div>
       <form (submit)="onSubmit()" class="space-y-6 p-8 rounded-lg bg-[#B2D9D8] w-full">
         <div>
-          <label for="user" class="block text-[#004C4C] font-semibold text-lg">Email</label>
+          <label for="user" class="block text-[#004C4C] font-semibold text-lg">Usuario</label>
           <input 
             type="text" 
             id="user" 
-            [(ngModel)]="email" 
+            [(ngModel)]="loginData.usuario" 
             name="user" 
-            placeholder="example@example.com" 
+            placeholder="Usuario123" 
             class="w-full p-2 border-2 border-[#004C4C] rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C] text-lg"
           />
-          <div *ngIf="errors.email" class="text-red-500 text-sm mt-1">Please enter a valid email address.</div>
+          <div *ngIf="loginData.errors.usuario" class="text-red-500 text-sm mt-1">Usuario no válido.</div>
         </div>
         <div>
-          <label for="password" class="block text-[#004C4C] font-semibold text-lg">Password</label>
+          <label for="password" class="block text-[#004C4C] font-semibold text-lg">Contraseña</label>
           <input 
             type="password" 
             id="password" 
-            [(ngModel)]="password" 
+            [(ngModel)]="loginData.contrasena" 
             name="password" 
             placeholder="password123" 
             class="w-full p-2 border-2 border-[#004C4C] rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C] text-lg"
           />
-          <div *ngIf="errors.password" class="text-red-500 text-sm mt-1">Password is required.</div>
+          <div *ngIf="loginData.errors.contrasena" class="text-red-500 text-sm mt-1">La contraseña es obligatoria.</div>
         </div>
         <div>
           <button 
             type="submit" 
             class="w-full py-2 bg-[#004C4C] text-white font-semibold rounded-md hover:bg-[#003737] focus:outline-none focus:ring-2 focus:ring-[#003737] text-lg"
           >
-            Sign In
+            Iniciar Sesión
           </button>
         </div>
+        <div *ngIf="loginData.loginFailed" class="text-red-500 text-sm mt-2">Credenciales incorrectas, intente nuevamente.</div>
       </form>
     </div>
   </div>

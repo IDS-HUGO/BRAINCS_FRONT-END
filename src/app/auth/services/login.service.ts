@@ -1,20 +1,32 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
+import { environment } from '../../../enviroment/enviroment';
+import { LoginResponse } from '../models/login-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  private apiUrl = `${environment.apiUrl}usuarios/usuarios/login`;
 
-  private users = [
-    { email: 'docente@example.com', password: '123456', role: 'docente' },
-    { email: 'alumno@example.com', password: 'abcdef', role: 'alumno' }
-  ];
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  login(usuario: string, contrasena: string): Observable<LoginResponse> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { usuario, contrasena };
 
-  login(email: string, password: string): string | null {
-    const user = this.users.find(user => user.email === email && user.password === password);
-
-    return user ? user.role : null;
+    return this.http.post<LoginResponse>(this.apiUrl, body, { headers }).pipe(
+      map(response => {
+        localStorage.setItem('role', response.role);
+        return response;
+      }),
+      catchError(error => {
+        console.error('Error en la autenticación:', error);
+        throw error;
+      })
+    );
   }
 }
