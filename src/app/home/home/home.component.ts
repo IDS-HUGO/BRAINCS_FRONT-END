@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  role: string | null = null;
+  rol: string | null = null;
 
   ngOnInit() {
-    this.role = localStorage.getItem('role');
+    this.rol = localStorage.getItem('role');
+    console.log('Rol cargado desde localStorage:', this.rol);
   }
+  
 }

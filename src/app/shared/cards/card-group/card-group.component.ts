@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./card-group.component.css']
 })
 export class CardGroupComponent {
-  @Input() subjectName: string = 'Matematicas I';
-  @Input() userType: string = 'alumno';
+  @Input() subjectName!: string;
+  @Input() userType!: string;
   showModal: boolean = false;
 
   constructor(private router: Router) {}
