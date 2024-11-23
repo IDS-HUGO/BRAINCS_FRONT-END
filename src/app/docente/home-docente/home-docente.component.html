@@ -5,6 +5,8 @@
         *ngFor="let group of groups"
         [subjectName]="group.asignatura"
         [userType]="'docente'"
+        [grado]="group.grado"     
+        [grupo]="group.grupo"
       ></app-card-group>
     </div>
   </div>

@@ -15,6 +15,6 @@ export class HeaderComponent {
 
   onAddGroup() {
     this.addGroup.emit();
-    this.modalService.openModal()
+    this.modalService.openModal('group');
   }
 }

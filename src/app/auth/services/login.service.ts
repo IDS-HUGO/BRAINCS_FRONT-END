@@ -20,8 +20,8 @@ export class LoginService {
 
     return this.http.post<LoginResponse>(this.apiUrl, body, { headers }).pipe(
       map(response => {
-        console.log('Rol recibido:', response.rol); // Verifica si el rol viene en la respuesta
         localStorage.setItem('role', response.rol);
+        localStorage.setItem('id_docente', response.id_docente.toString());
         return response;
       }),
       catchError(error => {

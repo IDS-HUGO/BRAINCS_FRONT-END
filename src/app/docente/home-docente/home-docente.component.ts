@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-
 import { GroupServiceService } from '../services/group-service.service';
 import { ModalService } from '../../shared/modals/services/modal.service';
 import { GroupData } from '../models/group-data';
@@ -14,6 +13,9 @@ export class HomeDocenteComponent implements OnInit, OnDestroy {
   modalOpen: boolean = false;
   groups: GroupData[] = [];
   private modalSubscription: Subscription | undefined;
+  private groupAddedSubscription: Subscription | undefined;
+
+  id_docente: number = Number(localStorage.getItem('id_docente'));
 
   constructor(
     private modalService: ModalService,
@@ -25,20 +27,35 @@ export class HomeDocenteComponent implements OnInit, OnDestroy {
       this.modalOpen = isOpen;
     });
 
-    this.groupService.getGroups().subscribe({
-      next: (response) => {
-        this.groups = response;
-        console.log('Grupos cargados:', this.groups);
-      },
-      error: (error) => {
-        console.error('Error al obtener los grupos:', error);
-      }
+    this.loadGroups();
+
+    this.groupAddedSubscription = this.groupService.groupAdded$.subscribe(() => {
+      this.loadGroups();
     });
+  }
+
+  loadGroups() {
+    if (this.id_docente) {
+      this.groupService.getGroups(this.id_docente).subscribe({
+        next: (response) => {
+          this.groups = response;
+          console.log('Grupos cargados:', this.groups);
+        },
+        error: (error) => {
+          console.error('Error al obtener los grupos:', error);
+        }
+      });
+    } else {
+      console.error('id_docente no encontrado en localStorage');
+    }
   }
 
   ngOnDestroy() {
     if (this.modalSubscription) {
       this.modalSubscription.unsubscribe();
+    }
+    if (this.groupAddedSubscription) {
+      this.groupAddedSubscription.unsubscribe();
     }
   }
 }

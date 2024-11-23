@@ -8,10 +8,15 @@ import { ModalService } from '../services/modal.service';
 })
 export class FormAddModalComponent {
   modalOpen: boolean = false;
+  modalType: string = '';
 
   constructor(private modalService: ModalService) {
     this.modalService.modalOpen$.subscribe(isOpen => {
       this.modalOpen = isOpen;
+    });
+
+    this.modalService.modalType$.subscribe(type => {
+      this.modalType = type;
     });
   }
 
