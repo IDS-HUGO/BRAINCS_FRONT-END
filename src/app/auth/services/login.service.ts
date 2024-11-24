@@ -21,7 +21,9 @@ export class LoginService {
     return this.http.post<LoginResponse>(this.apiUrl, body, { headers }).pipe(
       map(response => {
         localStorage.setItem('role', response.rol);
-        localStorage.setItem('id_docente', response.id_docente.toString());
+        if(response.rol === 'docente'){
+          localStorage.setItem('id_docente', response.id_docente.toString());
+        }
         return response;
       }),
       catchError(error => {

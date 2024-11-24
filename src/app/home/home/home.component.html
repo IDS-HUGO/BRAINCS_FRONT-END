@@ -1,11 +1,11 @@
 <div>
+  <div *ngIf="rol === 'director'">
+    <app-home-director></app-home-director>
+  </div>
   <div *ngIf="rol === 'docente'">
     <app-home-docente></app-home-docente>
   </div>
   <div *ngIf="rol === 'alumno'">
     <app-home-alumno></app-home-alumno>
-  </div>
-  <div *ngIf="rol === 'director'">
-    <app-home-director></app-home-director>
   </div>
 </div>
