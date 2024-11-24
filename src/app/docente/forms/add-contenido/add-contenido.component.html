@@ -1,0 +1,38 @@
+<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+  <div class="w-[500px] bg-white p-8 rounded-lg shadow-md">
+    <div class="flex justify-center mb-6">
+      <img src="/contenido.png" alt="Imagen ilustrativa" class="w-auto h-[80px] object-contain">
+    </div>
+
+    <div class="flex justify-between mb-6">
+      <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2">
+        Generar contenido
+      </button>
+      <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]" (click)="closeModal()">
+        Cancelar
+      </button>
+    </div>
+
+    <div class="mb-4">
+      <label for="upload-type" class="block text-gray-700 font-medium mb-2">Subir archivo</label>
+      <select id="upload-type" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" (change)="onUploadTypeChange($event)">
+        <option value="file">Archivo</option>
+        <option value="link">Enlace</option>
+      </select>
+    </div>
+
+    <div class="mb-4" *ngIf="selectedUploadType === 'file'">
+      <input type="file" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" />
+    </div>
+
+    <div class="mb-4" *ngIf="selectedUploadType === 'link'">
+      <input type="text" placeholder="Ingrese el enlace" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" />
+    </div>
+
+    <div class="flex justify-end mt-6">
+      <button type="button" class="bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]">
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>

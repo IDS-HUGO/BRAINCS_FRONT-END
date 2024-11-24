@@ -16,6 +16,11 @@ export class ModalService {
     this.modalOpenSubject.next(true);
   }
 
+  openDeleteModal() {
+    this.modalTypeSubject.next('delete');  // Asegúrate de que el tipo sea 'delete'
+    this.modalOpenSubject.next(true);
+  }  
+
   closeModal() {
     this.modalOpenSubject.next(false);
   }

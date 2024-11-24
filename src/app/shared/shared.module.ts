@@ -37,7 +37,8 @@ import { FormsDocenteModule } from "../docente/forms/formsDocente.module";
     GenericCardComponent,
     CardGroupComponent,
     CardActivityComponent,
-    FormAddModalComponent
+    FormAddModalComponent,
+    DeleteModalComponent
   ]
 })
 export class SharedModule { }

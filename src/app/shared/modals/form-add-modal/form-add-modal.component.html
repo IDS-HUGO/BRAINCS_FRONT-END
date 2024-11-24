@@ -1,7 +1,8 @@
 <div *ngIf="modalOpen" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-    <div [ngSwitch]="modalType">
-      <app-add-group *ngSwitchCase="'group'" ></app-add-group>
-      <app-add-tarea *ngSwitchCase="'tarea'" ></app-add-tarea>
-      <div *ngSwitchDefault>Selecciona una opción válida</div>
-    </div>
+  <div [ngSwitch]="modalType">
+    <app-add-group *ngSwitchCase="'group'"></app-add-group>
+    <app-add-tarea *ngSwitchCase="'tarea'"></app-add-tarea>
+    <app-add-contenido *ngSwitchCase="'contenido'"></app-add-contenido>
+    <div *ngSwitchDefault>Selecciona una opción válida</div>
   </div>
+</div>

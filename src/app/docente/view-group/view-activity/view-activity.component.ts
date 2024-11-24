@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { ModalService } from '../../../shared/modals/services/modal.service';
 
 @Component({
   selector: 'app-view-activity',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./view-activity.component.css']
 })
 export class ViewActivityComponent {
+
+  constructor(private modalService: ModalService) {}
+
+  @Output() addTarea = new EventEmitter<void>();
 
   activities = [
     { title: 'Primer parcial', description: 'Hola mundo', dueDate: '2024-11-16' },
@@ -22,5 +27,9 @@ export class ViewActivityComponent {
 
   closeActivityModal() {
     this.isModalOpen = false;
+  }
+
+  onAddTarea() {
+    this.modalService.openModal('tarea');
   }
 }
