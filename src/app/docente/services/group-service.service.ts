@@ -9,8 +9,21 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GroupServiceService {
+
   private apiUrlGetGroupById: string = `${environment.apiUrl}grupos/grupos/docente/`;
   private apiUrlAddGroup: string = `${environment.apiUrl}grupos/grupos`;
+
+
+  deleteGroup(groupId: number, idDocente: number): Observable<any> {
+    const url = `${environment.apiUrl}grupos/grupos/${groupId}`;
+    const body = {
+      asignatura: "",
+      grado: 0,
+      grupo: "",
+      id_docente: idDocente
+    };
+    return this.http.delete(url, { body });
+  }  
   
   private groupAddedSubject = new Subject<void>();
   groupAdded$ = this.groupAddedSubject.asObservable();

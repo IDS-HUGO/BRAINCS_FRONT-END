@@ -30,7 +30,7 @@ import { CardDocenteComponent } from './cards/card-docente/card-docente.componen
   imports: [
     CommonModule,
     FormsModule,
-    FormsDocenteModule
+    FormsDocenteModule,
 ],
   exports : [
     HeaderComponent,
