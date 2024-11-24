@@ -14,13 +14,20 @@ export class ModalService {
   private groupIdSubject = new BehaviorSubject<number | null>(null);
   groupId$ = this.groupIdSubject.asObservable();
 
-  openModal(type: string) {
+  openModal(type: string, data: any = null) {
     this.modalTypeSubject.next(type);
+    this.groupIdSubject.next(data);
     this.modalOpenSubject.next(true);
-  }
+  }  
 
   openDeleteModal(groupId: number) {
     this.modalTypeSubject.next('delete');
+    this.groupIdSubject.next(groupId);
+    this.modalOpenSubject.next(true);
+  }
+  
+  openUpdateModal(groupId: number) {
+    this.modalTypeSubject.next('edit');
     this.groupIdSubject.next(groupId);
     this.modalOpenSubject.next(true);
   }  
