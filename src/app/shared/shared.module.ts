@@ -12,7 +12,7 @@ import { FormAddModalComponent } from './modals/form-add-modal/form-add-modal.co
 import { FormUpdateModalComponent } from './modals/form-update-modal/form-update-modal.component';
 import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
 import { FormsDocenteModule } from "../docente/forms/formsDocente.module";
-
+import { CardDocenteComponent } from './cards/card-docente/card-docente.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { FormsDocenteModule } from "../docente/forms/formsDocente.module";
     FormAddModalComponent,
     FormUpdateModalComponent,
     DeleteModalComponent,
+    CardDocenteComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +39,7 @@ import { FormsDocenteModule } from "../docente/forms/formsDocente.module";
     CardGroupComponent,
     CardActivityComponent,
     FormAddModalComponent,
+    CardDocenteComponent,
     DeleteModalComponent
   ]
 })
