@@ -9,7 +9,7 @@ import { CardActivityComponent } from './cards/card-activity/card-activity.compo
 import { FormAddModalComponent } from './modals/form-add-modal/form-add-modal.component';
 import { FormUpdateModalComponent } from './modals/form-update-modal/form-update-modal.component';
 import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
-
+import { CardDocenteComponent } from './cards/card-docente/card-docente.component';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import { DeleteModalComponent } from './modals/delete-modal/delete-modal.compone
     CardActivityComponent,
     FormAddModalComponent,
     FormUpdateModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    CardDocenteComponent
   ],
   imports: [
     CommonModule
@@ -33,7 +34,8 @@ import { DeleteModalComponent } from './modals/delete-modal/delete-modal.compone
     GenericCardComponent,
     CardGroupComponent,
     CardActivityComponent,
-    FormAddModalComponent
+    FormAddModalComponent,
+    CardDocenteComponent
   ]
 })
 export class SharedModule { }
