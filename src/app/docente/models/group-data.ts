@@ -3,4 +3,5 @@ export interface GroupData {
     grado: number;
     grupo: string;
     id_grupo: number;
+    id_docente : number
 }  

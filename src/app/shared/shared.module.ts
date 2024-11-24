@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { HeaderComponent } from './layout/header/header.component';
 import { HeaderGroupComponent } from './layout/header-group/header-group.component';
 import { GenericCardComponent } from './cards/generic-card/generic-card.component';
@@ -9,8 +11,8 @@ import { CardActivityComponent } from './cards/card-activity/card-activity.compo
 import { FormAddModalComponent } from './modals/form-add-modal/form-add-modal.component';
 import { FormUpdateModalComponent } from './modals/form-update-modal/form-update-modal.component';
 import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
+import { FormsDocenteModule } from "../docente/forms/formsDocente.module";
 import { CardDocenteComponent } from './cards/card-docente/card-docente.component';
-
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { CardDocenteComponent } from './cards/card-docente/card-docente.componen
     CardDocenteComponent
   ],
   imports: [
-    CommonModule
-  ],
+    CommonModule,
+    FormsModule,
+    FormsDocenteModule
+],
   exports : [
     HeaderComponent,
     HeaderGroupComponent,

@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class CardGroupComponent {
   @Input() subjectName!: string;
   @Input() userType!: string;
+  @Input() grado!: number;
+  @Input() grupo!: string;
   showModal: boolean = false;
 
   constructor(private router: Router) {}
@@ -16,9 +18,8 @@ export class CardGroupComponent {
   toggleModal() {
     if (this.userType === 'director' || this.userType === 'docente') {
       this.showModal = !this.showModal;
-      console.log('Modal status:', this.showModal);
     }
-  }  
+  }
 
   handleOption(option: string) {
     switch(option) {
@@ -35,8 +36,8 @@ export class CardGroupComponent {
     }
     this.showModal = false;
   }
- 
+
   navigateToDetail() {
-    this.router.navigate(['alumno/view']); 
+    this.router.navigate(['alumno/view']);
   }
 }
