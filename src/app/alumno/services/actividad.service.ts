@@ -15,25 +15,36 @@ export class ActividadService {
   constructor(private http: HttpClient) {}
 
   getActivitiesByGroupId(): Observable<Actividad[]> {
-   const groupId = localStorage.getItem('id_grupo');
-      if (!groupId) {
-        console.error('ID de grupo no encontrado en localStorage');
-        return throwError(() => new Error('ID de grupo no encontrado en localStorage'));
-      }
-    
-      const url = `${this.apiUrlGetActivitiesByGroupId}${groupId}`;
-      
-      return this.http.get<Actividad | Actividad[]>(url).pipe(
-        map((response) => {
-          if (!Array.isArray(response)) {
-            return Object.values(response); 
-          }
-          return response;
-        }),
-        catchError((error) => {
-          console.error('Error al obtener los temarios:', error);
-          return throwError(() => new Error('No se pudieron obtener los temarios.'));
-        })
-      );
+    const groupId = localStorage.getItem('id_grupo');
+    if (!groupId) {
+      console.error('ID de grupo no encontrado en localStorage');
+      return throwError(() => new Error('ID de grupo no encontrado en localStorage'));
     }
+  
+    const url = `${this.apiUrlGetActivitiesByGroupId}${groupId}`;
+  
+    return this.http.get<Actividad[]>(url).pipe(
+      map((response) => {
+        return response.map((actividad) => {
+          if (actividad.contenido) {
+            // Verifica si la ruta es relativa y asegura que solo quede la parte necesaria
+            if (actividad.contenido.startsWith('static/')) {
+              actividad.contenido = `${environment.apiUrl}${actividad.contenido}`;
+            } else if (actividad.contenido.includes('/home/ubuntu/BRAINIACS_API/')) {
+              // Elimina la parte innecesaria de la ruta
+              actividad.contenido = actividad.contenido.replace('/home/ubuntu/BRAINIACS_API/', '');
+            }
+          }
+          return actividad;
+        });
+        
+      }),
+      catchError(error => {
+        console.error('Error al obtener actividades', error);
+        return throwError(() => new Error('Error al obtener actividades'));
+      })
+    );
+  }
+  
+  
 }

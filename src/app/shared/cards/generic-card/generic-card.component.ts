@@ -9,7 +9,7 @@ export class GenericCardComponent {
   @Input() cardData: any;
   @Input() cardType: 'activity' | 'temario' | 'alumno' = 'activity';
   @Output() openModal = new EventEmitter<any>();
-  @Input() userType: string = 'alumno';
+  @Input() userType: string = localStorage.getItem('role') || '';
   
   onCardClick() {
     if (this.cardType === 'activity' || this.cardType === 'temario') {

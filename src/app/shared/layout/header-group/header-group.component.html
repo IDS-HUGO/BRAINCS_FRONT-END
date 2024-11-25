@@ -10,7 +10,7 @@
 
   <button (click)="selectView('activity')" class="text-[#004C4C] hover:underline">Actividades</button>
   <button (click)="selectView('temario')" class="text-[#004C4C] hover:underline">Temario</button>
-  <button *ngIf="userType !== 'alumno'" (click)="selectView('alumnos')" class="text-[#004C4C] hover:underline">Alumnos</button>
+  <button *ngIf="userType == 'docente'" (click)="selectView('alumnos')" class="text-[#004C4C] hover:underline">Alumnos</button>
   <button *ngIf="userType == 'alumno'" (click)="selectView('Juegos')" class="text-[#004C4C] hover:underline">Juegos</button>
   
   <img *ngIf="userType !== 'alumno'" src="./ia_logo_chip.png" alt="Logo IA" class="h-8 w-auto"/>

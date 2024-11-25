@@ -3,5 +3,5 @@ export interface Actividad {
     id_grupo: number;
     tema: string;
     subtema: string;
-    contenido: File | Blob | string;
+    contenido: string;
 }

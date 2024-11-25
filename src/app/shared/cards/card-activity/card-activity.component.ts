@@ -1,7 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';  // Importa DomSanitizer
 import { TareaService } from '../../../alumno/services/tarea.service';
-
+import { environment } from '../../../../enviroment/enviroment';
+import { ActividadService } from '../../../alumno/services/actividad.service';
 @Component({
   selector: 'app-card-activity',
   templateUrl: './card-activity.component.html',
@@ -19,7 +20,8 @@ export class CardActivityComponent {
   isSupportContentOpen = false;  // Control para mostrar contenido de apoyo
 
   constructor(private sanitizer: DomSanitizer,
-    private tareaService: TareaService
+    private tareaService: TareaService,
+    private actividadService: ActividadService
   ) {}
 
   // Cierra el modal
@@ -67,26 +69,49 @@ export class CardActivityComponent {
   }
   
 
-  // Mostrar contenido de apoyo si está disponible
+  isImage(file: string | null): boolean {
+    return file ? file.match(/\.(jpeg|jpg|png|gif)$/) !== null : false;
+  }
+
+  // Verifica si el archivo es un PDF
+  isPdf(file: string | null): boolean {
+    return file ? file.match(/\.pdf$/) !== null : false;
+  }
+
   onContentSupportClick(content: string | null) {
     if (content) {
-      this.activitySupportFile = content;
-      this.activitySupportFileSafe = this.sanitizer.bypassSecurityTrustResourceUrl(content); // Marca la URL como segura
+      // Si el contenido incluye una ruta local indeseada, corrígela
+      if (content.includes('/home/ubuntu/BRAINIACS_API/')) {
+        content = content.replace('/home/ubuntu/BRAINIACS_API/', '');
+      }
+      const fullUrl = `${environment.apiUrl}${content}`;
+      this.activitySupportFile = fullUrl;
+      this.activitySupportFileSafe = this.sanitizer.bypassSecurityTrustResourceUrl(fullUrl); // Marca la URL como segura
       this.isSupportContentOpen = true;
     } else {
       console.error('No hay contenido de apoyo disponible.');
     }
   }
+  
 
   // Cerrar contenido de apoyo
   onCloseSupportContent() {
     this.isSupportContentOpen = false;
   }
 
-  // Verifica si el archivo es una imagen
-  isImage(file: string | null): boolean {
-    return file ? file.match(/\.(jpeg|jpg|png|gif)$/) !== null : false;
+  // Llamada para cargar las actividades
+  loadActivities() {
+    this.actividadService.getActivitiesByGroupId().subscribe({
+      next: (activities) => {
+        console.log('Actividades cargadas:', activities);
+        // Asignar actividades a la vista
+      },
+      error: (error) => {
+        console.error('Error al cargar actividades', error);
+      }
+    });
   }
+
 
     onContentClick() {
     console.log("Contenido clicked - acción específica para docentes");
