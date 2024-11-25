@@ -1,30 +1,35 @@
 <div class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
   <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 relative">
-    <button (click)="onCloseModal()" class="absolute top-4 right-4 text-gray-500 hover:text-red-700 transition duration-300">
+
+    <button 
+      (click)="onCloseModal()" 
+      class="absolute top-4 right-4 text-gray-500 hover:text-red-700 transition duration-300">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
 
-    <div class="flex justify-start items-start mt-8">
-      <img src="/hacer-alt.png" alt="Tareas" class="w-10 h-10">
+    <div class="flex items-center mt-4">
+      <img src="/hacer-alt.png" alt="Tareas" class="w-12 h-12">
       <h2 class="text-2xl font-semibold text-teal-800 ml-4">{{ activityDetails?.tema || 'Actividad' }}</h2>
     </div>
 
-    <p class="text-gray-500 text-sm mt-4">
-      Fecha Entrega: {{ activityDetails?.fecha_entrega | date: 'dd/MM/yyyy' }}
-    </p>
-
-    <div class="mt-4">
-      <p class="text-gray-700 text-lg">{{ activityDetails?.subtema || 'Detalles de la actividad' }}</p>
+    <div class="mt-6">
+      <p class="text-gray-700 text-base">{{ activityDetails?.subtema || 'Detalles de la actividad' }}</p>
     </div>
 
-    <div class="mt-6 flex justify-center space-x-2">
+    <div class="mt-8 grid grid-cols-2 gap-4">
+
       <button 
         *ngIf="activityDetails?.contenido"
         (click)="openContent(activityDetails.contenido)" 
-        class="px-4 py-2 bg-[#004C4C] text-white rounded-lg hover:bg-teal-700 transition duration-300">
+        class="w-full px-4 py-2 bg-teal-700 text-white rounded-lg hover:bg-teal-800 transition duration-300">
         Contenido
+      </button>
+
+      <button 
+        class="w-full px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition duration-300">
+        Entregas
       </button>
     </div>
   </div>
