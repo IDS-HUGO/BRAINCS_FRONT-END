@@ -30,7 +30,7 @@ export class AddContenidoIAComponent {
   }
 
   closeModal() {
-    this.isModalOpen = false;
+    this.modalService.openModal('tarea')
   }
 
   async generateContent() {
