@@ -24,6 +24,10 @@ export class LoginService {
         if(response.rol === 'docente'){
           localStorage.setItem('id_docente', response.id_docente.toString());
         }
+        if(response.rol == 'director'){
+          localStorage.setItem('role',response.rol.toString());
+          localStorage.setItem('usuario',response.usuario.toString())
+        }
         return response;
       }),
       catchError(error => {
