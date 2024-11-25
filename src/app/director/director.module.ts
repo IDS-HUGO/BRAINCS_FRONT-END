@@ -21,5 +21,5 @@ import { FormsModule } from '@angular/forms';
   exports:[
     HomeDirectorComponent,
     ]
-})
+  })
 export class DirectorModule { }
