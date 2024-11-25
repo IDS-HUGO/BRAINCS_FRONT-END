@@ -25,16 +25,10 @@ export class ModalService {
     this.groupIdSubject.next(groupId);
     this.modalOpenSubject.next(true);
   }
-<<<<<<< HEAD
-
-  openDeleteModal() {
-    this.modalTypeSubject.next('delete');
-=======
   
   openUpdateModal(groupId: number) {
     this.modalTypeSubject.next('edit');
     this.groupIdSubject.next(groupId);
->>>>>>> 2bb548b0e40f1e554d1b36a32a1c0861af51de94
     this.modalOpenSubject.next(true);
   }  
 
