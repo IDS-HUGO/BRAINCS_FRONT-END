@@ -18,4 +18,9 @@ export class ActivitiesService {
     formData.append('contenido', contenido);
     return this.http.post(url, formData);
   }
+
+  getActivitiesByGroup(groupId: number): Observable<any> {
+    const url = `${this.apiUrl}actividades/${groupId}`;
+    return this.http.get(url);
+  }
 }

@@ -26,13 +26,12 @@ export class CardGroupComponent {
   handleOption(option: string) {
     switch(option) {
       case 'inspect':
-        this.router.navigate(['/docente/view-group']);
+        this.router.navigate(['/docente/view-group',this.groupId]);
         break;
       case 'edit':
         this.modalService.openUpdateModal(this.groupId);
         break;
       case 'delete':
-        console.log(this.groupId);
         this.modalService.openDeleteModal(this.groupId);
         break;
     }
