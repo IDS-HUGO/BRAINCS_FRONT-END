@@ -24,11 +24,6 @@ export class AddTareaComponent {
     this.modalService.closeModal();
   }
 
-  openContentModal(activity: any) {
-    this.selectedActivity = activity;
-    this.isModalOpen = true;
-  }
-
   onAddContent() {
     this.modalService.openModal('contenido');
   }

@@ -14,10 +14,6 @@ export class AddContenidoComponent {
 
   constructor(private modalService: ModalService) {}
 
-  closeModal() {
-    this.modalService.openModal('tarea');
-  }
-
   onUploadTypeChange(event: Event) {
     const target = event.target as HTMLSelectElement;
     this.selectedUploadType = target.value;
@@ -27,12 +23,7 @@ export class AddContenidoComponent {
     this.modalService.openModal('contenidoIA');
   }
 
-  openContentModal(activity: any) {
-    this.selectedActivity = activity;
-    this.isModalOpen = true;
-  }
-
-  onAddContent() {
-    this.modalService.openModal('contenido');
+  closeModal() {
+    this.modalService.openModal('tarea');
   }
 }
