@@ -11,17 +11,29 @@ export class ModalService {
   private modalTypeSubject = new BehaviorSubject<string>('');
   modalType$ = this.modalTypeSubject.asObservable();
 
-  openModal(type: string) {
+  private groupIdSubject = new BehaviorSubject<number | null>(null);
+  groupId$ = this.groupIdSubject.asObservable();
+
+  openModal(type: string, data: any = null) {
     this.modalTypeSubject.next(type);
+    this.groupIdSubject.next(data);
+    this.modalOpenSubject.next(true);
+  }  
+
+  openDeleteModal(groupId: number) {
+    this.modalTypeSubject.next('delete');
+    this.groupIdSubject.next(groupId);
     this.modalOpenSubject.next(true);
   }
-
-  openDeleteModal() {
-    this.modalTypeSubject.next('delete');
+  
+  openUpdateModal(groupId: number) {
+    this.modalTypeSubject.next('edit');
+    this.groupIdSubject.next(groupId);
     this.modalOpenSubject.next(true);
   }  
 
   closeModal() {
     this.modalOpenSubject.next(false);
+    this.groupIdSubject.next(null);
   }
 }
