@@ -17,13 +17,19 @@ export class LoginService {
   login(usuario: string, contrasena: string): Observable<LoginResponse> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { usuario, contrasena };
-
+  
     return this.http.post<LoginResponse>(this.apiUrl, body, { headers }).pipe(
       map(response => {
         localStorage.setItem('role', response.rol);
-        if(response.rol === 'docente'){
+  
+        if (response.rol === 'docente') {
           localStorage.setItem('id_docente', response.id_docente.toString());
+        } else if (response.rol === 'alumno') {
+          localStorage.setItem('usuario', response.usuario);
+          localStorage.setItem('grado', response.grado.toString());
+          localStorage.setItem('grupo', response.grupo);
         }
+  
         return response;
       }),
       catchError(error => {
@@ -32,4 +38,5 @@ export class LoginService {
       })
     );
   }
+  
 }

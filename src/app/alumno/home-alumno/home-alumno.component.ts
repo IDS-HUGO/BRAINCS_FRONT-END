@@ -11,6 +11,8 @@ import { Grupo } from '../models/grupo';
 export class HomeAlumnoComponent {
   modalOpen: boolean = false;
   groups: Grupo[] = [];
+  grado: number = Number(localStorage.getItem('grado'));
+  grupo: string = String(localStorage.getItem('grupo'));
 
   constructor(private grupoService: GruposService) {}
 
@@ -19,7 +21,7 @@ export class HomeAlumnoComponent {
   }
 
   loadGroups() {
-    this.grupoService.getGroupsByGradoGrupo().subscribe({
+    this.grupoService.getGroupsByGradoGrupo(this.grado, this.grupo).subscribe({
       next: (response) => {
         this.groups = response;
         console.log('Grupos cargados:', this.groups);

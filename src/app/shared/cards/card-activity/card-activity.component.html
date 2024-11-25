@@ -49,6 +49,7 @@
       </div>
     </div>
     
+    
 
     <!-- Acciones para docentes -->
     <div *ngIf="userType === 'docente'" class="mt-6 flex justify-center space-x-2">
@@ -75,7 +76,7 @@
       <!-- Mostrar archivo si es imagen -->
       <img *ngIf="isImage(activitySupportFile)" [src]="activitySupportFile" alt="Contenido de Apoyo" class="w-full h-auto mt-4" />
       <!-- Mostrar archivo si es un documento o video -->
-      <iframe *ngIf="!isImage(activitySupportFile)" [src]="activitySupportFile" class="w-full h-96" frameborder="0"></iframe>
+      <iframe *ngIf="!isImage(activitySupportFile)" [src]="" class="w-full h-96" frameborder="0"></iframe>
     </div>
   </div>
 </div>

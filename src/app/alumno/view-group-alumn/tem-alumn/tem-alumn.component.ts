@@ -5,17 +5,16 @@ import { Temario } from '../../models/temario';
 @Component({
   selector: 'app-tem-alumn',
   templateUrl: './tem-alumn.component.html',
-  styleUrls: ['./tem-alumn.component.css'],
+  styleUrl: './tem-alumn.component.css'
 })
+
 export class TemAlumnComponent implements OnInit {
   temarios: Temario[] = [];
 
   constructor(private temarioService: TemarioService) {}
-
   ngOnInit() {
     this.loadTemarios();
   }
-
   loadTemarios() {
     
     this.temarioService.getTemarioByGroupId().subscribe({

@@ -1,8 +1,7 @@
 export interface Tarea {
-    id_tarea?: number; // Ahora es opcional
     id_actividad: number;
     id_alumno: string;
-    tarea: string;
-    file?: File;
+    tarea_pdf: string; // Ruta o nombre del archivo subido
+    id_tarea: number;
   }
   
