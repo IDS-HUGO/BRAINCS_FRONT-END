@@ -12,18 +12,26 @@ export class AddGroupComponent {
   asignatura: string = '';
   grado: number | null = null;
   grupo: string = '';
-  idDocente: number = 1;
+  idDocente: number | null = null;
 
   constructor(
     private modalService: ModalService,
     private groupService: GroupServiceService
-  ) {}
+  ) {
+    const storedIdDocente = localStorage.getItem('id_docente');
+    this.idDocente = storedIdDocente ? parseInt(storedIdDocente, 10) : null;
+  }
 
   closeModal() {
     this.modalService.closeModal();
   }
 
   addGroup() {
+    if (this.idDocente === null) {
+      console.error('ID del docente no encontrado.');
+      return;
+    }
+
     const newGroup: GroupData = {
       id_grupo: 0,
       asignatura: this.asignatura,

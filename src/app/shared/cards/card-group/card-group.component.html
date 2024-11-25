@@ -24,6 +24,6 @@
       (optionSelected)="handleOption($event)">
     </app-menu-modals>  
     
-    <app-delete-modal *ngIf="modalOpen" (close)="closeDeleteModal()"></app-delete-modal>
+    <app-delete-modal *ngIf="showModal" (close)="closeDeleteModal()"></app-delete-modal>
   </div>
 </div>
