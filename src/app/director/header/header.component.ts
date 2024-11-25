@@ -1,8 +1,7 @@
-// header.component.ts
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-header-director',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
