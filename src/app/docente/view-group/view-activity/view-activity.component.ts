@@ -32,20 +32,19 @@ export class ViewActivityComponent implements OnInit {
       (data) => {
         this.activities = data.map((activity: any) => ({
           ...activity,
-          contenido: activity.contenido.startsWith('/home/ubuntu/BRAINIACS_API')
+          contenido: activity.contenido.includes('localhost')
             ? activity.contenido.replace(
-                '/home/ubuntu/BRAINIACS_API',
+                'http://localhost:4200/home/ubuntu/BRAINIACS_API',
                 'https://apibrainiacs.brainiacs.site'
               )
             : activity.contenido
         }));
-        console.log("Actividades cargadas con URL actualizada:", this.activities);
       },
       (error) => {
         console.error('Error loading activities:', error);
       }
     );
-  }  
+  }
 
   openActivityModal(activity: any) {
     this.selectedActivity = activity;
