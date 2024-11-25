@@ -4,4 +4,5 @@ export interface LoginResponse {
     grado: number;
     grupo: string;
     rol: string;
+    usuario :String;
 }

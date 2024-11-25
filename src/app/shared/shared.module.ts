@@ -43,7 +43,9 @@ import { LoaderComponent } from './loader/loader.component';
     FormAddModalComponent,
     CardDocenteComponent,
     DeleteModalComponent,
-    LoaderComponent
+    LoaderComponent,
+    FormUpdateModalComponent,
+    DeleteModalComponent
   ]
 })
 export class SharedModule { }

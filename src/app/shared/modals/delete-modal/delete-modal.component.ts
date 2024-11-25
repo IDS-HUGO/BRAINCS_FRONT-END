@@ -44,13 +44,6 @@ export class DeleteModalComponent implements OnInit, OnDestroy {
     this.modalService.closeModal();
   }
 
-  deleteGroup() {
-    if (this.groupId !== null) {
-      console.log(`Eliminar grupo con ID: ${this.groupId}`);
-      this.closeModal();
-    }
-  }
-
   confirmDelete() {
     const storedIdDocente = localStorage.getItem('id_docente');
     const idDocente = storedIdDocente ? parseInt(storedIdDocente, 10) : null;

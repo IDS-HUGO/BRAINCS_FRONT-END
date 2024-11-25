@@ -29,7 +29,7 @@ export class CardGroupComponent {
         this.router.navigate(['/docente/view-group']);
         break;
       case 'edit':
-        console.log('Editar opción seleccionada');
+        this.modalService.openUpdateModal(this.groupId);
         break;
       case 'delete':
         console.log(this.groupId);

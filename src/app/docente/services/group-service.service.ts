@@ -10,25 +10,19 @@ import { tap } from 'rxjs/operators';
 })
 export class GroupServiceService {
 
-  private apiUrlGetGroupById: string = `${environment.apiUrl}grupos/grupos/docente/`;
-  private apiUrlAddGroup: string = `${environment.apiUrl}grupos/grupos`;
+  constructor(private http: HttpClient) {}
 
-
-  deleteGroup(groupId: number, idDocente: number): Observable<any> {
-    const url = `${environment.apiUrl}grupos/grupos/${groupId}`;
-    const body = {
-      asignatura: "",
-      grado: 0,
-      grupo: "",
-      id_docente: idDocente
-    };
-    return this.http.delete(url, { body });
-  }  
-  
   private groupAddedSubject = new Subject<void>();
   groupAdded$ = this.groupAddedSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+  private apiUrlGetGroupById: string = `${environment.apiUrl}grupos/grupos/docente/`;
+  private apiUrlAddGroup: string = `${environment.apiUrl}grupos/grupos`;
+
+  addGroup(groupData: GroupData): Observable<GroupData> {
+    return this.http.post<GroupData>(this.apiUrlAddGroup, groupData).pipe(
+      tap(() => this.groupAddedSubject.next())
+    );
+  }
 
   getGroups(idDocente: number): Observable<GroupData[]> {
     const body: GroupData = {
@@ -42,9 +36,25 @@ export class GroupServiceService {
     return this.http.post<GroupData[]>(this.apiUrlGetGroupById, body);
   }
 
-  addGroup(groupData: GroupData): Observable<GroupData> {
-    return this.http.post<GroupData>(this.apiUrlAddGroup, groupData).pipe(
-      tap(() => this.groupAddedSubject.next())
-    );
+  getGroupById(groupId: number): Observable<GroupData> {
+    const url = `${environment.apiUrl}grupos/grupos/${groupId}`;
+    return this.http.get<GroupData>(url);
   }
+
+  updateGroup(groupId: number, groupData: Partial<GroupData>): Observable<GroupData> {
+    const url = `${environment.apiUrl}grupos/grupos/${groupId}`;
+    return this.http.put<GroupData>(url, groupData);
+  }
+
+  deleteGroup(groupId: number, idDocente: number): Observable<any> {
+    const url = `${environment.apiUrl}grupos/grupos/${groupId}`;
+    const body = {
+      asignatura: "",
+      grado: 0,
+      grupo: "",
+      id_docente: idDocente
+    };
+    return this.http.delete(url, { body });
+  }  
+
 }

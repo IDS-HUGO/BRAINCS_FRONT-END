@@ -7,6 +7,7 @@ import { ViewActivityComponent } from './view-group/view-activity/view-activity.
 import { ViewAlumnosComponent } from './view-group/view-alumnos/view-alumnos.component';
 import { ViewTemarioComponent } from './view-group/view-temario/view-temario.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormsDocenteModule } from "./forms/formsDocente.module";
 
 @NgModule({
   declarations: [
@@ -19,8 +20,9 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
-    RoutingDocenteModule
-  ],
+    RoutingDocenteModule,
+    FormsDocenteModule
+],
   exports: [ HomeDocenteComponent ]
 })
 export class DocenteModule { }
