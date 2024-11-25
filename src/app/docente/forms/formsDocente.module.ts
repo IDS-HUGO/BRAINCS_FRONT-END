@@ -15,7 +15,7 @@ import { UpdateGroupComponent } from './update-group/update-group.component';
     AddTareaComponent,
     AddContenidoComponent,
     AddContenidoIAComponent,
-    UpdateGroupComponent,
+    UpdateGroupComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +25,7 @@ import { UpdateGroupComponent } from './update-group/update-group.component';
     AddGroupComponent,
     AddTareaComponent,
     AddContenidoComponent,
+    AddContenidoIAComponent,
     UpdateGroupComponent
   ]
 })

@@ -1,0 +1,36 @@
+<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="w-[500px] bg-white p-8 rounded-lg shadow-md">
+        
+      <div class="flex justify-center mb-6">
+        <img src="/logo_ia.png" alt="Imagen ilustrativa" class="w-auto h-[80px] object-contain">
+      </div>
+  
+      <h2 class="text-center text-xl font-semibold text-gray-800 mb-4">Generar Contenido</h2>
+  
+      <div class="mb-4">
+        <label for="prompt" class="block text-gray-700 font-medium mb-2">Ingrese las instrucciones</label>
+        <input type="text" id="prompt" placeholder="Escribe aquí el prompt" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" />
+      </div>
+  
+      <div class="flex justify-center mb-4">
+        <button type="button" class="bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]">
+          Generar contenido
+        </button>
+      </div>
+  
+      <div class="mb-4">
+        <label for="generated-content" class="block text-gray-700 font-medium mb-2">Contenido Generado</label>
+        <textarea id="generated-content" readonly class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C] resize-none"></textarea>
+      </div>
+  
+      <div class="flex justify-between mt-6">
+        <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2">
+          Aceptar
+        </button>
+        <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]" 
+        (click)="closeModal()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>  
