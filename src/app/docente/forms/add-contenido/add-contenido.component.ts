@@ -27,8 +27,6 @@ export class AddContenidoComponent implements OnInit {
     this.tema = data.tema;
     this.subtema = data.subtema;
     this.groupId = data.groupId;
-
-    console.log('Tema y subtema recibidos y también el grupo:', this.tema, this.subtema, this.groupId);
   }
 
   onUploadTypeChange(event: Event) {

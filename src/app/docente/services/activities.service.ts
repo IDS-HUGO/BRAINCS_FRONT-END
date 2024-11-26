@@ -12,12 +12,12 @@ export class ActivitiesService {
 
   constructor(private http: HttpClient) { }
 
-  createActivity(idGrupo: number, tema: string, subtema: string, contenido: File): Observable<any> {
+  createActivity(idGrupo: number, tema: string, subtema: string, contenido: Blob | File): Observable<any> {
     const url = `${this.apiUrl}?id_grupo=${idGrupo}&tema=${tema}&subtema=${subtema}`;
     const formData = new FormData();
-    formData.append('contenido', contenido);
+    formData.append('contenido', contenido, 'generated-content.pdf');
     return this.http.post(url, formData);
-  }
+  }  
 
   getActivitiesByGroup(groupId: number): Observable<any> {
     const url = `${this.apiUrl}actividades/${groupId}`;
