@@ -4,8 +4,17 @@
     <button class="text-[#004C4C] text-lg font-semibold hover:underline">+ Agregar</button>
   </div>
 
-<div class="w-10/12">
-    <app-generic-card [cardData]="alumnos" cardType="alumno" class="w-full"></app-generic-card>
-  </div>  
+  <div class="w-10/12">
 
+    <app-generic-card 
+      *ngFor="let alumno of alumnos" 
+      [cardData]="alumno"
+      cardType="alumno" 
+      class="w-full">
+      <p>{{ alumno.nombre }}</p>
+    </app-generic-card>
+
+
+
+  </div>  
 </div>
