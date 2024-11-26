@@ -1,9 +1,9 @@
-// docente-list.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { DocenteService } from '../Service/docente.service';
 import { UsuarioService } from '../Service/usuario.service';
+import { GrupoService } from '../Service/grupo.service';
 import Swal from 'sweetalert2';
+import { Grupo } from '../Models/grupo';
 
 @Component({
   selector: 'app-docente-list',
@@ -11,13 +11,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./docente-list.component.css']
 })
 export class DocenteListComponent implements OnInit {
-  docentes: any[] = [];
-  docenteImages: { [usuario: string]: string } = {}; // Almacena la imagen por docente
-  apiBaseUrl = 'https://apibrainiacs.brainiacs.site';  // URL base para imágenes
+  docentes: any[] = []; // Lista de docentes
+  docenteImages: { [usuario: string]: string } = {}; // Imágenes de los docentes
+  docenteGrupos: { [idDocente: number]: Grupo[] } = {}; // Grupos de los docentes
+  selectedDocente: number | null = null; // Docente actualmente seleccionado
 
   constructor(
     private docenteService: DocenteService,
-    private usuarioService: UsuarioService // Servicio para obtener las imágenes
+    private usuarioService: UsuarioService,
+    private grupoService: GrupoService
   ) {}
 
   ngOnInit() {
@@ -35,41 +37,56 @@ export class DocenteListComponent implements OnInit {
       });
     });
   }
+
+  // Obtener la imagen de un docente
   getUsuarioImage(usuario: string) {
     if (!usuario) {
       console.error('Usuario no disponible');
       return;
     }
-  
+
     this.usuarioService.getImagenUsuario(usuario).subscribe(
       (response: any[]) => {
         if (response.length > 0 && response[0].file_path) {
-
-          let relativePath = response[0].file_path.split('/static/')[1]; 
-
+          let relativePath = response[0].file_path.split('/static/')[1];
           if (relativePath) {
-
-            let imagenUrl = `${this.apiBaseUrl}/static/${relativePath}`;
-            this.docenteImages[usuario] = imagenUrl;
+            this.docenteImages[usuario] = `https://apibrainiacs.brainiacs.site/static/${relativePath}`;
           } else {
             console.error('La ruta de la imagen no es válida');
-            this.docenteImages[usuario] = '';  
+            this.docenteImages[usuario] = '';
           }
         } else {
           console.log('No hay imagen para el usuario');
-          this.docenteImages[usuario] = '';  
+          this.docenteImages[usuario] = '';
         }
       },
       (error) => {
         console.error('Error al obtener la imagen:', error);
-        this.docenteImages[usuario] = '';  
+        this.docenteImages[usuario] = '';
       }
     );
   }
 
+  toggleGrupos(idDocente: number) {
+    if (this.selectedDocente === idDocente) {
+      this.selectedDocente = null; // Cierra el panel si ya está seleccionado
+    } else {
+      this.selectedDocente = idDocente;
+      if (!this.docenteGrupos[idDocente]) {
+        // Obtener los grupos del docente
+        this.grupoService.getGruposByDocente(idDocente).subscribe((grupos) => {
+          this.docenteGrupos[idDocente] = grupos;
+          // Imprimir los grupos en consola
+          console.log('Grupos del docente con ID:', idDocente, grupos);
+        });
+      }
+    }
+  }
+  
 
+  // Eliminar un docente
   deleteDocente(id: number, event: Event) {
-    event.stopPropagation();
+    event.stopPropagation(); // Evita que se activen otros eventos
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'Esta acción eliminará al docente permanentemente.',
@@ -87,9 +104,5 @@ export class DocenteListComponent implements OnInit {
         });
       }
     });
-  }
-
-  viewGroups(idDocente: number) {
-    console.log(`Ver grupos para el docente con ID: ${idDocente}`);
   }
 }

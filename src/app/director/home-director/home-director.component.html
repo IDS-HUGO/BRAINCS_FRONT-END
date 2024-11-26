@@ -1,17 +1,30 @@
 <app-header-director (openAddDocenteModalEvent)="openAddDocenteModal()"
   (openProfileModalEvent)="openViewUsuarioModal()"></app-header-director>
 
-<div class="p-8">
-  <h1 class="text-3xl font-bold text-teal-600 text-center">BIENVENIDO DIRECTOR</h1>
-  <br>
-  <h2 class="text-3xl font-bold text-teal-600">Docentes:</h2>
-  <br><br><br>
-  <div class="flex justify-center items-center w-full">
-    <div class="w-[1400px] h-[500px] bg-[#b2d9d8]/40 rounded-[30px] flex justify-center items-center">
-      <app-docente-list></app-docente-list>
+  <div class="p-8">
+    <h1 class="text-3xl font-bold text-teal-600 text-center">BIENVENIDO DIRECTOR</h1>
+    <br>
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-3xl font-bold text-teal-600">Docentes:</h2>
+      <button
+        (click)="openSchoolInfoModal()"
+        class="bg-teal-600 text-white py-2 px-4 rounded hover:bg-teal-700 transition"
+      >
+        Subir Información de la Escuela
+      </button>
+    </div>
+    <div class="flex justify-center items-center w-full">
+      <div class="w-[1400px] h-[500px] bg-[#b2d9d8]/40 rounded-[30px] flex justify-center items-center">
+        <app-docente-list></app-docente-list>
+      </div>
     </div>
   </div>
-</div>
+  
+  <app-school-info-modal
+    [isVisible]="showSchoolInfoModal"
+    (closeModalEvent)="closeSchoolInfoModal()"
+  ></app-school-info-modal>
+  
 
 <app-add-docente-modal *ngIf="showAddDocenteModal" (closeModalEvent)="closeAddDocenteModal()"></app-add-docente-modal>
 <app-view-usuario-modal *ngIf="showViewUsuarioModal && selectedUserId !== null" [userId]="selectedUserId"

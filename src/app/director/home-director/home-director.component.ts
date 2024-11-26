@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-director.component.css']
 })
 export class HomeDirectorComponent {
-
+  showSchoolInfoModal = false;
   showAddDocenteModal: boolean = false;
   showViewUsuarioModal: boolean = false;
   selectedUserId: number | null = null;
@@ -28,6 +28,14 @@ export class HomeDirectorComponent {
   closeViewUsuarioModal() {
     this.showViewUsuarioModal = false;
     this.selectedUserId = null;
+  }
+
+  openSchoolInfoModal(): void {
+    this.showSchoolInfoModal = true;
+  }
+
+  closeSchoolInfoModal(): void {
+    this.showSchoolInfoModal = false;
   }
 
 }

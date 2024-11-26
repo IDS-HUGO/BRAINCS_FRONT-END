@@ -7,6 +7,7 @@ import { ViewUsuarioModalComponent } from './view-usuario-modal/view-usuario-mod
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DocenteListComponent } from './docente-list/docente-list.component';
 import { SharedModule } from "../shared/shared.module";
+import { SchoolInfoModalComponent } from './school-info-modal/school-info-modal.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModule } from "../shared/shared.module";
     HeaderComponent,
     AddDocenteModalComponent,
     ViewUsuarioModalComponent,
-    DocenteListComponent
+    DocenteListComponent,
+    SchoolInfoModalComponent,
   ],
   imports: [
     CommonModule,
