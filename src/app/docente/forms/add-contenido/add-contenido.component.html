@@ -23,20 +23,20 @@
     </div>
 
     <div class="mb-4" *ngIf="selectedUploadType === 'file'">
-      <input type="file" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" />
-    </div>
+      <input #fileInput type="file" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" />
+    </div>    
 
     <div class="mb-4" *ngIf="selectedUploadType === 'link'">
       <input type="text" placeholder="Ingrese el enlace" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" />
     </div>
-
+    
     <div class="flex justify-end mt-6">
       <button 
+        (click)="onAddContenido()"
         type="button" 
         class="bg-[#004C4C] text-white font-semibold py-2 w-40 rounded-lg hover:bg-[#003838] transition duration-300">
         Aceptar
       </button>
-    </div>
-    
+    </div>    
   </div>
 </div>
