@@ -1,18 +1,24 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-generic-card',
   templateUrl: './generic-card.component.html',
   styleUrls: ['./generic-card.component.css']
 })
-export class GenericCardComponent {
+export class GenericCardComponent implements OnInit {
   @Input() cardData: any;
   @Input() cardType: 'activity' | 'temario' | 'alumno' = 'activity';
   @Output() openModal = new EventEmitter<any>();
-  @Input() userType: string = 'docente';
-  
-  onCardClick() {
-    console.log('userType:', this.userType);
+  userType: string = '';
+
+  ngOnInit(): void {
+
+    const storedRole = localStorage.getItem('role');
+    this.userType = storedRole ? storedRole : 'invitado';
+    console.log('Rol del usuario:', this.userType);
+  }
+
+  onCardClick(): void {
     if (this.cardType === 'activity' || this.cardType === 'temario') {
       this.openModal.emit(this.cardData);
     }
