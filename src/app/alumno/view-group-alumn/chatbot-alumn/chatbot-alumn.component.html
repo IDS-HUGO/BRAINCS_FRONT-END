@@ -1,1 +1,59 @@
-<p>chatbot-alumn works!</p>
+<div class="fixed bottom-4 right-4 flex flex-col items-end space-y-4">
+    <!-- Ventana emergente del chatbot -->
+    <div
+      *ngIf="isChatOpen"
+      class="bg-white w-72 rounded-lg shadow-lg flex flex-col border border-gray-200"
+    >
+      <!-- Header -->
+      <div class="bg-[#004C4C] text-white p-3 flex justify-between items-center rounded-t-lg">
+        <p class="font-semibold">Chatbot</p>
+        <button class="text-white font-bold text-lg" (click)="toggleChat()">✖</button>
+      </div>
+  
+      <!-- Body -->
+      <div class="p-4 max-h-64 overflow-y-auto space-y-2">
+        <div *ngFor="let message of chatHistory" class="bg-gray-100 p-2 rounded-lg text-sm">
+          {{ message }}
+        </div>
+        <p *ngIf="!chatHistory.length" class="text-gray-500 text-sm">
+          ¡Hola! ¿En qué puedo ayudarte?
+        </p>
+      </div>
+  
+      <!-- Footer -->
+      <div class="flex items-center justify-between border-t border-gray-200 p-3">
+        <!-- Botón de archivo en el extremo izquierdo -->
+        <button
+          class="bg-gray-200 p-2 rounded-full hover:bg-gray-300"
+          (click)="triggerFileInput()"
+        >
+          <img src="./archivo.png" alt="Subir archivo" class="w-5 h-5" />
+        </button>
+        
+        <!-- Input de texto en el centro -->
+        <input
+          type="text"
+          [(ngModel)]="userMessage"
+          class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C] text-sm"
+          placeholder="Escribe tu mensaje..."
+        />
+        
+        <!-- Ícono de enviar en el extremo derecho -->
+        <button
+          (click)="sendMessage()"
+          class="p-2 rounded-full bg-[#004C4C] hover:bg-[#003636] flex items-center justify-center"
+        >
+          <img src="./enviar.png" alt="Enviar" class="w-4 h-4 " />
+        </button>
+      </div>
+    </div>
+  
+    <!-- Ícono flotante del chatbot -->
+    <div
+      class="w-16 h-16 bg-[#004C4C] flex items-center justify-center rounded-full shadow-lg cursor-pointer"
+      (click)="toggleChat()"
+    >
+      <img src="./chatbot.png" alt="Chatbot" class="w-10 h-10" />
+    </div>
+  </div>
+  

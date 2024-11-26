@@ -13,6 +13,8 @@ import { FormUpdateModalComponent } from './modals/form-update-modal/form-update
 import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
 import { FormsDocenteModule } from "../docente/forms/formsDocente.module";
 import { CardDocenteComponent } from './cards/card-docente/card-docente.component';
+import { LoaderComponent } from './loader/loader.component';
+import { CardTemarioComponent } from './cards/card-temario/card-temario.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { CardDocenteComponent } from './cards/card-docente/card-docente.componen
     FormAddModalComponent,
     FormUpdateModalComponent,
     DeleteModalComponent,
-    CardDocenteComponent
+    CardDocenteComponent,
+    LoaderComponent,
+    CardTemarioComponent
   ],
   imports: [
     CommonModule,
@@ -40,8 +44,11 @@ import { CardDocenteComponent } from './cards/card-docente/card-docente.componen
     CardActivityComponent,
     FormAddModalComponent,
     CardDocenteComponent,
+    DeleteModalComponent,
+    LoaderComponent,
     FormUpdateModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    CardTemarioComponent
   ]
 })
 export class SharedModule { }

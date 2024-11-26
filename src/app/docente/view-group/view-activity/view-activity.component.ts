@@ -1,24 +1,51 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { ModalService } from '../../../shared/modals/services/modal.service';
+import { ActivatedRoute } from '@angular/router';
+import { ActivitiesService } from '../../services/activities.service';
 
 @Component({
   selector: 'app-view-activity',
   templateUrl: './view-activity.component.html',
   styleUrls: ['./view-activity.component.css']
 })
-export class ViewActivityComponent {
+export class ViewActivityComponent implements OnInit {
+  activities: any[] = [];
+  selectedActivity: any = null;
+  isModalOpen = false;
+  groupId!: number;
 
-  constructor(private modalService: ModalService) {}
+  constructor(
+    private modalService: ModalService,
+    private route: ActivatedRoute,
+    private activitiesService: ActivitiesService
+  ) {}
 
   @Output() addTarea = new EventEmitter<void>();
 
-  activities = [
-    { title: 'Primer parcial', description: 'Hola mundo', dueDate: '2024-11-16' },
-    { title: 'Segundo parcial', description: 'Otra actividad', dueDate: '2024-11-17' },
-  ];
+  ngOnInit(): void {
+    this.groupId = Number(this.route.snapshot.paramMap.get('id'));
+    this.loadActivities();
+  }
 
-  selectedActivity: any = null;
-  isModalOpen = false;
+  loadActivities() {
+    this.activitiesService.getActivitiesByGroup(this.groupId).subscribe(
+      (data) => {
+        this.activities = data.map((activity: any) => ({
+          ...activity,
+          contenido: activity.contenido.startsWith('/home/ubuntu/BRAINIACS_API')
+            ? activity.contenido.replace(
+                '/home/ubuntu/BRAINIACS_API',
+                'https://apibrainiacs.brainiacs.site'
+              )
+            : activity.contenido
+        }));
+        console.log("Actividades cargadas con URL actualizada:", this.activities);
+      },
+      (error) => {
+        console.error('Error loading activities:', error);
+      }
+    );
+  }  
 
   openActivityModal(activity: any) {
     this.selectedActivity = activity;

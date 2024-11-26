@@ -19,6 +19,7 @@ export class GroupServiceService {
   private apiUrlAddGroup: string = `${environment.apiUrl}grupos/grupos`;
 
   addGroup(groupData: GroupData): Observable<GroupData> {
+    localStorage.clear()
     return this.http.post<GroupData>(this.apiUrlAddGroup, groupData).pipe(
       tap(() => this.groupAddedSubject.next())
     );

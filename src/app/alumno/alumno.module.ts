@@ -9,6 +9,7 @@ import { ActAlumnComponent } from './view-group-alumn/act-alumn/act-alumn.compon
 import { TemAlumnComponent } from './view-group-alumn/tem-alumn/tem-alumn.component';
 import { StudentsAlumnComponent } from './view-group-alumn/students-alumn/students-alumn.component';
 import { ChatbotAlumnComponent } from './view-group-alumn/chatbot-alumn/chatbot-alumn.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ChatbotAlumnComponent } from './view-group-alumn/chatbot-alumn/chatbot-
     CommonModule,
     RouterModule,
     SharedModule,
-    RoutingAlumnoModule
+    RoutingAlumnoModule,
+    FormsModule
   ],
   exports : [
     HomeAlumnoComponent
