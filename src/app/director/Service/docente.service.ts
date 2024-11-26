@@ -7,13 +7,12 @@ import { Docente } from '../Models/docente.interface';
   providedIn: 'root'
 })
 export class DocenteService {
-  private apiUrl = 'https://apibrainiacs.brainiacs.site'; // Cambia esto a tu URL de backend
+  private apiUrl = 'https://apibrainiacs.brainiacs.site';
 
-  // Configuración de headers
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}` // Token almacenado en LocalStorage
+      Authorization: `Bearer ${localStorage.getItem('token')}` 
     })
   };
 
@@ -24,18 +23,18 @@ export class DocenteService {
   }
 
   getDocentes(): Observable<Docente[]> {
-    return this.http.get<Docente[]>(`${this.apiUrl}/docentes`, this.httpOptions);
+    return this.http.get<Docente[]>(`${this.apiUrl}/docentes/docentes/`, this.httpOptions);
   }
 
-  deleteDocente(id_docente: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/docentes/${id_docente}`, this.httpOptions);
+  deleteDocente(id_docente: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/docentes/docentes/${id_docente}`, this.httpOptions);
   }
 
-  getDocenteById(id_docente: string): Observable<Docente> {
-    return this.http.get<Docente>(`${this.apiUrl}/docentes/${id_docente}`, this.httpOptions);
+  getDocenteById(id_docente: number): Observable<Docente> {
+    return this.http.get<Docente>(`${this.apiUrl}/docentes/docentes/${id_docente}`, this.httpOptions);
   }
 
-  updateDocente(id_docente: string, docente: Docente): Observable<any> {
-    return this.http.put(`${this.apiUrl}/docentes/${id_docente}`, docente, this.httpOptions);
+  updateDocente(id_docente: number, docente: Docente): Observable<any> {
+    return this.http.put(`${this.apiUrl}/docentes/docentes/${id_docente}`, docente, this.httpOptions);
   }
 }

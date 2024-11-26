@@ -1,12 +1,21 @@
-<div class="flex space-x-2">
-  <button type="submit" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">Agregar</button>
-  <button type="button" (click)="closeAddDocenteModal()" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">Cancelar</button>
+<div *ngFor="let docente of docentes" class="bg-teal-50 rounded-lg p-4 mb-4 cursor-pointer hover:shadow-lg transition-shadow w-[1250px] h-[80px]">
+  <div class="flex items-center justify-between border-b border-black pb-2">
+    <div class="flex items-center">
+      <div class="flex items-center justify-center bg-teal-700 text-white rounded-full h-10 w-10">
+        <img *ngIf="docenteImages[docente.usuario]" 
+             [src]="docenteImages[docente.usuario]" 
+             alt="Imagen del docente" 
+             class="h-full w-full object-cover rounded-full" />
+        <ng-container *ngIf="!docenteImages[docente.usuario]">
+          <i class="fa fa-user"></i>
+        </ng-container>
+      </div>
+      <span class="ml-3 font-bold text-gray-700">{{ docente.nombre }} {{ docente.apellido_p }} {{ docente.apellido_m }}</span>
+    </div>
+
+    <button class="bg-red-500 text-white text-xs px-3 py-1 rounded hover:bg-red-600 transition-colors"
+      (click)="deleteDocente(docente.id_docente, $event)">
+      <i class="fa fa-trash"></i> 
+    </button>
+  </div>
 </div>
-<tr *ngFor="let docente of docentes" class="border-b">
-  <td class="py-2 px-4">{{ docente.nombre }}</td>
-  <td class="py-2 px-4">{{ docente.correo_electronico }}</td>
-  <td class="py-2 px-4">
-    <button class="bg-blue-500 text-white py-1 px-2 rounded mr-2" (click)="editDocente(docente.usuario)">Editar</button>
-    <button class="bg-red-500 text-white py-1 px-2 rounded" (click)="deleteDocente(docente.usuario)">Eliminar</button>
-  </td>
-</tr>

@@ -29,4 +29,5 @@ export class HomeDirectorComponent {
     this.showViewUsuarioModal = false;
     this.selectedUserId = null;
   }
+
 }

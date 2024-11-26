@@ -13,6 +13,7 @@ export class AddDocenteModalComponent {
   @Output() closeModalEvent = new EventEmitter<void>();
 
   docente: Docente = {
+    id_docente:0,
     nombre: '',
     apellido_p: '',
     apellido_m: '',
