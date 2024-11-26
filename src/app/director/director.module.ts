@@ -4,7 +4,7 @@ import { HomeDirectorComponent } from './home-director/home-director.component';
 import { HeaderComponent } from './header/header.component';
 import { AddDocenteModalComponent } from './add-docente-modal/add-docente-modal.component';
 import { ViewUsuarioModalComponent } from './view-usuario-modal/view-usuario-modal.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DocenteListComponent } from './docente-list/docente-list.component';
 import { SharedModule } from "../shared/shared.module";
 
@@ -20,7 +20,8 @@ import { SharedModule } from "../shared/shared.module";
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
 ],
   exports:[
     HomeDirectorComponent,
