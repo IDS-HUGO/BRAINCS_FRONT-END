@@ -9,9 +9,9 @@ import { TareaService } from '../../services/tarea.service';
   styleUrls: ['./act-alumn.component.css'],
 })
 export class ActAlumnComponent implements OnInit {
-  selectedActivity: Actividad | null = null; // Actividad seleccionada para el modal
+  selectedActivity: Actividad | null = null; 
   isModalOpen = false;
-  activities: Actividad[] = []; // Lista de actividades
+  activities: Actividad[] = []; 
 
   constructor(
     private actividadService: ActividadService,

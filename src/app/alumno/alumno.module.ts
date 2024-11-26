@@ -10,6 +10,7 @@ import { TemAlumnComponent } from './view-group-alumn/tem-alumn/tem-alumn.compon
 import { StudentsAlumnComponent } from './view-group-alumn/students-alumn/students-alumn.component';
 import { ChatbotAlumnComponent } from './view-group-alumn/chatbot-alumn/chatbot-alumn.component';
 import { FormsModule } from '@angular/forms';
+import { ViewUsuarioInfoComponent } from './view-usuario-info/view-usuario-info.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     ActAlumnComponent,
     TemAlumnComponent,
     StudentsAlumnComponent,
-    ChatbotAlumnComponent
+    ChatbotAlumnComponent,
+    ViewUsuarioInfoComponent,
   ],
   imports: [
     CommonModule,

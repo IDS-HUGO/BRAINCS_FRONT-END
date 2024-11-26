@@ -1,5 +1,4 @@
 export interface Alumno {
-  asignatura: string;
     matricula: string;
     nombre: string;
     apellido_p: string;

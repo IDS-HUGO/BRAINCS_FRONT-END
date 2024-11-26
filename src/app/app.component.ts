@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   role: string | null = null;
   title = 'BRAINCS';
   modalOpen: boolean = false;
+  modalProfileOpen: boolean = false;
 
   constructor(private router: Router) {}
 
@@ -23,5 +24,9 @@ export class AppComponent implements OnInit {
 
   openModal() {
     this.modalOpen = true;
+  }
+
+  openProfileModal() {
+    this.modalProfileOpen = true;
   }
 }

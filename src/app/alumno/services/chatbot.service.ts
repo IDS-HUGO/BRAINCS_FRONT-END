@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ChatbotService {
   private baseUrl = 'https://apibrainiacs.brainiacs.site/chatbot/'; // URL base de la API
+  preguntasRespuestas: { pregunta: string; respuesta: string }[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -24,4 +25,18 @@ export class ChatbotService {
   getChatbot(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}${id}`);
   }
+
+  getAllChatbots(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
+  }
+
+  loadPreguntasRespuestas(): void {
+    this.getAllChatbots().subscribe((data: any[]) => {
+      this.preguntasRespuestas = data.map(item => ({
+        pregunta: item.pregunta,
+        respuesta: item.respuesta,
+      }));
+    });
+  }
+  
 }

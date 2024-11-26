@@ -9,6 +9,8 @@ import { ModalService } from '../../modals/services/modal.service';
 export class HeaderComponent {
   @Input() role: string | null = null;
   @Output() addGroup = new EventEmitter<void>();
+  @Output() openProfileModalEvent = new EventEmitter<void>(); 
+
   isClicked = false;
 
   constructor(private modalService: ModalService) {}
@@ -16,5 +18,9 @@ export class HeaderComponent {
   onAddGroup() {
     this.addGroup.emit();
     this.modalService.openModal('group');
+  }
+
+  onProfileModal(){
+    this.openProfileModalEvent.emit();
   }
 }

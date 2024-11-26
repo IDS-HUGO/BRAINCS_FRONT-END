@@ -1,2 +1,7 @@
-<app-header *ngIf="showHeader" [role]="role" (addGroup)="openModal()"></app-header>
+<app-header 
+  *ngIf="showHeader" 
+  [role]="role" 
+  (addGroup)="openModal()" 
+  (openProfileModalEvent)="openProfileModal()">
+</app-header>
 <router-outlet></router-outlet>
