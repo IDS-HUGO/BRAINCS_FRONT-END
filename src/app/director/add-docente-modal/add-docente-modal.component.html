@@ -1,32 +1,35 @@
 <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-  <div class="bg-white p-8 rounded-lg w-96">
+  <div class="bg-white p-8 rounded-lg w-96 relative">
+    <div *ngIf="isLoading" class="loader-overlay">
+      <div class="loader"></div>
+    </div>
     <div class="flex flex-col items-center mb-4">
       <img src="agregar-usuario (1)(1).png" alt="Icon" class="h-16 w-16 mb-2">
       <h2 class="text-2xl font-bold text-teal-600">Añadir Docente</h2>
     </div>
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" #docenteForm="ngForm" novalidate>
       <label for="docenteName" class="block text-sm font-medium text-gray-700">Nombre(s):</label>
-      <input id="docenteName" [(ngModel)]="docente.nombre" name="nombre" type="text" placeholder="Nombre del docente" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md">
-
+      <input id="docenteName" [(ngModel)]="docente.nombre" name="nombre" type="text" placeholder="Nombre del docente" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+      
       <label for="docenteApellidoP" class="block text-sm font-medium text-gray-700">Apellido Paterno:</label>
-      <input id="docenteApellidoP" [(ngModel)]="docente.apellido_p" name="apellido_p" type="text" placeholder="Apellido Paterno" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md">
-
+      <input id="docenteApellidoP" [(ngModel)]="docente.apellido_p" name="apellido_p" type="text" placeholder="Apellido Paterno" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+      
       <label for="docenteApellidoM" class="block text-sm font-medium text-gray-700">Apellido Materno:</label>
-      <input id="docenteApellidoM" [(ngModel)]="docente.apellido_m" name="apellido_m" type="text" placeholder="Apellido Materno" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md">
-
+      <input id="docenteApellidoM" [(ngModel)]="docente.apellido_m" name="apellido_m" type="text" placeholder="Apellido Materno" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+      
       <label for="docenteEmail" class="block text-sm font-medium text-gray-700">Correo:</label>
-      <input id="docenteEmail" [(ngModel)]="docente.correo_electronico" name="correo_electronico" type="email" placeholder="Correo del docente" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md">
-
+      <input id="docenteEmail" [(ngModel)]="docente.correo_electronico" name="correo_electronico" type="email" placeholder="Correo del docente" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+      
       <label for="docenteUsuario" class="block text-sm font-medium text-gray-700">Usuario:</label>
-      <input id="docenteUsuario" [(ngModel)]="docente.usuario" name="usuario" type="text" placeholder="Usuario" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md">
-
+      <input id="docenteUsuario" [(ngModel)]="docente.usuario" name="usuario" type="text" placeholder="Usuario" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+      
       <label for="docenteContrasena" class="block text-sm font-medium text-gray-700">Contraseña:</label>
-      <input id="docenteContrasena" [(ngModel)]="docente.contrasena" name="contrasena" type="password" placeholder="Contraseña" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md">
-
+      <input id="docenteContrasena" [(ngModel)]="docente.contrasena" name="contrasena" type="password" placeholder="Contraseña" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+      
       <div class="flex space-x-2">
-        <button type="submit" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">Agregar</button>
-        <button type="button" (click)="closeModal()" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">Cancelar</button>
-      </div>      
+        <button type="submit" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]" [disabled]="isLoading">Agregar</button>
+        <button type="button" (click)="closeModal()" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]" [disabled]="isLoading">Cancelar</button>
+      </div>
     </form>
   </div>
 </div>
