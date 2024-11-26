@@ -16,12 +16,5 @@
       </app-generic-card>
   </div>
 
-  <app-card-activity
-    *ngIf="isModalOpen"
-    [activityDetails]="selectedActivity"
-    userType="docente"
-    (close)="closeActivityModal()">
-  </app-card-activity>
-
   <app-form-add-modal></app-form-add-modal>
 </div>

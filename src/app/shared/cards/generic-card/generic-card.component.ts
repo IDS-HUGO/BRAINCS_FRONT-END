@@ -10,9 +10,9 @@ export class GenericCardComponent implements OnInit {
   @Input() cardType: 'activity' | 'temario' | 'alumno' = 'activity';
   @Output() openModal = new EventEmitter<any>();
   userType: string = '';
+  showMenu: string | null = null;
 
   ngOnInit(): void {
-
     const storedRole = localStorage.getItem('role');
     this.userType = storedRole ? storedRole : 'invitado';
     console.log('Rol del usuario:', this.userType);
@@ -22,5 +22,18 @@ export class GenericCardComponent implements OnInit {
     if (this.cardType === 'activity' || this.cardType === 'temario') {
       this.openModal.emit(this.cardData);
     }
+  }
+
+  toggleMenu(cardType: string): void {
+    this.showMenu = this.showMenu === cardType ? null : cardType;
+  }
+
+  closeMenu(): void {
+    this.showMenu = null;
+  }
+
+  handleOption(option: string, cardType: string): void {
+    console.log(`Opción seleccionada en ${cardType}:`, option);
+    this.closeMenu();
   }
 }
