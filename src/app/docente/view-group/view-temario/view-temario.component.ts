@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TemarioService } from '../../services/temario.service';
-
+import { Temario } from '../../models/temario';
 @Component({
   selector: 'app-view-temario',
   templateUrl: './view-temario.component.html',
   styleUrls: ['./view-temario.component.css']
 })
 export class ViewTemarioComponent implements OnInit {
-  temarios: any[] = [];
+  temarios: Temario[] = [];
+  
   groupId: number = 0;
   grado: number = 0;
   grupo: string = '';
