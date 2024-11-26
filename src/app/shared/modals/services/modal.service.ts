@@ -6,19 +6,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ModalService {
   private modalOpenSubject = new BehaviorSubject<boolean>(false);
-  modalOpen$ = this.modalOpenSubject.asObservable();
-
   private modalTypeSubject = new BehaviorSubject<string>('');
+
+  modalOpen$ = this.modalOpenSubject.asObservable();
   modalType$ = this.modalTypeSubject.asObservable();
 
   private groupIdSubject = new BehaviorSubject<number | null>(null);
-  groupId$ = this.groupIdSubject.asObservable();
-
-  openModal(type: string, data: any = null) {
-    this.modalTypeSubject.next(type);
-    this.groupIdSubject.next(data);
-    this.modalOpenSubject.next(true);
-  }  
+  groupId$ = this.groupIdSubject.asObservable(); 
 
   openDeleteModal(groupId: number) {
     this.modalTypeSubject.next('delete');
@@ -32,8 +26,13 @@ export class ModalService {
     this.modalOpenSubject.next(true);
   }  
 
+  openModal(type: string) {
+    this.modalTypeSubject.next(type);
+    this.modalOpenSubject.next(true);
+  }
+
   closeModal() {
     this.modalOpenSubject.next(false);
-    this.groupIdSubject.next(null);
+    this.modalTypeSubject.next('');
   }
 }

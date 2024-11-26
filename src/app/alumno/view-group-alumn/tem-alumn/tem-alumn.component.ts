@@ -10,6 +10,8 @@ import { Temario } from '../../models/temario';
 
 export class TemAlumnComponent implements OnInit {
   temarios: Temario[] = [];
+  selectedTemario: Temario | null = null; 
+  isModalOpen = false;
 
   constructor(private temarioService: TemarioService) {}
   ngOnInit() {
@@ -26,5 +28,14 @@ export class TemAlumnComponent implements OnInit {
         console.error('Error al obtener los temarios:', error.message);
       },
     });
+  }
+
+  openTemarioModal(temario: Temario) {
+    this.selectedTemario = temario;
+    this.isModalOpen = true;
+  }
+
+  closeTemarioModal() {
+    this.isModalOpen = false;
   }
 }

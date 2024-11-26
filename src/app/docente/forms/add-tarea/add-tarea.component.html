@@ -17,21 +17,10 @@
       <label for="subtema" class="block text-gray-700 font-medium mb-2">Subtema</label>
       <input type="text" id="subtema" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" placeholder="Ingrese el subtema">
     </div>
-
-    <div class="mb-4">
-      <label for="descripcion" class="block text-gray-700 font-medium mb-2">Descripción</label>
-      <textarea id="descripcion" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C] resize-none" placeholder="Ingrese la descripción"></textarea>
-    </div>
-
-    <div class="mb-4">
-      <button type="button" class="w-full bg-[#D1E8E8] text-[#004C4C] font-semibold py-2 px-4 rounded-lg hover:bg-[#A9D0D0]" (click)="onAddContent()">
-        Agregar contenido
-      </button>
-    </div>
   </form>
 
   <div class="flex justify-between">
-    <button type="submit" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2">Subir</button>
+    <button (click)="onAddContent()" type="submit" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2">Siguiente</button>
     <button type="button" (click)="closeModal()" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]">Cancelar</button>
   </div>
 </div>

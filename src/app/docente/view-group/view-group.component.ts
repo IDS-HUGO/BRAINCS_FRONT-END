@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-view-group',
@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 export class ViewGroupComponent {
 
   selectedView: string = 'activity';
+  constructor () {}
 
   onViewSelected(view: string) {
     this.selectedView = view;
   }
-
 }

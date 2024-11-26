@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';  // Importa DomSanitizer
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';  
 import { TareaService } from '../../../alumno/services/tarea.service';
 import { environment } from '../../../../enviroment/enviroment';
 import { ActividadService } from '../../../alumno/services/actividad.service';
@@ -9,15 +9,16 @@ import { ActividadService } from '../../../alumno/services/actividad.service';
   styleUrls: ['./card-activity.component.css']
 })
 export class CardActivityComponent {
-  @Input() activityDetails: any;  // Detalles de la actividad
-  @Input() userType: string = 'alumno';  // El tipo de usuario, por defecto 'alumno'
-  @Output() close = new EventEmitter<void>();  // Emisor para cerrar el modal
-  @Output() submitActivity = new EventEmitter<File>();  // Emisor para enviar el archivo
+  @Input() activityDetails: any; 
+  @Input() userType: string = 'alumno';  
+  @Output() close = new EventEmitter<void>();  
+  @Output() submitActivity = new EventEmitter<File>(); 
 
   selectedFile: File | null = null;
   activitySupportFile: string | null = null; 
-  activitySupportFileSafe: SafeResourceUrl | null = null; // Para guardar la URL segura
-  isSupportContentOpen = false;  // Control para mostrar contenido de apoyo
+  activitySupportFileSafe: SafeResourceUrl | null = null;
+  isSupportContentOpen = false; 
+
 
   constructor(private sanitizer: DomSanitizer,
     private tareaService: TareaService,
@@ -33,7 +34,6 @@ export class CardActivityComponent {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
-      // Verifica que el archivo sea PDF
       if (!this.selectedFile.name.endsWith('.pdf')) {
         alert('Por favor selecciona un archivo PDF.');
         this.selectedFile = null;
@@ -47,15 +47,14 @@ export class CardActivityComponent {
       return;
     }
   
-    // Llamar al servicio para subir la tarea
     this.tareaService.createTarea(
-      this.activityDetails.id_actividad,  // ID de la actividad
-      this.selectedFile  // Archivo seleccionado
+      this.activityDetails.id_actividad,  
+      this.selectedFile  
     ).subscribe({
       next: (response) => {
         console.log('Tarea subida exitosamente', response);
         alert('¡Tarea subida con éxito!');
-        this.close.emit(); // Cerrar modal tras éxito
+        this.close.emit(); 
       },
       error: (error) => {
         console.error('Error al subir la tarea', error);
@@ -73,20 +72,18 @@ export class CardActivityComponent {
     return file ? file.match(/\.(jpeg|jpg|png|gif)$/) !== null : false;
   }
 
-  // Verifica si el archivo es un PDF
   isPdf(file: string | null): boolean {
     return file ? file.match(/\.pdf$/) !== null : false;
   }
 
   onContentSupportClick(content: string | null) {
     if (content) {
-      // Si el contenido incluye una ruta local indeseada, corrígela
       if (content.includes('/home/ubuntu/BRAINIACS_API/')) {
         content = content.replace('/home/ubuntu/BRAINIACS_API/', '');
       }
       const fullUrl = `${environment.apiUrl}${content}`;
       this.activitySupportFile = fullUrl;
-      this.activitySupportFileSafe = this.sanitizer.bypassSecurityTrustResourceUrl(fullUrl); // Marca la URL como segura
+      this.activitySupportFileSafe = this.sanitizer.bypassSecurityTrustResourceUrl(fullUrl); 
       this.isSupportContentOpen = true;
     } else {
       console.error('No hay contenido de apoyo disponible.');
@@ -94,17 +91,15 @@ export class CardActivityComponent {
   }
   
 
-  // Cerrar contenido de apoyo
   onCloseSupportContent() {
     this.isSupportContentOpen = false;
   }
 
-  // Llamada para cargar las actividades
   loadActivities() {
     this.actividadService.getActivitiesByGroupId().subscribe({
       next: (activities) => {
         console.log('Actividades cargadas:', activities);
-        // Asignar actividades a la vista
+
       },
       error: (error) => {
         console.error('Error al cargar actividades', error);
@@ -119,5 +114,6 @@ export class CardActivityComponent {
 
   onEntregasClick() {
     console.log("Entregas clicked - acción específica para docentes");
-  }
+
+}
 }

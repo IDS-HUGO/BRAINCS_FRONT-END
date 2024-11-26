@@ -14,6 +14,7 @@ import { DeleteModalComponent } from './modals/delete-modal/delete-modal.compone
 import { FormsDocenteModule } from "../docente/forms/formsDocente.module";
 import { CardDocenteComponent } from './cards/card-docente/card-docente.component';
 import { LoaderComponent } from './loader/loader.component';
+import { CardTemarioComponent } from './cards/card-temario/card-temario.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LoaderComponent } from './loader/loader.component';
     FormUpdateModalComponent,
     DeleteModalComponent,
     CardDocenteComponent,
-    LoaderComponent
+    LoaderComponent,
+    CardTemarioComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { LoaderComponent } from './loader/loader.component';
     DeleteModalComponent,
     LoaderComponent,
     FormUpdateModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    CardTemarioComponent
   ]
 })
 export class SharedModule { }

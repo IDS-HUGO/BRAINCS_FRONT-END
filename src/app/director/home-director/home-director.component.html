@@ -1,11 +1,10 @@
-<app-header (openAddDocenteModalEvent)="openAddDocenteModal()" (openProfileModalEvent)="openViewUsuarioModal()"></app-header>
+<app-header-director (openAddDocenteModalEvent)="openAddDocenteModal()" (openProfileModalEvent)="openViewUsuarioModal()"></app-header-director>
 
 <div class="p-8">
   <h1 class="text-3xl font-bold text-teal-600">Bienvenido Director</h1>
   <p class="mt-4 text-lg">Gestiona los docentes y otras funcionalidades aquí.</p>
+  <app-card-docente></app-card-docente>
 </div>
 
 <app-add-docente-modal *ngIf="showAddDocenteModal" (closeModalEvent)="closeAddDocenteModal()"></app-add-docente-modal>
 <app-view-usuario-modal *ngIf="showViewUsuarioModal && selectedUserId !== null" [userId]="selectedUserId" (closeModalEvent)="closeViewUsuarioModal()"></app-view-usuario-modal>
-
-  

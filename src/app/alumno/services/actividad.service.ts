@@ -27,11 +27,9 @@ export class ActividadService {
       map((response) => {
         return response.map((actividad) => {
           if (actividad.contenido) {
-            // Verifica si la ruta es relativa y asegura que solo quede la parte necesaria
             if (actividad.contenido.startsWith('static/')) {
               actividad.contenido = `${environment.apiUrl}${actividad.contenido}`;
             } else if (actividad.contenido.includes('/home/ubuntu/BRAINIACS_API/')) {
-              // Elimina la parte innecesaria de la ruta
               actividad.contenido = actividad.contenido.replace('/home/ubuntu/BRAINIACS_API/', '');
             }
           }

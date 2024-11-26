@@ -1,0 +1,12 @@
+<div class="flex space-x-2">
+  <button type="submit" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">Agregar</button>
+  <button type="button" (click)="closeAddDocenteModal()" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">Cancelar</button>
+</div>
+<tr *ngFor="let docente of docentes" class="border-b">
+  <td class="py-2 px-4">{{ docente.nombre }}</td>
+  <td class="py-2 px-4">{{ docente.correo_electronico }}</td>
+  <td class="py-2 px-4">
+    <button class="bg-blue-500 text-white py-1 px-2 rounded mr-2" (click)="editDocente(docente.usuario)">Editar</button>
+    <button class="bg-red-500 text-white py-1 px-2 rounded" (click)="deleteDocente(docente.usuario)">Eliminar</button>
+  </td>
+</tr>

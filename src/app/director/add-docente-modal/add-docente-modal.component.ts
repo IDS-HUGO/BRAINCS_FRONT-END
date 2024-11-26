@@ -1,6 +1,8 @@
-// director/add-docente-modal/add-docente-modal.component.ts
 import { Component, EventEmitter, Output } from '@angular/core';
+import { DocenteService } from '../Service/docente.service';
 import { Docente } from '../Models/docente.interface';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-add-docente-modal',
   templateUrl: './add-docente-modal.component.html',
@@ -18,11 +20,22 @@ export class AddDocenteModalComponent {
     contrasena: ''
   };
 
+  constructor(private docenteService: DocenteService, private router: Router) {}
+
   closeModal() {
     this.closeModalEvent.emit();
   }
 
   onSubmit() {
-    console.log(this.docente);
+    this.docenteService.addDocente(this.docente).subscribe(
+      (response) => {
+        console.log('Docente añadido exitosamente', response);
+        this.router.navigate(['/docentes']); 
+        this.closeModal();
+      },
+      (error) => {
+        console.error('Error al añadir docente', error);
+      }
+    );
   }
 }
