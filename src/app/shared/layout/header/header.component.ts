@@ -1,6 +1,5 @@
 import { Component, Input,Output,EventEmitter } from '@angular/core';
-import { ModalService } from '../../modals/services/modal.service';
-
+import { ModalService } from '../Service/Modal.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -20,7 +19,8 @@ export class HeaderComponent {
     this.modalService.openModal('group');
   }
 
-  onProfileModal(){
-    this.openProfileModalEvent.emit();
+  onProfileModal(): void {
+    this.modalService.openModal('profile'); 
   }
+  
 }

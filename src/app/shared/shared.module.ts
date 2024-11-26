@@ -15,6 +15,8 @@ import { FormsDocenteModule } from "../docente/forms/formsDocente.module";
 import { CardDocenteComponent } from './cards/card-docente/card-docente.component';
 import { LoaderComponent } from './loader/loader.component';
 import { CardTemarioComponent } from './cards/card-temario/card-temario.component';
+import { ProfileModalComponent } from './layout/profile-modal/profile-modal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,14 @@ import { CardTemarioComponent } from './cards/card-temario/card-temario.componen
     DeleteModalComponent,
     CardDocenteComponent,
     LoaderComponent,
-    CardTemarioComponent
+    CardTemarioComponent,
+    ProfileModalComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     FormsDocenteModule,
+    HttpClientModule,
 ],
   exports : [
     HeaderComponent,
@@ -48,7 +52,8 @@ import { CardTemarioComponent } from './cards/card-temario/card-temario.componen
     LoaderComponent,
     FormUpdateModalComponent,
     DeleteModalComponent,
-    CardTemarioComponent
+    CardTemarioComponent,
+    ProfileModalComponent
   ]
 })
 export class SharedModule { }

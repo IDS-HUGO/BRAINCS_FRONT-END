@@ -13,7 +13,7 @@ import { HttpStatusInterceptor } from './interceptors/http-status.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +22,8 @@ import { HttpStatusInterceptor } from './interceptors/http-status.interceptor';
     AuthModule,
     DocenteModule,
     AlumnoModule,
-    SharedModule
+    SharedModule,
+    
 ],
   providers: [
     {
