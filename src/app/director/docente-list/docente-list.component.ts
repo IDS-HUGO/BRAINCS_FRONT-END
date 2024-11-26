@@ -44,31 +44,30 @@ export class DocenteListComponent implements OnInit {
     this.usuarioService.getImagenUsuario(usuario).subscribe(
       (response: any[]) => {
         if (response.length > 0 && response[0].file_path) {
-          // Obtiene la ruta relativa
-          let relativePath = response[0].file_path.split('/static/')[1]; // La ruta relativa después de '/static'
-          
+
+          let relativePath = response[0].file_path.split('/static/')[1]; 
+
           if (relativePath) {
-            // Construir la URL completa
+
             let imagenUrl = `${this.apiBaseUrl}/static/${relativePath}`;
             this.docenteImages[usuario] = imagenUrl;
           } else {
             console.error('La ruta de la imagen no es válida');
-            this.docenteImages[usuario] = '';  // Sin imagen, muestra el icono por defecto
+            this.docenteImages[usuario] = '';  
           }
         } else {
           console.log('No hay imagen para el usuario');
-          this.docenteImages[usuario] = '';  // Sin imagen, muestra el icono por defecto
+          this.docenteImages[usuario] = '';  
         }
       },
       (error) => {
         console.error('Error al obtener la imagen:', error);
-        this.docenteImages[usuario] = '';  // En caso de error, muestra el icono por defecto
+        this.docenteImages[usuario] = '';  
       }
     );
   }
 
 
-  // Eliminar docente
   deleteDocente(id: number, event: Event) {
     event.stopPropagation();
     Swal.fire({
