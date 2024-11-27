@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../Service/user.service';
-import { ModalService } from '../Service/Modal.service';
+import { ModalServiceProfile } from '../Service/ModalProfile.service';
 
 @Component({
   selector: 'app-profile-modal',
@@ -13,7 +13,7 @@ export class ProfileModalComponent implements OnInit {
   isLoading: boolean = false;
   imagen: string | null = null;
 
-  constructor(private userService: UserService, private modalService: ModalService) {}
+  constructor(private userService: UserService, private modalService: ModalServiceProfile) {}
 
   ngOnInit(): void {
     this.role = localStorage.getItem('role');  
