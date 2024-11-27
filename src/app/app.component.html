@@ -1,2 +1,9 @@
-<app-header *ngIf="showHeader && role === 'docente'" [role]="role" (addGroup)="openModal()"></app-header>
+<app-header
+  *ngIf="showHeader && (role === 'docente' || role === 'alumno')"
+  [role]="role"
+  (addGroup)="openModal()">
+</app-header>
+
 <router-outlet></router-outlet>
+
+<app-profile-modal [role]="role"></app-profile-modal>

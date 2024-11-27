@@ -24,4 +24,8 @@ export class AppComponent implements OnInit {
   openModal() {
     this.modalOpen = true;
   }
+
+  openProfileModal() {
+    this.modalOpen = true;
+  }
 }

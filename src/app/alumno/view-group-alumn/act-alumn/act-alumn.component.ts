@@ -1,21 +1,41 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { ActividadService } from '../../services/actividad.service';
+import { Actividad } from '../../models/actividad';
+import { Tarea } from '../../models/tarea';
+import { TareaService } from '../../services/tarea.service';
 @Component({
   selector: 'app-act-alumn',
   templateUrl: './act-alumn.component.html',
-  styleUrl: './act-alumn.component.css'
+  styleUrls: ['./act-alumn.component.css'],
 })
-export class ActAlumnComponent {
-
-  activities = [
-    { title: 'Primer parcial', description: 'Hola mundo', dueDate: '2024-11-16' },
-    { title: 'Segundo parcial', description: 'Otra actividad', dueDate: '2024-11-17' },
-  ];
-
-  selectedActivity: any = null;
+export class ActAlumnComponent implements OnInit {
+  selectedActivity: Actividad | null = null; 
   isModalOpen = false;
+  activities: Actividad[] = []; 
 
-  openActivityModal(activity: any) {
+  constructor(
+    private actividadService: ActividadService,
+    private tareaService: TareaService
+  ) {}
+
+  ngOnInit() {
+    this.loadActivities();
+  }
+
+  loadActivities() {
+    this.actividadService.getActivitiesByGroupId().subscribe({
+      
+      next: (response) => {
+        this.activities = response;
+        console.log('Actividades cargadas:', this.activities);
+      },
+      error: (error) => {
+        console.error('Error al obtener las actividades:', error.message);
+      },
+    });
+  }
+
+  openActivityModal(activity: Actividad) {
     this.selectedActivity = activity;
     this.isModalOpen = true;
   }

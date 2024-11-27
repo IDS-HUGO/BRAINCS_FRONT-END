@@ -16,7 +16,14 @@
     *ngIf="isModalOpen"
     [activityDetails]="selectedActivity"
     userType="alumno"
-    (close)="closeActivityModal()"
-  ></app-card-activity>
+    (close)="closeActivityModal()">
+  </app-card-activity>
+
+  <div class="fixed bottom-4 right-4 z-50">
+    <app-chatbot-alumn></app-chatbot-alumn>
+  </div>
+  
+
+
   
   </div>

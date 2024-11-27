@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class GenericCardComponent implements OnInit {
   @Input() cardData: any;
-  @Input() cardType: 'activity' | 'temario' | 'alumno' = 'activity';
+  @Input() cardType?: 'activity' | 'temario' | 'alumno' ;
   @Output() openModal = new EventEmitter<any>();
   userType: string = '';
   showMenu: string | null = null;
@@ -21,6 +21,8 @@ export class GenericCardComponent implements OnInit {
   onCardClick(): void {
     if (this.cardType === 'activity' || this.cardType === 'temario') {
       this.openModal.emit(this.cardData);
+    } else {
+      console.warn('El tipo de tarjeta no es válido o no fue proporcionado.');
     }
   }
 

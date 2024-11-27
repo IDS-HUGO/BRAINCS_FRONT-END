@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderGroupComponent {
   @Output() viewSelected = new EventEmitter<string>();
-  @Input() userType: string = 'alumno';
+  userType: string = localStorage.getItem('role') || '';
 
   constructor(private router: Router) {}
 

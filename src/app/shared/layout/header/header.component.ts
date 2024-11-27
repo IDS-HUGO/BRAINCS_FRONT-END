@@ -1,6 +1,5 @@
 import { Component, Input,Output,EventEmitter } from '@angular/core';
-import { ModalService } from '../../modals/services/modal.service';
-
+import { ModalService } from '../Service/Modal.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,6 +8,8 @@ import { ModalService } from '../../modals/services/modal.service';
 export class HeaderComponent {
   @Input() role: string | null = null;
   @Output() addGroup = new EventEmitter<void>();
+  @Output() openProfileModalEvent = new EventEmitter<void>(); 
+
   isClicked = false;
 
   constructor(private modalService: ModalService) {}
@@ -17,4 +18,9 @@ export class HeaderComponent {
     this.addGroup.emit();
     this.modalService.openModal('group');
   }
+
+  onProfileModal(): void {
+    this.modalService.openModal('profile'); 
+  }
+  
 }
