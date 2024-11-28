@@ -26,7 +26,7 @@ export class CardGroupComponent {
   handleOption(option: string) {
     switch(option) {
       case 'inspect':
-        this.router.navigate(['/docente/view-group',this.groupId]);
+        this.router.navigate(['/docente/view-group',this.groupId,this.grado,this.grupo]);
         break;
       case 'edit':
         this.modalService.openUpdateModal(this.groupId);

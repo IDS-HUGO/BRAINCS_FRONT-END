@@ -107,8 +107,7 @@ export class CardActivityComponent {
     });
   }
 
-
-    onContentClick() {
+  onContentClick() {
     console.log("Contenido clicked - acción específica para docentes");
   }
 

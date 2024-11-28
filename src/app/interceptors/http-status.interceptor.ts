@@ -17,24 +17,17 @@ export class HttpStatusInterceptor implements HttpInterceptor {
   constructor(private loaderService: LoaderService, private alertService: AlertService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.loaderService.show(); // Mostrar indicador de carga
+    this.loaderService.show(); 
 
     return next.handle(req).pipe(
-      tap((event) => {
-        if (event instanceof HttpResponse) {
-          // Mostrar alerta de éxito si la respuesta es válida
-          this.alertService.showSuccess('Operación realizada con éxito');
-        }
-      }),
       catchError((error: HttpErrorResponse) => {
-        // Manejar errores HTTP y mostrar alerta de error
         const status = error.status || 500;
         const message = error.message || 'Ocurrió un error inesperado';
         this.alertService.showError(status, `Error ${status}: ${message}`);
         return throwError(() => new Error(`Error ${status}: ${message}`));
       }),
       finalize(() => {
-        this.loaderService.hide(); // Ocultar indicador de carga
+        this.loaderService.hide();
       })
     );
   }

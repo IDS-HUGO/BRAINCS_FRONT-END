@@ -3,6 +3,6 @@
   <p class="mt-4 text-lg">Gestiona los docentes y otras funcionalidades aquí.</p>
   <app-card-docente></app-card-docente>
 </div>
-
 <app-add-docente-modal *ngIf="showAddDocenteModal" (closeModalEvent)="closeAddDocenteModal()"></app-add-docente-modal>
-<app-view-usuario-modal *ngIf="showViewUsuarioModal && selectedUserId !== null" [userId]="selectedUserId" (closeModalEvent)="closeViewUsuarioModal()"></app-view-usuario-modal>
+<app-view-usuario-modal *ngIf="showViewUsuarioModal && selectedUserId !== null" [userId]="selectedUserId"
+  (closeModalEvent)="closeViewUsuarioModal()"></app-view-usuario-modal>

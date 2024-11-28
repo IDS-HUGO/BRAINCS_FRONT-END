@@ -7,7 +7,6 @@
   </div>
 
   <div class="w-10/12">
-    <div class="w-10/12">
       <app-generic-card 
         *ngFor="let activity of activities" 
         [cardData]="activity" 
@@ -15,15 +14,7 @@
         (openModal)="openActivityModal(activity)"
         userType="docente">
       </app-generic-card>
-    </div>    
   </div>
-
-  <app-card-activity
-    *ngIf="isModalOpen"
-    [activityDetails]="selectedActivity"
-    userType="docente"
-    (close)="closeActivityModal()">
-  </app-card-activity>
 
   <app-form-add-modal></app-form-add-modal>
 </div>

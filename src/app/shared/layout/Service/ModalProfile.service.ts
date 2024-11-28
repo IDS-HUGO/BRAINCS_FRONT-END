@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ModalService {
+export class ModalServiceProfile {
   private modals: { [key: string]: boolean } = {};
 
   openModal(id: string): void {

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../Service/user.service';
-import { ModalService } from '../Service/Modal.service';
 import { LoginService } from '../../../auth/services/login.service';
+import { ModalServiceProfile } from '../Service/ModalProfile.service';
 
 @Component({
   selector: 'app-profile-modal',
@@ -14,15 +14,11 @@ export class ProfileModalComponent implements OnInit {
   isLoading: boolean = false;
   imagen: string | null = null;
 
-  constructor(
-    private userService: UserService,
-    private modalService: ModalService,
-    private loginService: LoginService 
-  ) {}
+  constructor(private userService: UserService, private modalService: ModalServiceProfile,private loginService: LoginService ) {}
 
   ngOnInit(): void {
-    this.role = localStorage.getItem('role');
-    this.fetchUserData();
+    this.role = localStorage.getItem('role');  
+    this.fetchUserData();  
   }
 
   fetchUserData(): void {
@@ -34,24 +30,26 @@ export class ProfileModalComponent implements OnInit {
 
     this.isLoading = true;
 
-    if (this.role === 'docente') {
+    if (localStorage.getItem('role')) {
       const idDocente = localStorage.getItem('id_docente');
+      console.log(localStorage.getItem("id_docente"),"id del docente para su imagen")
       if (idDocente) {
         this.userService.getDocente(idDocente).subscribe({
           next: (data) => {
             this.userData = data;
-            // Obtener la imagen del docente
-            this.userService.getImagenUsuario(idDocente).subscribe({
+            this.userService.getImagenUsuario(this.userData.usuario).subscribe({
               next: (imageData) => {
                 if (imageData.length > 0) {
-                  const relativePath = imageData[0].file_path.split('/static/')[1];
-                  this.imagen = `${this.userService.apiBaseUrl}/static/${relativePath}`;
+                  const relativePath = imageData[0].file_path.split('static/')[1];
+                  this.imagen = `${this.userService.apiBaseUrl}static/${relativePath}`;
+                  console.log('Ruta de la imagen del docente:', this.imagen);
                 }
               },
               error: (err) => {
                 console.error('Error fetching docente image:', err);
               }
             });
+            
             this.isLoading = false;
           },
           error: (err) => {
@@ -66,12 +64,14 @@ export class ProfileModalComponent implements OnInit {
         this.userService.getAlumno(matricula).subscribe({
           next: (data) => {
             this.userData = data;
-            // Obtener la imagen del alumno
             this.userService.getImagenUsuario(matricula).subscribe({
               next: (imageData) => {
                 if (imageData.length > 0) {
                   const relativePath = imageData[0].file_path.split('/static/')[1];
                   this.imagen = `${this.userService.apiBaseUrl}/static/${relativePath}`;
+
+                  console.log('Ruta de la imagen del alumno:', this.imagen);
+
                 }
               },
               error: (err) => {

@@ -26,7 +26,10 @@
     </div>
 
     <div class="flex justify-between mt-6">
-      <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2">
+      <button 
+        type="button" 
+        (click)="generatePdf()" 
+        class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2">
         Aceptar
       </button>
       <button type="button" (click)="closeModal()" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]">

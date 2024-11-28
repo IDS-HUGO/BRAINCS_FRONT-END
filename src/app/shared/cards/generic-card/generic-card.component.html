@@ -1,17 +1,16 @@
 <div 
-  class="p-4 cursor-pointer mb-4" 
-  [ngClass]="{ 'bg-[#B2D9D866] rounded-lg p-4': cardType === 'alumno'}"
-  (click)="onCardClick()">
-
+  class="cursor-pointer" 
+  (click)="onCardClick()"
+>
   <div *ngIf="cardType === 'activity'" class="w-full h-full bg-white border-2 border-[#004C4C99] rounded-lg shadow-md p-6 relative">
     <div class="flex justify-between items-center px-4 rounded-lg">
       <h3 class="text-lg font-semibold text-[#00000099]">{{ cardData?.tema || 'Título de actividad' }}</h3>
     </div>
     <div class="p-2 px-8">
-      <p class="text-black font-semibold text-lg">{{ cardData?.subtema|| 'Descripción de actividad' }}</p>
+      <p class="text-black font-semibold text-lg">{{ cardData?.subtema || 'Descripción de actividad' }}</p>
     </div>
-    <div class="absolute bottom-4 right-4" *ngIf="userType !== 'alumno'">
-      <img src="./menu_1.png" alt="menu de opciones" class="w-auto h-8">
+    <div class="absolute bottom-4 right-4" *ngIf="userType === 'docente'">
+      <img src="menu_1.png" alt="menu de opciones" class="w-auto h-8">
     </div>
   </div>
 
@@ -20,16 +19,21 @@
       <div class="px-4 flex justify-start items-center rounded-lg">
         <h3 class="text-lg font-semibold text-[#000000]">Temario {{ cardData?.id_temario || 'Título del temario' }}</h3>
       </div>
-      <div class="absolute bottom-4 right-4" *ngIf="userType !== 'alumno'">
-        <img src="./menu_1.png" alt="menu de opciones" class="w-auto h-8">
+      <div class="absolute bottom-4 right-4" *ngIf="userType === 'docente'">
+        <img src="menu_1.png" alt="menu de opciones" class="w-auto h-8">
       </div>
     </div>
   </div>
 
-  <div *ngIf="cardType === 'alumno'" class="flex flex-col items-center w-full">
-    <div class="flex items-center w-full py-4" [ngClass]="{ 'border-b border-black': !last }" *ngFor="let alumno of cardData; let last = last">
-      <img src="user.png" alt="icon.user" class="w-10 h-10 rounded-full mr-4">
-      <p class="text-base font-semibold text-[#004C4C] flex-grow">{{ alumno.nombre }}</p>
+  <div *ngIf="cardType === 'alumno'" class="flex flex-col items-center w-full h-auto bg-[#B2D9D866] rounded-lg">
+    <div 
+      class="flex items-center w-full py-5 border-b border-black relative">
+      <img src="user.png" alt="icon.user" class="w-10 h-10 rounded-full mr-4 ml-4">
+      <p class="text-base font-semibold text-[#004C4C] flex-grow">{{ cardData?.nombre }}</p>
+
+      <div *ngIf="userType === 'docente'" class="absolute right-4 top-1/2 transform -translate-y-1/2">
+        <img src="menu_1.png" alt="menu de opciones" class="w-auto h-8">
+      </div>
     </div>
   </div>
 </div>

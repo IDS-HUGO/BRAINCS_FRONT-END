@@ -8,6 +8,7 @@ import { ViewAlumnosComponent } from './view-group/view-alumnos/view-alumnos.com
 import { ViewTemarioComponent } from './view-group/view-temario/view-temario.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsDocenteModule } from "./forms/formsDocente.module";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsDocenteModule } from "./forms/formsDocente.module";
     CommonModule,
     SharedModule,
     RoutingDocenteModule,
-    FormsDocenteModule
+    FormsDocenteModule,
+    FormsModule
 ],
   exports: [ HomeDocenteComponent ]
 })
