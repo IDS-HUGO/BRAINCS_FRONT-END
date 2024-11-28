@@ -24,7 +24,7 @@ export class ModalService {
   }
   
   openUpdateModal(groupId: number) {
-    this.modalTypeSubject.next('edit');
+    this.modalTypeSubject.next('editGroup');
     this.groupIdSubject.next(groupId);
     this.modalOpenSubject.next(true);
   }

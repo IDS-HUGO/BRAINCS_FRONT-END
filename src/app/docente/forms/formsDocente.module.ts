@@ -6,6 +6,7 @@ import { AddTareaComponent } from './add-tarea/add-tarea.component';
 import { AddContenidoComponent } from './add-contenido/add-contenido.component';
 import { AddContenidoIAComponent } from './add-contenido-ia/add-contenido-ia.component';
 import { UpdateGroupComponent } from './update-group/update-group.component';
+import { UpdateActivityComponent } from './update-activity/update-activity.component';
 
 
 
@@ -15,7 +16,8 @@ import { UpdateGroupComponent } from './update-group/update-group.component';
     AddTareaComponent,
     AddContenidoComponent,
     AddContenidoIAComponent,
-    UpdateGroupComponent
+    UpdateGroupComponent,
+    UpdateActivityComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { UpdateGroupComponent } from './update-group/update-group.component';
     AddTareaComponent,
     AddContenidoComponent,
     AddContenidoIAComponent,
-    UpdateGroupComponent
+    UpdateGroupComponent,
+    UpdateActivityComponent
   ]
 })
 export class FormsDocenteModule { }
