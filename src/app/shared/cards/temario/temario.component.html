@@ -1,20 +1,23 @@
 <div class="relative py-2 px-12">
-    <div class="relative w-full flex items-center h-16 bg-white border-2 border-[#004C4C99] rounded-lg shadow-md">
-      <div class="px-4 flex justify-start items-center rounded-lg">
-        <h3 class="text-lg font-semibold text-[#000000]">Temario {{ cardData?.id_temario || 'Título del temario' }}</h3>
-      </div>
+  <div class="relative w-full h-16 bg-white border-2 border-[#004C4C99] rounded-lg shadow-md flex items-center justify-between px-4">
+    <h3 class="text-lg font-semibold text-black">
+      Temario: Parcial 1
+    </h3>
+    <div class="relative">
       <button 
-        (click)="toggleModal()" 
-        class="absolute top-4 right-3 text-gray-400 hover:text-gray-600"
+        (click)="toggleModal()"
+        class="flex items-center justify-center"
       >
-        <img src="menu_1.png" alt="Menú de opciones" class="w-auto h-8">
+        <img src="menu_1.png" alt="Menú de opciones" class="w-6 h-6">
       </button>
-      
+
       <app-menu-modals
         *ngIf="showModal"
         (closeModal)="showModal = false"
         (optionSelected)="handleOption($event)"
-        class="absolute top-[calc(1.5rem)] right-3 translate-y-full z-10">
+        class="absolute right-0 top-full mt-2 w-48 bg-white shadow-lg rounded-lg p-4 z-50"
+      >
       </app-menu-modals>
     </div>
-  </div>  
+  </div>
+</div>

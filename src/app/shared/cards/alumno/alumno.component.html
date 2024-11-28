@@ -1,10 +1,12 @@
+<div class="relative px-12">
 <div class="relative flex flex-col items-center w-full h-auto bg-[#B2D9D866] rounded-lg">
     <div class="flex items-center w-full py-5 border-b border-black relative">
       <img src="user.png" alt="icon.user" class="w-10 h-10 rounded-full mr-4 ml-4">
       <p class="text-base font-semibold text-[#004C4C] flex-grow">{{ cardData?.nombre }}</p>
+      <div class="relative">
       <button 
         (click)="toggleModal()" 
-        class="absolute top-4 right-3 text-gray-400 hover:text-gray-600"
+        class="flex items-center justify-center pr-4"
       >
         <img src="menu_1.png" alt="Menú de opciones" class="w-auto h-8">
       </button>
@@ -13,7 +15,9 @@
         *ngIf="showModal"
         (closeModal)="showModal = false"
         (optionSelected)="handleOption($event)"
-        class="absolute top-[calc(1.5rem)] right-3 translate-y-full z-10">
+        class="absolute right-0 top-full mt-2 w-48 bg-white shadow-lg rounded-lg p-4 z-50">
       </app-menu-modals>
     </div>
   </div>  
+  </div>  
+</div>
