@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../Service/user.service';
 import { ModalService } from '../Service/Modal.service';
+import { LoginService } from '../../../auth/services/login.service';
 
 @Component({
   selector: 'app-profile-modal',
@@ -13,12 +14,15 @@ export class ProfileModalComponent implements OnInit {
   isLoading: boolean = false;
   imagen: string | null = null;
 
-  constructor(private userService: UserService, private modalService: ModalService) {}
+  constructor(
+    private userService: UserService,
+    private modalService: ModalService,
+    private loginService: LoginService 
+  ) {}
 
   ngOnInit(): void {
-    this.role = localStorage.getItem('role');  
-    this.fetchUserData();  
-    
+    this.role = localStorage.getItem('role');
+    this.fetchUserData();
   }
 
   fetchUserData(): void {
@@ -28,7 +32,6 @@ export class ProfileModalComponent implements OnInit {
       return;
     }
 
-
     this.isLoading = true;
 
     if (this.role === 'docente') {
@@ -36,7 +39,6 @@ export class ProfileModalComponent implements OnInit {
       if (idDocente) {
         this.userService.getDocente(idDocente).subscribe({
           next: (data) => {
-            console.log('Datos del docente:', data); 
             this.userData = data;
             // Obtener la imagen del docente
             this.userService.getImagenUsuario(idDocente).subscribe({
@@ -44,7 +46,6 @@ export class ProfileModalComponent implements OnInit {
                 if (imageData.length > 0) {
                   const relativePath = imageData[0].file_path.split('/static/')[1];
                   this.imagen = `${this.userService.apiBaseUrl}/static/${relativePath}`;
-                  console.log('Ruta de la imagen del docente:', this.imagen);  // Imprimir la ruta de la imagen en consola
                 }
               },
               error: (err) => {
@@ -64,7 +65,6 @@ export class ProfileModalComponent implements OnInit {
       if (matricula) {
         this.userService.getAlumno(matricula).subscribe({
           next: (data) => {
-            console.log('Datos del alumno:', data); 
             this.userData = data;
             // Obtener la imagen del alumno
             this.userService.getImagenUsuario(matricula).subscribe({
@@ -72,7 +72,6 @@ export class ProfileModalComponent implements OnInit {
                 if (imageData.length > 0) {
                   const relativePath = imageData[0].file_path.split('/static/')[1];
                   this.imagen = `${this.userService.apiBaseUrl}/static/${relativePath}`;
-                  console.log('Ruta de la imagen del alumno:', this.imagen);  // Imprimir la ruta de la imagen en consola
                 }
               },
               error: (err) => {
@@ -82,7 +81,7 @@ export class ProfileModalComponent implements OnInit {
             this.isLoading = false;
           },
           error: (err) => {
-            console.error('Error fetching alumno data:', err); 
+            console.error('Error fetching alumno data:', err);
             this.isLoading = false;
           }
         });
@@ -94,10 +93,15 @@ export class ProfileModalComponent implements OnInit {
   }
 
   closeModal(): void {
-    this.modalService.closeModal('profile'); 
+    this.modalService.closeModal('profile');
   }
 
   isModalOpen(id: string): boolean {
     return this.modalService.isModalOpen(id);
+  }
+
+  onLogout(): void {
+    this.loginService.logout();  
+    this.closeModal(); 
   }
 }
