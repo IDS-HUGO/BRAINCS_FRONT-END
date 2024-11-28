@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ModalService } from '../services/modal.service';
 
 @Component({
-  selector: 'app-form-add-modal',
-  templateUrl: './form-add-modal.component.html',
-  styleUrls: ['./form-add-modal.component.css']
+  selector: 'app-generic-modal',
+  templateUrl: './generic-modal.component.html',
+  styleUrl: './generic-modal.component.css'
 })
-export class FormAddModalComponent {
+export class GenericModalComponent {
+
   modalOpen: boolean = false;
   modalType: string = '';
 
@@ -23,4 +24,5 @@ export class FormAddModalComponent {
   closeModal() {
     this.modalService.closeModal();
   }
+
 }

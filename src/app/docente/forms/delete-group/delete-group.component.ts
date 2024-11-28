@@ -1,24 +1,27 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { GroupServiceService } from '../../services/group-service.service';
+import { ModalService } from '../../../shared/modals/services/modal.service';
 import { Subscription } from 'rxjs';
-import { ModalService } from '../../modals/services/modal.service';
-import { GroupServiceService } from '../../../docente/services/group-service.service';
 
 @Component({
-  selector: 'app-delete-modal',
-  templateUrl: './delete-modal.component.html',
-  styleUrls: ['./delete-modal.component.css']
+  selector: 'app-delete-group',
+  templateUrl: './delete-group.component.html',
+  styleUrl: './delete-group.component.css'
 })
-export class DeleteModalComponent implements OnInit, OnDestroy {
+export class DeleteGroupComponent {
+
+  constructor (
+    private modalService : ModalService,
+    private groupService : GroupServiceService
+  ) {}
+  
+
   modalOpen: boolean = false;
   modalType: string = '';
   groupId: number | null = null;
   private groupIdSubscription: Subscription | undefined;
-
-  constructor(
-    private modalService: ModalService,
-    private groupService : GroupServiceService
-  ) {}
-
+  
   ngOnInit() {
     this.groupIdSubscription = this.modalService.modalOpen$.subscribe(isOpen => {
       this.modalOpen = isOpen;
@@ -40,10 +43,6 @@ export class DeleteModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  closeModal() {
-    this.modalService.closeModal();
-  }
-
   confirmDelete() {
     const storedIdDocente = localStorage.getItem('id_docente');
     const idDocente = storedIdDocente ? parseInt(storedIdDocente, 10) : null;
@@ -62,5 +61,10 @@ export class DeleteModalComponent implements OnInit, OnDestroy {
       console.error('ID del grupo o ID del docente no está definido.');
     }
   }
-  
+
+
+  closeModal() {
+    this.modalService.closeModal();
+  }
+
 }
