@@ -1,19 +1,35 @@
 <div class="flex justify-center items-center w-full">
   <div class="w-11/12 bg-white">
-  <div class="px-10 pt-10">
+  <div class="flex justify-between items-center px-10 pt-10">
     <h1 class="text-[#004C4C] text-2xl font-bold">Docentes</h1>
-  </div>
+  
+  <button
+        (click)="openSchoolInfoModal()"
+        class="bg-teal-600 text-white py-2 px-4 rounded hover:bg-teal-700 transition"
+      >
+        Subir Información de la Escuela
+      </button>
+    </div>
   <div class="flex justify-center p-8">
+    
     <div class="grid rounded-lg bg-[#E0F0EF] w-full grid-rows-1 sm:grid-rows-2 lg:grid-rows-3">
     <app-card-docente
         *ngFor="let docente of docentes"
-        [subjectName]="docente.nombre">
+        [subjectName]="docente.nombre"
+        [userType]="'director'"
+        [userImage]="docenteImages[docente.usuario]">
       </app-card-docente>
     </div>
   </div>
   </div>
 </div>
 
-<app-form-add-modal></app-form-add-modal>
+  
+<app-school-info-modal
+[isVisible]="showSchoolInfoModal"
+(closeModalEvent)="closeSchoolInfoModal()"
+></app-school-info-modal>
+
+<app-generic-modal></app-generic-modal>
 
 

@@ -3,6 +3,7 @@ import { ModalService } from '../../shared/modals/services/modal.service';
 import { DocenteService } from '../Service/docente.service';
 import { Subscription } from 'rxjs';
 import { Docente } from '../Models/docente.interface';
+import { UsuarioService } from '../Service/usuario.service';
 
 @Component({
   selector: 'app-home-director',
@@ -11,32 +12,30 @@ import { Docente } from '../Models/docente.interface';
 })
 export class HomeDirectorComponent implements OnInit, OnDestroy {
   modalOpen: boolean = false;
-  docentes: Docente[] = []; // Aquí se almacenarán los docentes (grupos)
+  docentes: Docente[] = []; 
   private modalSubscription: Subscription | undefined;
   private docenteAddedSubscription: Subscription | undefined;
+  showSchoolInfoModal = false;
+  docenteImages: { [usuario: string]: string } = {};
 
   constructor(
     private modalService: ModalService,
-    private docenteService: DocenteService
+    private docenteService: DocenteService,
+    private usuarioService: UsuarioService
   ) {}
 
   ngOnInit() {
-    // Suscripción al estado del modal
     this.modalSubscription = this.modalService.modalOpen$.subscribe(isOpen => {
       this.modalOpen = isOpen;
     });
-
-    // Suscripción a los docentes
     this.docenteAddedSubscription = this.docenteService.docenteAdded$.subscribe(() => {
-      this.loadDocentes();  // Recarga los docentes cuando uno se añade
+      this.loadDocentes(); 
     });
 
-    // Cargar docentes al inicializar el componente
     this.loadDocentes();
   }
 
   ngOnDestroy() {
-    // Desuscribirse para evitar fugas de memoria
     if (this.modalSubscription) {
       this.modalSubscription.unsubscribe();
     }
@@ -45,12 +44,49 @@ export class HomeDirectorComponent implements OnInit, OnDestroy {
     }
   }
 
-  
+  openSchoolInfoModal(): void {
+    this.showSchoolInfoModal = true;
+  }
+  closeSchoolInfoModal(): void {
+    this.showSchoolInfoModal = false;
+  }
 
-  // Método para cargar los docentes (grupos)
   loadDocentes() {
-    this.docenteService.getAllDocentes().subscribe(docentes => {
-      this.docentes = docentes;
+    this.docenteService.getAllDocentes().subscribe((response: any) => {
+      this.docentes = response;
+      this.docentes.forEach((docente) => {
+        if (docente.usuario) {
+          this.getUsuarioImage(docente.usuario);
+        }
+      });
     });
+  }
+
+  getUsuarioImage(usuario: string) {
+    if (!usuario) {
+      console.error('Usuario no disponible');
+      return;
+    }
+
+    this.usuarioService.getImagenUsuario(usuario).subscribe(
+      (response: any[]) => {
+        if (response.length > 0 && response[0].file_path) {
+          let relativePath = response[0].file_path.split('/static/')[1];
+          if (relativePath) {
+            this.docenteImages[usuario] = `https://apibrainiacs.brainiacs.site/static/${relativePath}`;
+          } else {
+            console.error('La ruta de la imagen no es válida');
+            this.docenteImages[usuario] = '';
+          }
+        } else {
+          console.log('No hay imagen para el usuario');
+          this.docenteImages[usuario] = '';
+        }
+      },
+      (error) => {
+        console.error('Error al obtener la imagen:', error);
+        this.docenteImages[usuario] = '';
+      }
+    );
   }
 }

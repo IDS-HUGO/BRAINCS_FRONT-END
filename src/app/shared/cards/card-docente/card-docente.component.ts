@@ -12,27 +12,31 @@ export class CardDocenteComponent {
   @Input() userType!: string;
   @Input() grado!: number;
   @Input() grupo!: string;
-  @Input() groupId!: number;
+  @Input() docenteId!: number;
+  @Input() userImage!: string;
   showModal: boolean = false;
 
   constructor(private router: Router, private modalService: ModalService) {}
 
   toggleModal() {
+    console.log('UserType:', this.userType); 
     if (this.userType === 'director' || this.userType === 'docente') {
       this.showModal = !this.showModal;
+      console.log('ShowModal:', this.showModal); 
     }
   }
+  
 
   handleOption(option: string) {
     switch(option) {
       case 'inspect':
-        this.router.navigate(['/docente/view-group',this.groupId,this.grado,this.grupo]);
+        this.router.navigate(['/docente/group-docent',this.docenteId]);
         break;
       case 'edit':
-        this.modalService.openUpdateModal(this.groupId);
+        this.modalService.openUpdateModal(this.docenteId);
         break;
       case 'delete':
-        this.modalService.openDeleteModal(this.groupId);
+        this.modalService.openDeleteModal(this.docenteId);
         break;
     }
     this.showModal = false;
