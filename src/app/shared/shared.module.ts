@@ -17,6 +17,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { CardTemarioComponent } from './cards/card-temario/card-temario.component';
 import { ProfileModalComponent } from './layout/profile-modal/profile-modal.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddDocenteModalModule } from '../director/add-docente-modal/add-docente-modal.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     FormsDocenteModule,
+    AddDocenteModalModule,
     HttpClientModule,
 ],
   exports : [

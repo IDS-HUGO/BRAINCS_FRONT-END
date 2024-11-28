@@ -1,8 +1,19 @@
-<div class="p-8">
-  <h1 class="text-3xl font-bold text-teal-600">Bienvenido Director</h1>
-  <p class="mt-4 text-lg">Gestiona los docentes y otras funcionalidades aquí.</p>
-  <app-card-docente></app-card-docente>
+<div class="flex justify-center items-center w-full">
+  <div class="w-11/12 bg-white">
+  <div class="px-10 pt-10">
+    <h1 class="text-[#004C4C] text-2xl font-bold">Docentes</h1>
+  </div>
+  <div class="flex justify-center p-8">
+    <div class="grid rounded-lg bg-[#E0F0EF] w-full grid-rows-1 sm:grid-rows-2 lg:grid-rows-3">
+    <app-card-docente
+        *ngFor="let docente of docentes"
+        [subjectName]="docente.nombre">
+      </app-card-docente>
+    </div>
+  </div>
+  </div>
 </div>
-<app-add-docente-modal *ngIf="showAddDocenteModal" (closeModalEvent)="closeAddDocenteModal()"></app-add-docente-modal>
-<app-view-usuario-modal *ngIf="showViewUsuarioModal && selectedUserId !== null" [userId]="selectedUserId"
-  (closeModalEvent)="closeViewUsuarioModal()"></app-view-usuario-modal>
+
+<app-form-add-modal></app-form-add-modal>
+
+

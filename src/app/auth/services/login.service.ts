@@ -5,14 +5,16 @@ import { map, catchError } from 'rxjs/operators';
 
 import { environment } from '../../../enviroment/enviroment';
 import { LoginResponse } from '../models/login-response';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
+
   private apiUrl = `${environment.apiUrl}usuarios/usuarios/login`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(usuario: string, contrasena: string): Observable<LoginResponse> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -39,5 +41,16 @@ export class LoginService {
         throw error;
       })
     );
+  }
+
+  logout(): void {
+    localStorage.removeItem('role');
+    localStorage.removeItem('id_docente');
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('grado');
+    localStorage.removeItem('grupo');
+
+    this.router.navigate(['/login']);
+
   }
 }

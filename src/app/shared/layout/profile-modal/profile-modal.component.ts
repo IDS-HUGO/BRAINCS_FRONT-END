@@ -43,6 +43,7 @@ export class ProfileModalComponent implements OnInit {
                   const relativePath = imageData[0].file_path.split('static/')[1];
                   this.imagen = `${this.userService.apiBaseUrl}static/${relativePath}`;
                   console.log('Ruta de la imagen del docente:', this.imagen);
+
                 }
               },
               error: (err) => {

@@ -3,6 +3,7 @@ import { DocenteService } from '../Service/docente.service';
 import { Docente } from '../Models/docente.interface';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ModalService } from '../../shared/modals/services/modal.service';
 
 @Component({
   selector: 'app-add-docente-modal',
@@ -24,10 +25,10 @@ export class AddDocenteModalComponent {
 
   isLoading: boolean = false;
 
-  constructor(private docenteService: DocenteService, private router: Router) {}
+  constructor(private docenteService: DocenteService, private router: Router, private modalService: ModalService) {}
 
   closeModal() {
-    this.closeModalEvent.emit();
+    this.modalService.closeModal();
   }
 
   onSubmit() {

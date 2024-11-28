@@ -1,40 +1,39 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 import { Docente } from '../Models/docente.interface';
+import { environment } from '../../../enviroment/enviroment';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DocenteService {
-  private apiUrl = 'https://apibrainiacs.brainiacs.site';
-
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}` 
-    })
-  };
+  private apiUrl = `${environment.apiUrl}`; 
+  private docenteAddedSubject = new Subject<void>();
+  docenteAdded$ = this.docenteAddedSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
-  addDocente(docente: Docente): Observable<any> {
-    return this.http.post(`${this.apiUrl}/docentes/docentes/`, docente, this.httpOptions);
+  getAllDocentes(): Observable<Docente[]> {
+    return this.http.get<Docente[]>(`${this.apiUrl}docentes/docentes/`);
   }
 
-  getDocentes(): Observable<Docente[]> {
-    return this.http.get<Docente[]>(`${this.apiUrl}/docentes/docentes/`, this.httpOptions);
-  }
-
-  deleteDocente(id_docente: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/docentes/docentes/${id_docente}`, this.httpOptions);
+  addDocente(docente: Docente): Observable<Docente> {
+    return this.http.post<Docente>(`${this.apiUrl}docentes/docentes/`, docente).pipe(
+      tap(() => this.docenteAddedSubject.next())
+    );
   }
 
   getDocenteById(id_docente: number): Observable<Docente> {
-    return this.http.get<Docente>(`${this.apiUrl}/docentes/docentes/${id_docente}`, this.httpOptions);
+    return this.http.get<Docente>(`${this.apiUrl}docentes/docentes/${id_docente}`);
   }
 
-  updateDocente(id_docente: number, docente: Docente): Observable<any> {
-    return this.http.put(`${this.apiUrl}/docentes/docentes/${id_docente}`, docente, this.httpOptions);
+  updateDocente(id_docente: number, docente: Docente): Observable<Docente> {
+    return this.http.put<Docente>(`${this.apiUrl}docentes/docentes/${id_docente}`, docente);
+  }
+
+  deleteDocente(id_docente: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}docentes/docentes/${id_docente}`);
   }
 }

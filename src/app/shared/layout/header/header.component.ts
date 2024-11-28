@@ -12,6 +12,7 @@ export class HeaderComponent {
   @Input() role: string | null = null;
   @Output() addGroup = new EventEmitter<void>();
   @Output() openProfileModalEvent = new EventEmitter<void>(); 
+  @Output() openAddDocenteModalEvent = new EventEmitter<void>(); 
 
   isClicked = false;
 
@@ -24,6 +25,11 @@ export class HeaderComponent {
   onAddGroup() {
     this.addGroup.emit();
     this.modalService.openModal('group');
+  }
+
+  onAddDocente() {
+    this.openAddDocenteModalEvent.emit()
+    this.modalService.openModal('docente'); 
   }
 
   onProfileModal(): void {

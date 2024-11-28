@@ -28,7 +28,7 @@ export class DocenteListComponent implements OnInit {
 
   // Obtener la lista de docentes
   getDocentes() {
-    this.docenteService.getDocentes().subscribe((response: any) => {
+    this.docenteService.getAllDocentes().subscribe((response: any) => {
       this.docentes = response;
       this.docentes.forEach((docente) => {
         if (docente.usuario) {
