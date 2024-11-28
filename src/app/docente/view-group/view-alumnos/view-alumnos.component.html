@@ -8,13 +8,13 @@
 
   <div class="w-10/12">
 
-    <app-generic-card 
+    <app-alumno 
       *ngFor="let alumno of alumnos" 
       [cardData]="alumno"
       cardType="alumno" 
       class="w-full">
       <p>{{ alumno.nombre }}</p>
-    </app-generic-card>
+    </app-alumno>
 
 
 

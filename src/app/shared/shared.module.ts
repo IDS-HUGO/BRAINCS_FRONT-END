@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './layout/header/header.component';
 import { HeaderGroupComponent } from './layout/header-group/header-group.component';
-import { GenericCardComponent } from './cards/generic-card/generic-card.component';
 import { CardGroupComponent } from './cards/card-group/card-group.component';
 import { MenuModalsComponent } from './modals/menu-modals/menu-modals.component';
 import { CardActivityComponent } from './cards/card-activity/card-activity.component';
@@ -15,12 +14,14 @@ import { CardTemarioComponent } from './cards/card-temario/card-temario.componen
 import { ProfileModalComponent } from './layout/profile-modal/profile-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GenericModalComponent } from './modals/generic-modal/generic-modal.component';
+import { AlumnoComponent } from './cards/alumno/alumno.component';
+import { ActivityComponent } from './cards/activity/activity.component';
+import { TemarioComponent } from './cards/temario/temario.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     HeaderGroupComponent,
-    GenericCardComponent,
     CardGroupComponent,
     MenuModalsComponent,
     CardActivityComponent,
@@ -28,7 +29,10 @@ import { GenericModalComponent } from './modals/generic-modal/generic-modal.comp
     LoaderComponent,
     CardTemarioComponent,
     ProfileModalComponent,
-    GenericModalComponent
+    GenericModalComponent,
+    AlumnoComponent,
+    ActivityComponent,
+    TemarioComponent
   ],
   imports: [
     CommonModule,
@@ -39,14 +43,16 @@ import { GenericModalComponent } from './modals/generic-modal/generic-modal.comp
   exports : [
     HeaderComponent,
     HeaderGroupComponent,
-    GenericCardComponent,
     CardGroupComponent,
     CardActivityComponent,
     CardDocenteComponent,
     LoaderComponent,
     CardTemarioComponent,
     ProfileModalComponent,
-    GenericModalComponent
+    GenericModalComponent,
+    ActivityComponent,
+    TemarioComponent,
+    AlumnoComponent
   ]
 })
 export class SharedModule { }

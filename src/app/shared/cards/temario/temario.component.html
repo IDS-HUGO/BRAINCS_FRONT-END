@@ -1,0 +1,20 @@
+<div class="relative py-2 px-12">
+    <div class="relative w-full flex items-center h-16 bg-white border-2 border-[#004C4C99] rounded-lg shadow-md">
+      <div class="px-4 flex justify-start items-center rounded-lg">
+        <h3 class="text-lg font-semibold text-[#000000]">Temario {{ cardData?.id_temario || 'Título del temario' }}</h3>
+      </div>
+      <button 
+        (click)="toggleModal()" 
+        class="absolute top-4 right-3 text-gray-400 hover:text-gray-600"
+      >
+        <img src="menu_1.png" alt="Menú de opciones" class="w-auto h-8">
+      </button>
+      
+      <app-menu-modals
+        *ngIf="showModal"
+        (closeModal)="showModal = false"
+        (optionSelected)="handleOption($event)"
+        class="absolute top-[calc(1.5rem)] right-3 translate-y-full z-10">
+      </app-menu-modals>
+    </div>
+  </div>  

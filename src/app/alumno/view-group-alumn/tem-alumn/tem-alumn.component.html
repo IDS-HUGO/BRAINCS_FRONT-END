@@ -7,13 +7,13 @@
     </div>
   
     <div class="w-10/12">
-      <app-generic-card 
+      <app-temario 
         *ngFor="let temario of temarios" 
         [cardData]="temario" 
         cardType="temario" 
         (openModal)="openTemarioModal(temario)"
         class="w-full">
-      </app-generic-card>
+      </app-temario>
     </div> 
     
   <app-card-temario
