@@ -35,7 +35,6 @@ export class AddTareaComponent implements OnInit{
   }
 
   onAddContent() {
-    // Pasa `groupId` junto con `tema` y `subtema`
     this.tareaService.setTemaSubtema(this.tema, this.subtema, this.groupId);
     this.modalService.openModal('contenido');
     console.log('Tema, subtema y grupo enviados:', this.tema, this.subtema, this.groupId);

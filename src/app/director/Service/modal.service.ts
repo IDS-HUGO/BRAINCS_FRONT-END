@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class ModalService {
 
   private modalSubject = new Subject<boolean>();
+  modalOpen$: any;
 
   getModalState() {
     return this.modalSubject.asObservable();

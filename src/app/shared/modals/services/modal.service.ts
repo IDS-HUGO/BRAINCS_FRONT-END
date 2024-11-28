@@ -18,7 +18,7 @@ export class ModalService {
   groupId$ = this.groupIdSubject.asObservable(); 
 
   openDeleteModal(groupId: number) {
-    this.modalTypeSubject.next('delete');
+    this.modalTypeSubject.next('deleteGroup');
     this.groupIdSubject.next(groupId);
     this.modalOpenSubject.next(true);
   }

@@ -8,7 +8,6 @@ import { GenericCardComponent } from './cards/generic-card/generic-card.componen
 import { CardGroupComponent } from './cards/card-group/card-group.component';
 import { MenuModalsComponent } from './modals/menu-modals/menu-modals.component';
 import { CardActivityComponent } from './cards/card-activity/card-activity.component';
-import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
 import { FormsDocenteModule } from "../docente/forms/formsDocente.module";
 import { CardDocenteComponent } from './cards/card-docente/card-docente.component';
 import { LoaderComponent } from './loader/loader.component';
@@ -25,7 +24,6 @@ import { GenericModalComponent } from './modals/generic-modal/generic-modal.comp
     CardGroupComponent,
     MenuModalsComponent,
     CardActivityComponent,
-    DeleteModalComponent,
     CardDocenteComponent,
     LoaderComponent,
     CardTemarioComponent,
@@ -45,9 +43,7 @@ import { GenericModalComponent } from './modals/generic-modal/generic-modal.comp
     CardGroupComponent,
     CardActivityComponent,
     CardDocenteComponent,
-    DeleteModalComponent,
     LoaderComponent,
-    DeleteModalComponent,
     CardTemarioComponent,
     ProfileModalComponent,
     GenericModalComponent
