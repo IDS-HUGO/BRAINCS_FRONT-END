@@ -4,12 +4,12 @@
     </div>
   
   <div class="w-10/12">
-    <app-generic-card 
+    <app-activity 
       *ngFor="let activity of activities" 
       [cardData]="activity" 
       cardType="activity" 
       (openModal)="openActivityModal(activity)">
-    </app-generic-card>
+    </app-activity>
   </div>
   
   <app-card-activity

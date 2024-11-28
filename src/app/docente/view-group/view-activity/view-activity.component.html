@@ -7,13 +7,13 @@
   </div>
 
   <div class="w-10/12">
-      <app-generic-card 
+      <app-activity>
         *ngFor="let activity of activities" 
         [cardData]="activity" 
         cardType="activity" 
         (openModal)="openActivityModal(activity)"
         userType="docente">
-      </app-generic-card>
+      </app-activity> 
   </div>
 
   <app-generic-modal></app-generic-modal>
