@@ -17,6 +17,7 @@
         *ngFor="let docente of docentes"
         [subjectName]="docente.nombre"
         [userType]="'director'"
+        [docenteId]="docente.id_docente" 
         [userImage]="docenteImages[docente.usuario]">
       </app-card-docente>
     </div>

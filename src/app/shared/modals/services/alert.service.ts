@@ -42,4 +42,17 @@ export class AlertService {
       confirmButtonText: 'Aceptar',
     });
   }
+
+  showConfirmation(message: string, title: string = '¿Estás seguro?') {
+    return Swal.fire({
+      title: title,
+      text: message,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, enviar',
+      cancelButtonText: 'Cancelar'
+    });
+  }
 }

@@ -1,14 +1,14 @@
-export const statusCodeMessages: { [key: number]: string } = {
-    201: 'Recurso creado correctamente.',
-    204: 'Sin contenido.',
-    400: 'Solicitud incorrecta. Por favor verifica los datos.',
-    401: 'No autorizado. Por favor inicia sesión.',
-    403: 'Prohibido. No tienes permiso para acceder a este recurso.',
-    404: 'Recurso no encontrado.',
-    500: 'Error interno del servidor. Intenta de nuevo más tarde.',
-  };
-  
-  export function getStatusCodeMessage(status: number): string {
-    return statusCodeMessages[status] || 'Ocurrió un error desconocido.';
+export function getStatusCodeMessage(status: number): string {
+  switch (status) {
+    case 400:
+      return 'Solicitud incorrecta. Por favor, verifica los datos e intenta nuevamente.';
+    case 401:
+      return 'No estás autorizado para realizar esta acción.';
+    case 404:
+      return 'No se encontró el recurso solicitado.';
+    case 500:
+      return 'Hubo un error en el servidor, por favor inténtalo más tarde.';
+    default:
+      return 'Ocurrió un error desconocido.';
   }
-  
+}

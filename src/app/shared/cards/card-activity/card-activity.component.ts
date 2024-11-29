@@ -3,6 +3,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { TareaService } from '../../../alumno/services/tarea.service';
 import { environment } from '../../../../enviroment/enviroment';
 import { ActividadService } from '../../../alumno/services/actividad.service';
+import { LoaderService } from '../../modals/services/loader.service';
+import { AlertService } from '../../modals/services/alert.service';
 @Component({
   selector: 'app-card-activity',
   templateUrl: './card-activity.component.html',
@@ -22,7 +24,9 @@ export class CardActivityComponent {
 
   constructor(private sanitizer: DomSanitizer,
     private tareaService: TareaService,
-    private actividadService: ActividadService
+    private actividadService: ActividadService,
+    public loaderService: LoaderService,
+    private alertService: AlertService
   ) {}
 
   // Cierra el modal
@@ -35,37 +39,46 @@ export class CardActivityComponent {
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
       if (!this.selectedFile.name.endsWith('.pdf')) {
-        alert('Por favor selecciona un archivo PDF.');
+        this.alertService.showWarning('Por favor selecciona un archivo PDF.');
         this.selectedFile = null;
       }
     }
   }
-
   onSubmitActivity(): void {
     if (!this.selectedFile) {
-      alert('Por favor selecciona un archivo.');
+      this.alertService.showWarning('Por favor selecciona un archivo.');
       return;
     }
   
-    this.tareaService.createTarea(
-      this.activityDetails.id_actividad,  
-      this.selectedFile  
-    ).subscribe({
-      next: (response) => {
-        console.log('Tarea subida exitosamente', response);
-        alert('¡Tarea subida con éxito!');
-        this.close.emit(); 
-      },
-      error: (error) => {
-        console.error('Error al subir la tarea', error);
-        if (error.error && error.error.detail) {
-          alert(`Error: ${error.error.detail}`);
-        } else {
-          alert('Ocurrió un error desconocido al subir la tarea.');
+    this.alertService.showConfirmation('Una vez enviada la tarea, no podrás modificarla.')
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.loaderService.show(); 
+  
+          this.tareaService.createTarea(
+            this.activityDetails.id_actividad,  
+            this.selectedFile! 
+          ).subscribe({
+            next: (response) => {
+              console.log('Tarea subida exitosamente', response);
+              this.alertService.showSuccess('¡Tarea subida con éxito!');
+              this.close.emit(); 
+              this.loaderService.hide(); 
+            },
+            error: (error) => {
+              console.error('Error al subir la tarea', error);
+              this.loaderService.hide(); 
+              if (error.error && error.error.detail) {
+                this.alertService.showError(error.status, error.error.detail);
+              } else {
+                this.alertService.showError(error.status, 'Ocurrió un error desconocido al subir la tarea.');
+              }
+            },
+          });
         }
-      },
-    });
+      });
   }
+  
   
 
   isImage(file: string | null): boolean {

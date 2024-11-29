@@ -1,6 +1,7 @@
 import { Component, Input,Output,EventEmitter } from '@angular/core';
 import { ModalServiceProfile } from '../Service/ModalProfile.service';
 import { ModalService } from '../../modals/services/modal.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,10 +18,15 @@ export class HeaderComponent {
   isClicked = false;
 
   constructor(
+    private router: Router,
     private modalServiceProfile: ModalServiceProfile,
     private modalService : ModalService
 
   ) {}
+
+  backToHome(): void {
+    this.router.navigate(['/home']);
+  }
 
   onAddGroup() {
     this.addGroup.emit();

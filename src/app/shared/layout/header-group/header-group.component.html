@@ -1,14 +1,17 @@
 <div class="w-full text-gray-500 py-4 px-6 flex items-center justify-around shadow-md">
 
   <div class="flex items-center space-x-2">
-    <button (click)="backToHome()">
-    <h1 class="text-xl font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis cursor-pointer"
-    >  Inicio </h1>
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-    </svg>
+    <button (click)="backToHome()" class="flex items-center space-x-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      <h1 class="text-xl font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis cursor-pointer">
+        Inicio
+      </h1>
     </button>
   </div>
+  
+  
 
   <button (click)="selectView('activity')" class="text-[#004C4C] hover:underline">Actividades</button>
   <button (click)="selectView('temario')" class="text-[#004C4C] hover:underline">Temario</button>

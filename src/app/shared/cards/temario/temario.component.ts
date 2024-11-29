@@ -9,10 +9,19 @@ export class TemarioComponent {
   @Input() cardData: any;
   @Output() openModal = new EventEmitter<any>();
   showModal: boolean = false;
+  @Input() userType: string = 'alumno';
 
   toggleModal() {
-    this.showModal = !this.showModal;
+    if (this.userType !== 'alumno') {
+      this.showModal = !this.showModal;
+    }
   }
+
+  onCardClick() {
+    this.openModal.emit(this.cardData);
+  }
+
+
 
   handleOption(option: string) {
     switch (option) {
