@@ -30,7 +30,6 @@ export class AddDocenteModalComponent {
   closeModal() {
     this.modalService.closeModal();
   }
-
   onSubmit() {
     if (!this.docente.nombre || !this.docente.apellido_p || !this.docente.apellido_m ||
         !this.docente.correo_electronico || !this.docente.usuario || !this.docente.contrasena) {
@@ -42,9 +41,11 @@ export class AddDocenteModalComponent {
       });
       return;
     }
-
+  
+    console.log('Docente a enviar:', this.docente); // Verificar los datos antes de enviarlos
+  
     this.isLoading = true;
-
+  
     this.docenteService.addDocente(this.docente).subscribe(
       (response) => {
         this.isLoading = false;
@@ -69,4 +70,5 @@ export class AddDocenteModalComponent {
       }
     );
   }
+  
 }

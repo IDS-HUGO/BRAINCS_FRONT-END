@@ -17,9 +17,11 @@ export class ProfileModalComponent implements OnInit {
   constructor(private userService: UserService, private modalService: ModalServiceProfile,private loginService: LoginService ) {}
 
   ngOnInit(): void {
-    this.role = localStorage.getItem('role');  
-    this.fetchUserData();  
+    this.role = localStorage.getItem('role');
+    console.log('Rol del usuario:', this.role);  // Verifica el valor del rol
+    this.fetchUserData();
   }
+  
 
   fetchUserData(): void {
     if (!this.role) {
@@ -39,6 +41,7 @@ export class ProfileModalComponent implements OnInit {
             this.userData = data;
             this.userService.getImagenUsuario(this.userData.usuario).subscribe({
               next: (imageData) => {
+                console.log('Imagen del usuario:', imageData);
                 if (imageData.length > 0) {
                   const relativePath = imageData[0].file_path.split('static/')[1];
                   this.imagen = `${this.userService.apiBaseUrl}static/${relativePath}`;

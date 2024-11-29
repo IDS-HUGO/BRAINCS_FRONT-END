@@ -35,12 +35,11 @@ export class CardDocenteComponent implements OnInit {
   handleOption(option: string) {
     if (!this.docenteId) {
       console.error('docenteId is undefined');
-      return; // Exit if docenteId is undefined
+      return;
     }
   
     switch(option) {
       case 'inspect':
-        // Ensure docenteId is defined before navigating
         if (this.docenteId !== undefined) {
           this.router.navigate(['/docente/group-docent', this.docenteId]);
         }
@@ -54,7 +53,7 @@ export class CardDocenteComponent implements OnInit {
     }
     this.showModal = false;
   }
-  
+
   navigateToDetail() {
     this.router.navigate(['alumno/view']);
   }

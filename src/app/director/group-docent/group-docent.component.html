@@ -1,1 +1,33 @@
-<p>group-docent works!</p>
+<div class="flex justify-center pt-10">
+    <div class="group-list p-2 w-full max-w-7xl ">
+      <h2 class="text-2xl font-semibold text-teal-600 mb-4">Grupos del Docente</h2>
+
+      <div *ngIf="grupos.length === 0" class="text-red-500">
+        No se encontraron grupos para este docente.
+      </div>
+ 
+      <div *ngIf="grupos.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div *ngFor="let grupo of grupos" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all">
+          <div 
+            class="bg-[#004C4C] cursor-pointer text-white px-4 py-2 flex justify-between items-center rounded-t-lg"
+            [ngClass]="{'cursor-pointer': true}">
+            <h3 class="text-lg font-semibold">
+              {{ grupo.grupo }} 
+              <span *ngIf="grupo.grado && grupo.asignatura" class="ml-2 text-lg font-semibold">
+                {{ grupo.grado }} - {{ grupo.asignatura }}
+              </span>
+            </h3>
+          </div>
+  
+          <div class="p-4 bg-teal-50 rounded-b-lg">
+            <p class="text-sm text-gray-700">
+              Grupo: {{ grupo.grupo }}<br>
+              Asignatura: {{ grupo.asignatura }}<br>
+              Grado: {{ grupo.grado }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

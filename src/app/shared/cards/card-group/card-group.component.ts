@@ -39,8 +39,16 @@ export class CardGroupComponent {
   }   
 
   navigateToDetail() {
-    this.router.navigate(['alumno/view']);
+    console.log('grupo:', this.grupo);  
+    
+    if ( this.grado && this.grupo) {
+      this.router.navigate(['alumno/view',  this.grado, this.grupo]);
+    } else {
+      console.error('Faltan parámetros necesarios para la navegación.');
+    }
   }
+  
+  
 
   closeDeleteModal() {
     this.showModal = false;

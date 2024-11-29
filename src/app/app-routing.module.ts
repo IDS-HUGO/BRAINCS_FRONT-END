@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'docente/view-group/:id/:grado/:grupo', component: ViewGroupComponent },
-  { path: 'docente/group-docent/:id/:docente', component: GroupDocentComponent},
-  { path: 'alumno/view', component: ViewGroupAlumnComponent },
+  { path: 'docente/group-docent/:docenteId', component: GroupDocentComponent},
+  { path: 'alumno/view/:grado/:grupo', component: ViewGroupAlumnComponent },
   { path: '**', redirectTo: '/login' }
 ];
 
