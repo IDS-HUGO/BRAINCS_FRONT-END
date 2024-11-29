@@ -2,6 +2,7 @@
     <div [ngSwitch]="modalType">
       <app-add-group *ngSwitchCase="'group'"></app-add-group>
       <app-add-docente-modal *ngSwitchCase="'docente'"></app-add-docente-modal>
+      <app-add-alumno *ngSwitchCase="'alumno'"></app-add-alumno>
       <app-add-tarea *ngSwitchCase="'tarea'"></app-add-tarea>
       <app-add-contenido *ngSwitchCase="'contenido'"></app-add-contenido>
       <app-add-contenido-ia *ngSwitchCase="'contenidoIA'"></app-add-contenido-ia>

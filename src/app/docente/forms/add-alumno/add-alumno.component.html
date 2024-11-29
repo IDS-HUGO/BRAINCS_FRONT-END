@@ -1,0 +1,34 @@
+<div class="w-[600px] h-auto mx-auto bg-white p-8 rounded-lg shadow-md">
+    <div class="flex justify-center mb-4">
+      <img src="/agregar-usuario (1)(1).png" alt="Añadir Alumno" class="w-20 h-20 object-cover rounded-full">
+    </div>
+  
+    <h2 class="text-2xl font-semibold text-[#004C4C] mb-6 text-center">
+      Añadir información
+    </h2>
+
+    <div class="border border-[#004C4C99] rounded-md p-6">
+      <form >
+        <div class="mb-4">
+          <label for="nombres" class="block text-gray-700 font-medium mb-2">Nombre(s)</label>
+          <input type="text" id="nombres" [(ngModel)]="nombres" name="nombres" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" placeholder="Ingrese los nombres">
+        </div>
+  
+        <div class="mb-4">
+          <label for="apellidoPaterno" class="block text-gray-700 font-medium mb-2">Apellido Paterno</label>
+          <input type="text" id="apellidoPaterno" [(ngModel)]="apellidoPaterno" name="apellidoPaterno" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" placeholder="Ingrese el apellido paterno">
+        </div>
+  
+        <div class="mb-4">
+          <label for="apellidoMaterno" class="block text-gray-700 font-medium mb-2">Apellido Materno</label>
+          <input type="text" id="apellidoMaterno" [(ngModel)]="apellidoMaterno" name="apellidoMaterno" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" placeholder="Ingrese el apellido materno">
+        </div>
+        
+      </form>
+    </div>
+  
+    <div class="flex justify-between mt-6">
+      <button type="submit" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2">Aceptar</button>
+      <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]" (click)="closeModal()">Cancelar</button>
+    </div>
+  </div>  

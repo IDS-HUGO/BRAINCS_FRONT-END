@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from '../../services/alumnos.service';
+import { ModalService } from '../../../shared/modals/services/modal.service';
 
 @Component({
   selector: 'app-view-alumnos',
@@ -14,7 +15,8 @@ export class ViewAlumnosComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private alumnosService: AlumnosService
+    private alumnosService: AlumnosService,
+    private modalService : ModalService
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class ViewAlumnosComponent implements OnInit {
   loadAlumnos(): void {
     this.alumnosService.getAlumnos(this.grado, this.grupo).subscribe(
       (response) => {
-        console.log('Respuesta de alumnos:', response); // Verifica qué está llegando
+        console.log('Respuesta de alumnos:', response);
         if (Array.isArray(response)) {
           this.alumnos = response;
         } else {
@@ -41,6 +43,10 @@ export class ViewAlumnosComponent implements OnInit {
         console.error('Error al cargar alumnos:', error);
       }
     );
+  }
+
+  onAddAlumno() {
+    this.modalService.openModal('alumno');
   }
   
 

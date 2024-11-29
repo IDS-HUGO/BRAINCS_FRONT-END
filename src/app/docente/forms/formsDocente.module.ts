@@ -8,6 +8,7 @@ import { AddContenidoIAComponent } from './add-contenido-ia/add-contenido-ia.com
 import { UpdateGroupComponent } from './update-group/update-group.component';
 import { UpdateActivityComponent } from './update-activity/update-activity.component';
 import { DeleteGroupComponent } from './delete-group/delete-group.component';
+import { AddAlumnoComponent } from './add-alumno/add-alumno.component';
 
 
 
@@ -19,7 +20,8 @@ import { DeleteGroupComponent } from './delete-group/delete-group.component';
     AddContenidoIAComponent,
     UpdateGroupComponent,
     UpdateActivityComponent,
-    DeleteGroupComponent
+    DeleteGroupComponent,
+    AddAlumnoComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { DeleteGroupComponent } from './delete-group/delete-group.component';
   exports : [
     AddGroupComponent,
     AddTareaComponent,
+    AddAlumnoComponent,
     AddContenidoComponent,
     AddContenidoIAComponent,
     UpdateGroupComponent,
