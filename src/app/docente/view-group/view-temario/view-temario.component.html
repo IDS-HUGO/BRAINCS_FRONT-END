@@ -11,7 +11,8 @@
       *ngFor="let temario of temarios" 
       [cardData]="temario" 
       cardType="temario" 
-      class="w-full">
+      (openModal)="openActivityModal(temario)"
+      userType="docente">
     </app-temario>
   </div>
 </div>

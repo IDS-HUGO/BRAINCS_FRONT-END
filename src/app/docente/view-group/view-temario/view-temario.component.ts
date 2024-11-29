@@ -9,6 +9,8 @@ import { Temario } from '../../models/temario';
 })
 export class ViewTemarioComponent implements OnInit {
   temarios: Temario[] = [];
+  selectedActivity: any = null;
+  isModalOpen = false;
   
   groupId: number = 0;
   grado: number = 0;
@@ -104,4 +106,10 @@ export class ViewTemarioComponent implements OnInit {
   closeDeleteModal(): void {
     this.temarioToDelete = null;
   }
+
+  openActivityModal(activity: any) {
+    this.selectedActivity = activity;
+    this.isModalOpen = true;
+  }
+
 }
