@@ -1,7 +1,7 @@
 <div class="flex flex-col items-center p-4">
   <div class="flex items-center justify-between w-10/12 pb-6">
     <p class="text-3xl font-bold text-[#004C4C]">Temario</p>
-    <button class="flex items-center text-[#004C4C] text-2xl font-semibold">
+    <button class="flex items-center text-[#004C4C] text-2xl font-semibold" (click)="openTemarioModal()">
       <img src="/create.png" alt="Crear" class="w-5 h-5 mr-2"> Crear
     </button>
   </div>
@@ -15,4 +15,6 @@
       userType="docente">
     </app-temario>
   </div>
+
+  <app-generic-modal></app-generic-modal>
 </div>

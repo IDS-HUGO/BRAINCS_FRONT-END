@@ -9,6 +9,7 @@ import { UpdateGroupComponent } from './update-group/update-group.component';
 import { UpdateActivityComponent } from './update-activity/update-activity.component';
 import { DeleteGroupComponent } from './delete-group/delete-group.component';
 import { AddAlumnoComponent } from './add-alumno/add-alumno.component';
+import { AddTemarioComponent } from './add-temario/add-temario.component';
 
 
 
@@ -21,7 +22,8 @@ import { AddAlumnoComponent } from './add-alumno/add-alumno.component';
     UpdateGroupComponent,
     UpdateActivityComponent,
     DeleteGroupComponent,
-    AddAlumnoComponent
+    AddAlumnoComponent,
+    AddTemarioComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { AddAlumnoComponent } from './add-alumno/add-alumno.component';
     AddAlumnoComponent,
     AddContenidoComponent,
     AddContenidoIAComponent,
+    AddTemarioComponent,
     UpdateGroupComponent,
     UpdateActivityComponent,
     DeleteGroupComponent
