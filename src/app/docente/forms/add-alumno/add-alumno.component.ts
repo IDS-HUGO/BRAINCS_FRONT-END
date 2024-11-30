@@ -53,12 +53,13 @@ export class AddAlumnoComponent implements OnInit {
 
     this.alumnosService.createAlumno(nuevoAlumno).subscribe({
       next: () => {
-        alert('Alumno agregado exitosamente.');
+        console.log("alumno agregado exitosamente")
+        this.modalService.closeModal()
         this.closeModal();
       },
       error: (err) => {
         console.error('Error al agregar alumno:', err);
-        alert('Ocurrió un error al agregar el alumno.');
+        this.modalService.closeModal()
       }
     });
   }
