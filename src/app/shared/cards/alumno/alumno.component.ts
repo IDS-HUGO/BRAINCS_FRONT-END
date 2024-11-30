@@ -18,8 +18,6 @@ export class AlumnoComponent {
 
   handleOption(option: string) {
     switch (option) {
-      case 'inspect':
-        break;
       case 'edit':
         break;
       case 'delete':
