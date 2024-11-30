@@ -1,34 +1,121 @@
-<div class="w-[600px] h-auto mx-auto bg-white p-8 rounded-lg shadow-md">
-    <div class="flex justify-center mb-4">
-      <img src="/agregar-usuario (1)(1).png" alt="Añadir Alumno" class="w-20 h-20 object-cover rounded-full">
-    </div>
-  
-    <h2 class="text-2xl font-semibold text-[#004C4C] mb-6 text-center">
-      Añadir información
-    </h2>
+<div class="w-[400px] h-auto mx-auto bg-white p-6 rounded-lg shadow-md relative">
 
-    <div class="border border-[#004C4C99] rounded-md p-6">
-      <form >
-        <div class="mb-4">
-          <label for="nombres" class="block text-gray-700 font-medium mb-2">Nombre(s)</label>
-          <input type="text" id="nombres" [(ngModel)]="nombres" name="nombres" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" placeholder="Ingrese los nombres">
+  <button type="button" class="absolute top-2 right-2 text-gray-700 font-semibold text-xl hover:text-red-700" (click)="closeModal()">
+    ×
+  </button>
+
+  <div class="flex justify-center mb-4">
+    <img src="/agregar-usuario (1)(1).png" alt="Añadir Alumno" class="w-16 h-16 object-cover">
+  </div>
+
+  <h2 class="text-xl font-semibold text-[#004C4C] mb-4 text-center">
+    Añadir información
+  </h2>
+
+  <div class="border border-[#004C4C99] rounded-md p-4">
+    <form (ngSubmit)="addAlumno()">
+
+      <div *ngIf="step === 1">
+        <div class="mb-3">
+          <label for="matricula" class="block text-gray-700 font-medium mb-1">Matrícula</label>
+          <input 
+            type="text" 
+            id="matricula" 
+            [(ngModel)]="matricula" 
+            name="matricula" 
+            class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" 
+            placeholder="Ingrese la matrícula" 
+            required>
         </div>
-  
-        <div class="mb-4">
-          <label for="apellidoPaterno" class="block text-gray-700 font-medium mb-2">Apellido Paterno</label>
-          <input type="text" id="apellidoPaterno" [(ngModel)]="apellidoPaterno" name="apellidoPaterno" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" placeholder="Ingrese el apellido paterno">
+
+        <div class="mb-3">
+          <label for="nombres" class="block text-gray-700 font-medium mb-1">Nombre(s)</label>
+          <input 
+            type="text" 
+            id="nombres" 
+            [(ngModel)]="nombres" 
+            name="nombres" 
+            class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" 
+            placeholder="Ingrese los nombres" 
+            required>
         </div>
-  
-        <div class="mb-4">
-          <label for="apellidoMaterno" class="block text-gray-700 font-medium mb-2">Apellido Materno</label>
-          <input type="text" id="apellidoMaterno" [(ngModel)]="apellidoMaterno" name="apellidoMaterno" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" placeholder="Ingrese el apellido materno">
+
+        <div class="mb-3">
+          <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-3 rounded-lg hover:bg-[#003838]"
+            (click)="nextStep()">Siguiente</button>
         </div>
-        
-      </form>
-    </div>
-  
-    <div class="flex justify-between mt-6">
-      <button type="submit" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2">Aceptar</button>
-      <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]" (click)="closeModal()">Cancelar</button>
-    </div>
-  </div>  
+      </div>
+
+      <div *ngIf="step === 2">
+        <div class="mb-3">
+          <label for="apellidoPaterno" class="block text-gray-700 font-medium mb-1">Apellido Paterno</label>
+          <input 
+            type="text" 
+            id="apellidoPaterno" 
+            [(ngModel)]="apellidoPaterno" 
+            name="apellidoPaterno" 
+            class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" 
+            placeholder="Ingrese el apellido paterno" 
+            required>
+        </div>
+
+        <div class="mb-3">
+          <label for="apellidoMaterno" class="block text-gray-700 font-medium mb-1">Apellido Materno</label>
+          <input 
+            type="text" 
+            id="apellidoMaterno" 
+            [(ngModel)]="apellidoMaterno" 
+            name="apellidoMaterno" 
+            class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" 
+            placeholder="Ingrese el apellido materno" 
+            required>
+        </div>
+
+        <div class="mb-3">
+          <label for="correoElectronico" class="block text-gray-700 font-medium mb-1">Correo Electrónico</label>
+          <input 
+            type="email" 
+            id="correoElectronico" 
+            [(ngModel)]="correoElectronico" 
+            name="correoElectronico" 
+            class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" 
+            placeholder="Ingrese el correo electrónico" 
+            required>
+        </div>
+
+        <div class="flex justify-between mt-4">
+          <button type="button" class="w-1/2 bg-[#004C4C] text-white font-semibold py-2 px-3 rounded-lg hover:bg-[#003838] mr-2"
+            (click)="prevStep()">Anterior</button>
+
+          <button type="button" class="w-1/2 bg-[#004C4C] text-white font-semibold py-2 px-3 rounded-lg hover:bg-[#003838]"
+            (click)="nextStep()">Siguiente</button>
+        </div>
+      </div>
+
+      <div *ngIf="step === 3">
+        <div class="mb-3">
+          <label for="contrasena" class="block text-gray-700 font-medium mb-1">Contraseña</label>
+          <input 
+            type="password" 
+            id="contrasena" 
+            [(ngModel)]="contrasena" 
+            name="contrasena" 
+            class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" 
+            placeholder="Ingrese la contraseña" 
+            required>
+        </div>
+
+        <div class="flex justify-between mt-4">
+          <button type="button" class="w-1/2 bg-[#004C4C] text-white font-semibold py-2 px-3 rounded-lg hover:bg-[#003838] mr-2"
+            (click)="prevStep()">Anterior</button>
+
+          <button type="submit" class="w-1/2 bg-[#004C4C] text-white font-semibold py-2 px-3 rounded-lg hover:bg-[#003838]">
+            Aceptar
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
