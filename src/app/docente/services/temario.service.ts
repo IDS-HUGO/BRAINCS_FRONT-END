@@ -11,9 +11,9 @@ import { Temario } from '../models/temario';
 export class TemarioService {
 
   private apiUrlGetTemarios = `${environment.apiUrl}temario/grupo/`;
-  private apiUrlEditTemario = `${environment.apiUrl}temario/`; // Endpoint de edición
-  private apiUrlDeleteTemario = `${environment.apiUrl}temario/`; // Endpoint de eliminación
-  private apiUrlAddTemario = `${environment.apiUrl}temario/`;  // Endpoint de agregar
+  private apiUrlEditTemario = `${environment.apiUrl}temario/`;
+  private apiUrlDeleteTemario = `${environment.apiUrl}temario/`;
+  private apiUrlAddTemario = `${environment.apiUrl}temario/`;
 
   private apiUrlGetTemarioByGroupId: string = `${environment.apiUrl}temario/grupo/`;
 
@@ -33,7 +33,6 @@ export class TemarioService {
       map((response) => {
         return response.map((temario) => {
           if (temario.documento_pdf) {
-            // Verificar si ya es una URL completa
             if (!temario.documento_pdf.startsWith('http')) {
               temario.documento_pdf = `${environment.apiUrl}${temario.documento_pdf}`;
             }
@@ -58,7 +57,7 @@ export class TemarioService {
     if (file) {
       formData.append('file', file);
     }
-    formData.append('temario', JSON.stringify(temario)); // Añadir los datos del temario
+    formData.append('temario', JSON.stringify(temario));
     const url = `${this.apiUrlEditTemario}${temario.id}?id_grupo=${temario.idGrupo}`;
     return this.http.put(url, formData);
   }
@@ -69,7 +68,16 @@ export class TemarioService {
     return this.http.delete(url);
   }
 
-  addTemario(temario: any): Observable<any> {
-    return this.http.post(this.apiUrlAddTemario, temario);
-  }
+  addTemarioWithFile(file: File, groupId: number): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+  
+    const url = `${this.apiUrlAddTemario}?id_grupo=${groupId}`;
+    return this.http.post(url, formData).pipe(
+      catchError((error) => {
+        console.error('Error al subir el archivo:', error);
+        return throwError(() => new Error('Error al subir el archivo.'));
+      })
+    );
+  }  
 }
