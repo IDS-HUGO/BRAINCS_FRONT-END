@@ -4,7 +4,7 @@
   </button>
 
   <ul class="mt-2">
-    <li>
+    <li *ngIf="!isGroupView">
       <button (click)="onOptionClick('inspect')" class="w-full text-left py-2 px-4 hover:bg-gray-100">
         <img src="inspect.png" alt="Inspeccionar" class="inline-block mr-2 h-5" />
         Inspeccionar

@@ -7,6 +7,7 @@ import { Component, Input, Output, EventEmitter  } from '@angular/core';
 })
 export class AlumnoComponent {
   @Input() cardData: any;
+  @Input() isGroupView: boolean = true;
   @Output() openModal = new EventEmitter<any>();
   showModal: boolean = false;
   alumno : string = ''

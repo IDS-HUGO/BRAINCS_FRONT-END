@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-menu-modals',
@@ -6,6 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./menu-modals.component.css']
 })
 export class MenuModalsComponent {
+  @Input() isGroupView: boolean = false;
   @Output() closeModal = new EventEmitter<void>();
   @Output() optionSelected = new EventEmitter<string>();
 

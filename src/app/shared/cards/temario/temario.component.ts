@@ -7,9 +7,10 @@ import { Component, Input, Output, EventEmitter  } from '@angular/core';
 })
 export class TemarioComponent {
   @Input() cardData: any;
+  @Input() isGroupView: boolean = true;
+  @Input() userType: string = 'alumno';
   @Output() openModal = new EventEmitter<any>();
   showModal: boolean = false;
-  @Input() userType: string = 'alumno';
 
   toggleModal() {
     if (this.userType !== 'alumno') {

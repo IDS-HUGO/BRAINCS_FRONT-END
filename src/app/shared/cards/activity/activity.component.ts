@@ -7,9 +7,10 @@ import { Component, Input, Output, EventEmitter  } from '@angular/core';
 })
 export class ActivityComponent {
   @Input() cardData: any;
+  @Input() isGroupView: boolean = true;
   @Output() openModal = new EventEmitter<any>();
-  showModal: boolean = false;
   @Input() userType: string = 'alumno';
+  showModal: boolean = false;
 
   toggleModal() {
     if (this.userType !== 'alumno') {
@@ -23,8 +24,6 @@ export class ActivityComponent {
 
   handleOption(option: string) {
     switch (option) {
-      case 'inspect':
-        break;
       case 'edit':
         break;
       case 'delete':
