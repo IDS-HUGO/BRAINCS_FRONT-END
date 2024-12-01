@@ -12,7 +12,7 @@ export class ActivityComponent {
   @Input() cardData: any;
   @Input() isGroupView: boolean = true;
   @Output() openModal = new EventEmitter<any>();
-  activityId : number = 0
+  activityId : number = 0;
   showModal: boolean = false;
 
   constructor (

@@ -11,6 +11,10 @@ import { DeleteGroupComponent } from './delete-group/delete-group.component';
 import { AddAlumnoComponent } from './add-alumno/add-alumno.component';
 import { AddTemarioComponent } from './add-temario/add-temario.component';
 import { DeleteActivityComponent } from './delete-activity/delete-activity.component';
+import { UpdateTemarioComponent } from './update-temario/update-temario.component';
+import { DeleteTemarioComponent } from './delete-temario/delete-temario.component';
+import { DeleteAlumnoComponent } from './delete-alumno/delete-alumno.component';
+import { UpdateAlumnoComponent } from './update-alumno/update-alumno.component';
 
 
 
@@ -25,7 +29,11 @@ import { DeleteActivityComponent } from './delete-activity/delete-activity.compo
     DeleteGroupComponent,
     AddAlumnoComponent,
     AddTemarioComponent,
-    DeleteActivityComponent
+    DeleteActivityComponent,
+    UpdateTemarioComponent,
+    DeleteTemarioComponent,
+    DeleteAlumnoComponent,
+    UpdateAlumnoComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +48,8 @@ import { DeleteActivityComponent } from './delete-activity/delete-activity.compo
     AddTemarioComponent,
     UpdateGroupComponent,
     UpdateActivityComponent,
+    UpdateTemarioComponent,
+    DeleteTemarioComponent,
     DeleteGroupComponent,
     DeleteActivityComponent
   ]

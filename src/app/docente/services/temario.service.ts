@@ -10,11 +10,8 @@ import { Temario } from '../models/temario';
 })
 export class TemarioService {
 
-  private apiUrlGetTemarios = `${environment.apiUrl}temario/grupo/`;
-  private apiUrlEditTemario = `${environment.apiUrl}temario/`;
-  private apiUrlDeleteTemario = `${environment.apiUrl}temario/`;
-  private apiUrlAddTemario = `${environment.apiUrl}temario/`;
-
+  private apiUrlGetTemarios : string = `${environment.apiUrl}temario/grupo/`;
+  private apiUrl : string = `${environment.apiUrl}temario/`;
   private apiUrlGetTemarioByGroupId: string = `${environment.apiUrl}temario/grupo/`;
 
   constructor(private http: HttpClient) { }
@@ -52,19 +49,23 @@ export class TemarioService {
     return this.http.get<any[]>(url);
   }
 
-  updateTemario(temario: any, file: File | null): Observable<any> {
-    const formData = new FormData();
-    if (file) {
-      formData.append('file', file);
-    }
-    formData.append('temario', JSON.stringify(temario));
-    const url = `${this.apiUrlEditTemario}${temario.id}?id_grupo=${temario.idGrupo}`;
-    return this.http.put(url, formData);
+  getTemarioById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}${id}`);
   }
-  
+
+  updateTemario(formData: FormData, idTemario: number, groupId: number): Observable<any> {
+    const url = `${this.apiUrl}${idTemario}?id_grupo=${groupId}`;
+
+    return this.http.put(url, formData).pipe(
+      catchError((error) => {
+        console.error('Error al enviar el archivo:', error);
+        return throwError(() => new Error('Error al enviar el archivo.'));
+      })
+    );
+  }
 
   deleteTemario(temarioId: number): Observable<any> {
-    const url = `${this.apiUrlDeleteTemario}${temarioId}`;
+    const url = `${this.apiUrl}${temarioId}`;
     return this.http.delete(url);
   }
 
@@ -72,7 +73,7 @@ export class TemarioService {
     const formData = new FormData();
     formData.append('file', file);
   
-    const url = `${this.apiUrlAddTemario}?id_grupo=${groupId}`;
+    const url = `${this.apiUrl}?id_grupo=${groupId}`;
     return this.http.post(url, formData).pipe(
       catchError((error) => {
         console.error('Error al subir el archivo:', error);
