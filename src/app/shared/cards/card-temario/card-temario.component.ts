@@ -41,13 +41,13 @@ export class CardTemarioComponent {
         content = content.replace('/temario/grupo/', '');
       }
       const fullUrl = content.startsWith('http') ? content : `${environment.apiUrl}${content}`;
-      this.temarioSupportFileSafe = this.sanitizer.bypassSecurityTrustResourceUrl(fullUrl);
-      this.temarioSupportFile = fullUrl;
-      this.isSupportTemarioOpen = true;
+  
+       window.open(fullUrl, '_blank');
     } else {
       console.error('No hay contenido de apoyo disponible.');
     }
   }
+  
   
 
   onCloseSupportContent() {

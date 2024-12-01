@@ -10,6 +10,7 @@ import { environment } from '../../../../enviroment/enviroment';
   export class UserService {
     private readonly docenteUrl = `${environment.apiUrl}docentes/docentes`;
     private readonly alumnoUrl = `${environment.apiUrl}alumnos/alumnos`;
+    private readonly directorUrl = `${environment.apiUrl}directores/directores`;
     public apiBaseUrl = environment.apiUrl;
 
     constructor(private http: HttpClient) {}
@@ -20,6 +21,10 @@ import { environment } from '../../../../enviroment/enviroment';
   
     getAlumno(matricula: string): Observable<any> {
       return this.http.get(`${this.alumnoUrl}/${matricula}`);
+    }
+
+    getDirector(idDirector: number): Observable<any> {
+      return this.http.get(`${this.directorUrl}/2`);
     }
 
     getImagenUsuario(usuarioId: string): Observable<ImagenResponse[]> {

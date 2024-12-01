@@ -5,9 +5,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { ViewGroupComponent } from './docente/view-group/view-group.component';
 import { ViewGroupAlumnComponent } from './alumno/view-group-alumn/view-group-alumn.component';
 import { GroupDocentComponent } from './director/group-docent/group-docent.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', component: InicioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'docente/view-group/:id/:grado/:grupo', component: ViewGroupComponent },

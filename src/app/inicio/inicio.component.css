@@ -1,0 +1,19 @@
+html {
+    scroll-behavior: smooth;
+  }
+  /* Estilos para la animación de la flecha */
+  .bounce {
+    animation: bounce 1s infinite;
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }

@@ -8,6 +8,7 @@ import { DocenteListComponent } from './docente-list/docente-list.component';
 import { SharedModule } from "../shared/shared.module";
 import { SchoolInfoModalComponent } from './school-info-modal/school-info-modal.component';
 import { GroupDocentComponent } from './group-docent/group-docent.component';
+import { DeleteDocenteComponent } from './delete-docente/delete-docente.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { GroupDocentComponent } from './group-docent/group-docent.component';
     DocenteListComponent,
     SchoolInfoModalComponent,
     GroupDocentComponent,
+    DeleteDocenteComponent,
   ],
   imports: [
     CommonModule,

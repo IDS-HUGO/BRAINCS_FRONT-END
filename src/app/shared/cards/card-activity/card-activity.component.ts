@@ -94,13 +94,13 @@ export class CardActivityComponent {
         content = content.replace('/home/ubuntu/BRAINIACS_API/', '');
       }
       const fullUrl = `${environment.apiUrl}${content}`;
-      this.activitySupportFile = fullUrl;
-      this.activitySupportFileSafe = this.sanitizer.bypassSecurityTrustResourceUrl(fullUrl); 
-      this.isSupportContentOpen = true;
+
+      window.open(fullUrl, '_blank');
     } else {
       console.error('No hay contenido de apoyo disponible.');
     }
   }
+  
   
 
   onCloseSupportContent() {

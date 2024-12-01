@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalService } from '../../modals/services/modal.service';
-
+import { DocenteService } from '../../../director/Service/docente.service';
 @Component({
   selector: 'app-card-docente',
   templateUrl: './card-docente.component.html',
@@ -16,7 +16,8 @@ export class CardDocenteComponent implements OnInit {
   @Input() userImage!: string;
   showModal: boolean = false;
 
-  constructor(private router: Router, private modalService: ModalService) {}
+  constructor(private router: Router, private modalService: ModalService, private docenteService: DocenteService
+  ) {}
 
   ngOnInit() {
     console.log('docenteId:', this.docenteId);
@@ -61,4 +62,24 @@ export class CardDocenteComponent implements OnInit {
   closeDeleteModal() {
     this.showModal = false;
   }
+
+  navigateToGroupDocente() {
+    // Redirige a la vista de detalles del grupo del docente
+    this.router.navigate(['/docente/group-docente', this.docenteId]);
+  }
+
+  handleDelete(docenteId: number) {
+    // Aquí puedes agregar la lógica para eliminar al docente
+    this.docenteService.deleteDocente(docenteId).subscribe(
+      () => {
+        console.log('Docente eliminado');
+        // Puedes agregar un método para actualizar la lista de docentes o notificar al usuario
+      },
+      (error) => {
+        console.error('Error al eliminar docente', error);
+      }
+    );
+  }
+
+
 }

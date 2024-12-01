@@ -28,6 +28,7 @@ export class ActivityComponent {
   onCardClick() {
     this.activityService.setSelectedActivity(this.cardData);
     this.modalService.openModal('inspect-activity')
+    this.openModal.emit(this.cardData);
   }
 
   handleOption(option: string) {

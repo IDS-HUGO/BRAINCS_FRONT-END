@@ -11,13 +11,16 @@ export class AppComponent implements OnInit {
   role: string | null = null;
   title = 'BRAINCS';
   modalOpen: boolean = false;
+  currentRoute: string = '';
 
   constructor(private router: Router) {}
 
   ngOnInit() {
     this.router.events.subscribe(() => {
-      this.showHeader = this.router.url !== '/login';
+      const excludedRoutes = ['/', '/login']; // Rutas donde no quieres mostrar el header
+      this.showHeader = !excludedRoutes.includes(this.router.url);
       this.role = localStorage.getItem('role');
+      this.currentRoute = this.router.url;
     });
   }
 

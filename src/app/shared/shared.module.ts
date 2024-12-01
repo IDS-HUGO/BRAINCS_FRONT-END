@@ -34,7 +34,7 @@ import { CardsModule } from "../docente/cards/cards.module";
     GenericModalComponent,
     AlumnoComponent,
     ActivityComponent,
-    TemarioComponent
+    TemarioComponent,
   ],
   imports: [
     CommonModule,
@@ -56,7 +56,7 @@ import { CardsModule } from "../docente/cards/cards.module";
     GenericModalComponent,
     ActivityComponent,
     TemarioComponent,
-    AlumnoComponent
+    AlumnoComponent, 
   ]
 })
 export class SharedModule { }
