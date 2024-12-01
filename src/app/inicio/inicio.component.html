@@ -3,6 +3,15 @@
       class="w-full h-screen bg-cover bg-center flex flex-col justify-start items-center text-teal-300 relative"
       style="background-image: url('./Frame 31.png');"
     >
+    <div class="absolute top-4 right-4 text-teal-300 flex items-center space-x-2">
+      <span>¿Eres director y no tienes cuenta? Regístrate aquí</span>
+      <button
+        class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+        (click)="navigateToRegister()"
+      >
+        Registro
+      </button>
+    </div>
 
       <div class="text-center mt-20 ">
         <h1 class="text-[#004C4C] text-9xl font-['Jomhuria'] font-normal uppercase tracking-[13px]">Conoce Braincs</h1>

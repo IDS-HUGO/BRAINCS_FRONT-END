@@ -6,10 +6,12 @@ import { ViewGroupComponent } from './docente/view-group/view-group.component';
 import { ViewGroupAlumnComponent } from './alumno/view-group-alumn/view-group-alumn.component';
 import { GroupDocentComponent } from './director/group-docent/group-docent.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
   { path: 'login', component: LoginComponent },
+  {path: 'register' , component : RegisterComponent},
   { path: 'home', component: HomeComponent },
   { path: 'docente/view-group/:id/:grado/:grupo', component: ViewGroupComponent },
   { path: 'docente/group-docent/:docenteId', component: GroupDocentComponent},

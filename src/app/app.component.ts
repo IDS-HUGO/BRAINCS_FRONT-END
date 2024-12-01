@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.router.events.subscribe(() => {
-      const excludedRoutes = ['/', '/login']; // Rutas donde no quieres mostrar el header
+      const excludedRoutes = ['/', '/login','/register']; 
       this.showHeader = !excludedRoutes.includes(this.router.url);
       this.role = localStorage.getItem('role');
       this.currentRoute = this.router.url;
