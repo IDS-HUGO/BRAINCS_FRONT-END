@@ -19,15 +19,18 @@ export class ActivityComponent {
     private activityService: ActivityService
   ) {}
 
-  toggleModal() {
+  toggleModal(event: MouseEvent) {
+    event.stopPropagation();
+
     if (this.userType !== 'alumno') {
       this.showModal = !this.showModal;
     }
   }
 
-  onCardClick() {
+  onCardClick(event: MouseEvent) {
+    event.stopPropagation(); 
     this.activityService.setSelectedActivity(this.cardData);
-    this.modalService.openModal('inspect-activity')
+    this.modalService.openModal('inspect-activity');
   }
 
   handleOption(option: string) {
@@ -39,6 +42,4 @@ export class ActivityComponent {
     }
     this.showModal = false;
   }
-
-  
 }
