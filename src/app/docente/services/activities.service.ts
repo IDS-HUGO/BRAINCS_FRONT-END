@@ -23,4 +23,6 @@ export class ActivitiesService {
     const url = `${this.apiUrl}actividades/${groupId}`;
     return this.http.get(url);
   }
+
+  
 }

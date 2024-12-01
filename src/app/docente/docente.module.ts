@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
     HomeDocenteComponent,
     ViewActivityComponent,
     ViewAlumnosComponent,
-    ViewTemarioComponent
+    ViewTemarioComponent,
   ],
   imports: [
     CommonModule,

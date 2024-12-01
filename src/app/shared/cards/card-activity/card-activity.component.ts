@@ -29,7 +29,6 @@ export class CardActivityComponent {
     private alertService: AlertService
   ) {}
 
-  // Cierra el modal
   onCloseModal() {
     this.close.emit();
   }

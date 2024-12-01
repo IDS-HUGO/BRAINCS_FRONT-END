@@ -18,6 +18,7 @@ import { GenericModalComponent } from './modals/generic-modal/generic-modal.comp
 import { AlumnoComponent } from './cards/alumno/alumno.component';
 import { ActivityComponent } from './cards/activity/activity.component';
 import { TemarioComponent } from './cards/temario/temario.component';
+import { CardsModule } from "../docente/cards/cards.module";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { TemarioComponent } from './cards/temario/temario.component';
     FormsDocenteModule,
     AddDocenteModalModule,
     HttpClientModule,
+    CardsModule
 ],
   exports : [
     HeaderComponent,

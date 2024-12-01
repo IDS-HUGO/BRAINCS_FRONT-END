@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter  } from '@angular/core';
+import { ModalService } from '../../modals/services/modal.service';
+import { ActivityService } from '../services/activity.service';
 
 @Component({
   selector: 'app-activity',
@@ -12,6 +14,11 @@ export class ActivityComponent {
   @Input() userType: string = 'alumno';
   showModal: boolean = false;
 
+  constructor (
+    private modalService : ModalService,
+    private activityService: ActivityService
+  ) {}
+
   toggleModal() {
     if (this.userType !== 'alumno') {
       this.showModal = !this.showModal;
@@ -19,7 +26,8 @@ export class ActivityComponent {
   }
 
   onCardClick() {
-    this.openModal.emit(this.cardData);
+    this.activityService.setSelectedActivity(this.cardData);
+    this.modalService.openModal('inspect-activity')
   }
 
   handleOption(option: string) {
@@ -31,4 +39,6 @@ export class ActivityComponent {
     }
     this.showModal = false;
   }
+
+  
 }

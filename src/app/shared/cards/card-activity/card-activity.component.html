@@ -29,24 +29,24 @@
     <div class="mt-8 bg-teal-50 p-6 rounded-lg" *ngIf="userType === 'alumno'">
       <h3 class="text-teal-800 font-semibold mb-4">Subir Actividad</h3>
       
-      <!-- Loader -->
+
       <div *ngIf="loaderService.loading$ | async" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
         <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-teal-600"></div>
       </div>
       
       <div class="flex flex-col space-y-4">
-        <!-- Label and file input -->
+
         <label for="file-upload" class="block bg-teal-600 text-white text-center font-medium py-2 rounded-lg cursor-pointer hover:bg-teal-700 transition duration-300">
           Seleccionar Archivo
         </label>
         <input id="file-upload" type="file" (change)="onFileSelected($event)" class="hidden">
         
-        <!-- File name display -->
+
         <p class="text-gray-500 text-center">
           {{ selectedFile?.name || 'Sin archivos seleccionados' }}
         </p>
     
-        <!-- Submit button -->
+
         <button 
           (click)="onSubmitActivity()"
           class="bg-teal-600 text-white text-center font-medium py-2 rounded-lg hover:bg-teal-700 transition duration-300">
