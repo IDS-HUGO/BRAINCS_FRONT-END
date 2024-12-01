@@ -48,6 +48,7 @@ import { UpdateAlumnoComponent } from './update-alumno/update-alumno.component';
     AddTemarioComponent,
     UpdateGroupComponent,
     UpdateActivityComponent,
+    UpdateTemarioComponent,
     DeleteGroupComponent,
     DeleteActivityComponent
   ]
