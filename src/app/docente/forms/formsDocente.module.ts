@@ -49,9 +49,11 @@ import { UpdateAlumnoComponent } from './update-alumno/update-alumno.component';
     UpdateGroupComponent,
     UpdateActivityComponent,
     UpdateTemarioComponent,
+    UpdateAlumnoComponent,
     DeleteTemarioComponent,
     DeleteGroupComponent,
-    DeleteActivityComponent
+    DeleteActivityComponent,
+    DeleteAlumnoComponent
   ]
 })
 export class FormsDocenteModule { }

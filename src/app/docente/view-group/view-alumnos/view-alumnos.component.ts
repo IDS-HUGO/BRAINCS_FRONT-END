@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from '../../services/alumnos.service';
 import { ModalService } from '../../../shared/modals/services/modal.service';
+import { AlumnoSelectedService } from '../../../shared/cards/services/alumno-selected.service';
 
 @Component({
   selector: 'app-view-alumnos',
@@ -16,6 +17,7 @@ export class ViewAlumnosComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private alumnosService: AlumnosService,
+    private alumnoSelectedService : AlumnoSelectedService,
     private modalService : ModalService
   ) {}
 
@@ -43,6 +45,11 @@ export class ViewAlumnosComponent implements OnInit {
         console.error('Error al cargar alumnos:', error);
       }
     );
+  }
+
+  onAlumnoSelected(alumno: any) {
+    this.alumnoSelectedService.setSelectedAlumno(alumno);
+    this.modalService.openModal('inspect-alumno');
   }
 
   onAddAlumno() {
