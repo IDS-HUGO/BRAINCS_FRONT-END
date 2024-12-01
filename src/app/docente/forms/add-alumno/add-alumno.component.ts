@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from '../../services/alumnos.service';
 import { ModalService } from '../../../shared/modals/services/modal.service';
+import { LoaderService } from '../../../shared/modals/services/loader.service';
+import { AlertService } from '../../../shared/modals/services/alert.service';
 import { Alumno } from '../../models/alumno';
 
 @Component({
@@ -12,21 +14,22 @@ import { Alumno } from '../../models/alumno';
 export class AddAlumnoComponent implements OnInit {
 
   step = 1;
-  matricula : string = ''
+  matricula: string = '';
   nombres: string = '';
   apellidoPaterno: string = '';
   apellidoMaterno: string = '';
   correoElectronico: string = '';
   contrasena: string = '';
-  calificacion : number = 0;
-  
+  calificacion: number = 0;
   grado: number = 0;
   grupo: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private alumnosService: AlumnosService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    public loaderService: LoaderService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -48,29 +51,33 @@ export class AddAlumnoComponent implements OnInit {
       contrasena: this.contrasena,
       grado: this.grado,
       grupo: this.grupo,
-      calif_total : this.calificacion
+      calif_total: this.calificacion
     };
+
+    this.loaderService.show();
 
     this.alumnosService.createAlumno(nuevoAlumno).subscribe({
       next: () => {
-        console.log("alumno agregado exitosamente")
-        this.modalService.closeModal()
+        this.alertService.showSuccess('Alumno agregado exitosamente');
         this.closeModal();
       },
       error: (err) => {
-        console.error('Error al agregar alumno:', err);
-        this.modalService.closeModal()
+        const status = err.status || 500;
+        this.alertService.showError(status, 'Error al agregar alumno');
+      },
+      complete: () => {
+       this.loaderService.hide();
       }
     });
   }
 
-  nextStep() {
+  nextStep(): void {
     if (this.step < 3) {
       this.step++;
     }
   }
 
-  prevStep() {
+  prevStep(): void {
     if (this.step > 1) {
       this.step--;
     }

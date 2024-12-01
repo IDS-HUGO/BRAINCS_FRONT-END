@@ -7,8 +7,6 @@ import { HomeModule } from './home/home.module';
 import { AlumnoModule } from './alumno/alumno.module';
 import { DocenteModule } from './docente/docente.module';
 import { SharedModule } from "./shared/shared.module";
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpStatusInterceptor } from './interceptors/http-status.interceptor';
 import { InicioComponent } from './inicio/inicio.component';
 
 
@@ -29,11 +27,7 @@ import { InicioComponent } from './inicio/inicio.component';
     
 ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpStatusInterceptor,
-      multi: true,
-    },
+
     provideClientHydration()
     
   ],

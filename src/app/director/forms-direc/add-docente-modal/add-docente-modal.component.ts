@@ -12,7 +12,7 @@ import { AlertService } from '../../../shared/modals/services/alert.service';
 })
 export class AddDocenteModalComponent {
   @Output() closeModalEvent = new EventEmitter<void>();
-
+  step=1;
   docente: Docente = {
     id_docente: 0,
     nombre: '',
@@ -23,6 +23,8 @@ export class AddDocenteModalComponent {
     contrasena: '',
   };
 
+  selectedFile: File | null = null;
+
   constructor(
     private docenteService: DocenteService,
     private modalService: ModalService,
@@ -32,6 +34,13 @@ export class AddDocenteModalComponent {
 
   closeModal() {
     this.modalService.closeModal();
+  }
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+    }
   }
 
   onSubmit() {
@@ -45,13 +54,36 @@ export class AddDocenteModalComponent {
     }
 
     this.loaderService.show(); 
+
     this.docenteService.addDocente(this.docente).subscribe(
       (response) => {
-        this.loaderService.hide(); this.alertService.showSuccess(
-          `El docente ${this.docente.nombre} fue registrado correctamente.`,
-          '¡Docente agregado exitosamente!'
-        );
-        this.closeModal();
+       if (this.selectedFile) {
+          this.docenteService.uploadUserImage(this.docente.usuario, this.selectedFile).subscribe(
+            (imageResponse) => {
+              this.loaderService.hide();
+              this.alertService.showSuccess(
+                `El docente ${this.docente.nombre} fue registrado correctamente con su imagen.`,
+                '¡Docente agregado exitosamente!'
+              );
+              this.closeModal();
+            },
+            (imageError) => {
+              this.loaderService.hide();
+              console.error('Error al subir la imagen', imageError);
+              this.alertService.showWarning(
+                'Docente agregado, pero ocurrió un error al subir la imagen.',
+                'Error al subir imagen'
+              );
+            }
+          );
+        } else {
+          this.loaderService.hide();
+          this.alertService.showSuccess(
+            `El docente ${this.docente.nombre} fue registrado correctamente.`,
+            '¡Docente agregado exitosamente!'
+          );
+          this.closeModal();
+        }
       },
       (error) => {
         this.loaderService.hide();
@@ -62,5 +94,17 @@ export class AddDocenteModalComponent {
         );
       }
     );
+  }
+
+  nextStep(): void {
+    if (this.step < 3) {
+      this.step++;
+    }
+  }
+
+  prevStep(): void {
+    if (this.step > 1) {
+      this.step--;
+    }
   }
 }

@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { TemarioService } from '../../services/temario.service';
 import { ModalService } from '../../../shared/modals/services/modal.service';
 import { TemarioSelectedService } from '../../../shared/cards/services/temario-selected.service';
+import { LoaderService } from '../../../shared/modals/services/loader.service';
+import { AlertService } from '../../../shared/modals/services/alert.service';
 
 @Component({
   selector: 'app-update-temario',
@@ -19,7 +21,9 @@ export class UpdateTemarioComponent implements OnInit {
     private route: ActivatedRoute,
     private temarioService: TemarioService,
     private modalService: ModalService,
-    private temarioSelectedService : TemarioSelectedService
+    private temarioSelectedService: TemarioSelectedService,
+    public loaderService: LoaderService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {
@@ -29,58 +33,66 @@ export class UpdateTemarioComponent implements OnInit {
         this.idTemario = id;
         this.loadTemarioData();
       } else {
-        console.error('No se recibió ningún ID de temario');
+        this.alertService.showError(400, 'No se recibió ningún ID de temario');
       }
     });
   }
-  
 
   loadTemarioData() {
     if (this.idTemario) {
-      this.temarioService.getTemarioById(this.idTemario).subscribe(
-        (temario) => {
+      this.loaderService.show();
+      this.temarioService.getTemarioById(this.idTemario).subscribe({
+        next: (temario) => {
           this.temarioData = temario;
+          this.loaderService.hide();
         },
-        (error) => {
+        error: (error) => {
           console.error('Error al cargar el temario:', error);
-        }
-      );
+          this.loaderService.hide();
+          this.alertService.showError(error.status || 500, 'Error al cargar el temario');
+        },
+      });
     }
-  }  
+  }
 
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
       this.file = file;
     } else {
-      console.error('No se seleccionó un archivo.');
+      this.alertService.showWarning('No se seleccionó un archivo.');
     }
   }
 
   handleSubmit() {
     if (this.idTemario && this.temarioData) {
       if (!this.file) {
-        console.error('No se seleccionó un archivo.');
+        this.alertService.showWarning('No se seleccionó un archivo para subir.');
         return;
       }
-  
+
       const formData = new FormData();
       formData.append('contenido', this.file, this.file.name);
 
-      this.temarioService.updateTemario(formData, this.idTemario, this.groupId).subscribe(
-        (response) => {
-          console.log('Temario actualizado exitosamente:', response);
+      this.loaderService.show();
+      this.temarioService.updateTemario(formData, this.idTemario, this.groupId).subscribe({
+        next: (response) => {
+          this.alertService.showSuccess('Temario actualizado exitosamente.');
+          console.log('Temario actualizado:', response);
           this.closeModal();
         },
-        (error) => {
+        error: (error) => {
           console.error('Error al actualizar el temario:', error);
-        }
-      );
+          this.alertService.showError(error.status || 500, 'Error al actualizar el temario');
+        },
+        complete: () => {
+          this.loaderService.hide();
+        },
+      });
     } else {
-      console.error('Faltan datos necesarios para enviar el formulario.');
+      this.alertService.showWarning('Faltan datos necesarios para enviar el formulario.');
     }
   }
-  
 
   closeModal() {
     this.modalService.closeModal();
