@@ -1,0 +1,531 @@
+[33mcommit 1e6a44cc08c40dc48d09aac7433df58888bb46a2[m[33m ([m[1;36mHEAD -> [m[1;32mDocente[m[33m, [m[1;31morigin/Docente[m[33m)[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sat Nov 30 18:38:32 2024 -0600
+
+    resolve bug in modal click
+
+[33mcommit 1c50ac2bd673f3ac1f8c951350fa72c114ba8196[m[33m ([m[1;31morigin/develop[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sat Nov 30 18:02:45 2024 -0600
+
+    add modal inspect for activity
+
+[33mcommit 0a03b44520025eb3143a6db6f10adae1410ecf8d[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sat Nov 30 16:58:19 2024 -0600
+
+    delete url content
+
+[33mcommit 8ed11e56f7ce35e890cc814ace5cedfa4852b35c[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sat Nov 30 15:38:09 2024 -0600
+
+    add temario
+
+[33mcommit 44156d2588616657882562b0a0b90cda89417772[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sat Nov 30 14:49:48 2024 -0600
+
+    delete .exe
+
+[33mcommit 5246c071d30b40af3e8c4a3cb718ca7b5d538a52[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sat Nov 30 14:33:07 2024 -0600
+
+    restring handleInspect option in menu
+
+[33mcommit f0a5d03cb0deb88d2d2ecadddad93538391950b9[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sat Nov 30 13:29:20 2024 -0600
+
+    delete alertds
+
+[33mcommit 56738344d1c2aba4f050f9b3b8266cb8ed0f2610[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sat Nov 30 13:09:54 2024 -0600
+
+    add create alumno
+
+[33mcommit 1230fd0a2e66822e71aeebe0c29b420e2d88b2b9[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Fri Nov 29 13:42:50 2024 -0600
+
+    add temario form model
+
+[33mcommit f601378603bcc701a38e6291a2268d4627d26ac6[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Fri Nov 29 13:25:54 2024 -0600
+
+    modal alumnos
+
+[33mcommit b3d3e13709a1f3998155570ae8b21e8f5f696767[m
+Merge: e6553fc b68a96a
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Fri Nov 29 13:17:19 2024 -0600
+
+    Merge branch 'develop' of https://github.com/IDS-HUGO/BRAINCS_FRONT-END into Docente
+
+[33mcommit b68a96a34fa0e3d3eb3a92caa4d1f69ef83dbf75[m[33m ([m[1;31morigin/Alumno[m[33m)[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Fri Nov 29 13:15:07 2024 -0600
+
+    STYLES
+
+[33mcommit e6553fc8616af7c1abcaa40d418e7d417d268c07[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Fri Nov 29 13:01:50 2024 -0600
+
+    modal menu
+
+[33mcommit 2cad501fa5ad22009c3529d9ecc79f2ff9557467[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Thu Nov 28 23:04:01 2024 -0600
+
+    styles agregados
+
+[33mcommit 25e721031ccbf51172a6dfc96dccb006203d8215[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Thu Nov 28 21:58:29 2024 -0600
+
+    Modales de las Cards del Modulo Alumno
+
+[33mcommit ad75fecea629baa84f5df71c22bd3e4d46c730eb[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Thu Nov 28 16:39:54 2024 -0600
+
+    Style de Menu Modal
+
+[33mcommit 1c4eee6ec107bdbb40f10c18a40d8237be993e89[m
+Merge: d2be129 de5bb58
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Thu Nov 28 10:25:12 2024 -0600
+
+    Merge branch 'develop' of https://github.com/IDS-HUGO/BRAINCS_FRONT-END into Alumno
+
+[33mcommit d2be129b7411e504d78c99f72f584805d3eb5a1f[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Thu Nov 28 10:24:21 2024 -0600
+
+    cards
+
+[33mcommit de5bb582c15370f5f6b79a313530b0f52dcbd414[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Thu Nov 28 06:52:31 2024 -0600
+
+    replace modals
+
+[33mcommit 1b3a3f6c4d71c254b81b33aa4e794946be46942f[m
+Merge: 069b2fe 1a2d120
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Wed Nov 27 22:58:13 2024 -0600
+
+    Conflictos de Shared resueltos
+
+[33mcommit 069b2fe90cb9415cc83717cbedf2cd27462a4db2[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Wed Nov 27 22:52:29 2024 -0600
+
+    Modificaciones en Home
+
+[33mcommit 1a2d120068c239a56c45cd1cd28954c580e552a6[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Wed Nov 27 22:40:55 2024 -0600
+
+    add delete modal in generic
+
+[33mcommit 39f7954b1e77f87fc4e424902982ce47667d52a0[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Wed Nov 27 22:06:56 2024 -0600
+
+    generic-modal
+
+[33mcommit 57a42ecc8a0681e3ae37f7578e28d767bb42dbb1[m
+Merge: 3c38cd7 5ccda21
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Wed Nov 27 19:37:56 2024 -0600
+
+    Resolucion de conflictos
+
+[33mcommit 3c38cd73bbafb830dc1b954ea39cb60473eaee8b[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Wed Nov 27 19:27:58 2024 -0600
+
+    Modal de perfil global
+
+[33mcommit 5ccda21d78be1b541c55a3942e874829d4553032[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Wed Nov 27 02:31:32 2024 -0600
+
+    modify desing in card alumnos
+
+[33mcommit b28d0d5c325e382b3730520ff151ea3e04d8b9fa[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Wed Nov 27 02:24:53 2024 -0600
+
+    resolve problems in cards
+
+[33mcommit 7d1fd0c173bc574231302a32d0a15b75e4b761a5[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Wed Nov 27 01:42:12 2024 -0600
+
+    resolve problem in modals
+
+[33mcommit 8de94524571dc64fbc70cb04cd619f3d3c81fb99[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Wed Nov 27 00:55:51 2024 -0600
+
+    resolve problem in image user
+
+[33mcommit f69a39c6e512fcb4e223fd97e692c3feca3d8c7c[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Wed Nov 27 00:20:04 2024 -0600
+
+    resolve merge conflicts
+
+[33mcommit cdd38a772d9c6e09df672c2c5234c6ffb8439a4c[m
+Merge: 63cdee9 d5051eb
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Wed Nov 27 00:19:24 2024 -0600
+
+    Merge branch 'develop' of https://github.com/IDS-HUGO/BRAINCS_FRONT-END into Docente
+
+[33mcommit 63cdee9bfade7f3ed4391b05f901fefabeac6e3d[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Tue Nov 26 10:44:56 2024 -0600
+
+    local mandujano chamges
+
+[33mcommit 32004bd608b1a9958a82ef0d338bc6fb3a0ddd56[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Tue Nov 26 09:53:54 2024 -0600
+
+    temario
+
+[33mcommit d5051eb72af865f21bfea865e2670a1ece201973[m
+Merge: d3dcc82 09a4071
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Tue Nov 26 08:55:25 2024 -0600
+
+    Resolucion de conflictos
+
+[33mcommit d3dcc8293602150a8e4b099a91ad60b721ed19ed[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Tue Nov 26 08:52:22 2024 -0600
+
+    Funcionalidades del Modulo Alumno Completo
+
+[33mcommit 09a407178a0ceaab6a1a77ec4ce95ef57d5e22ee[m[33m ([m[1;31morigin/Director[m[33m)[m
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Tue Nov 26 08:48:43 2024 -0600
+
+    Funcionalidades del Modulo Director Completo
+
+[33mcommit eabe1448a0c2c3a403c44d6dd67fb0ca81984fcb[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Tue Nov 26 08:26:08 2024 -0600
+
+    add  Docente
+
+[33mcommit 5ba54ceff0ef8aae1d325636268cc64fb5048bdf[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Tue Nov 26 07:31:01 2024 -0600
+
+    modals
+
+[33mcommit 15b586c11919ca0a8a85d436955d6646f4bba6a2[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Tue Nov 26 06:54:13 2024 -0600
+
+    add rol dinamico
+
+[33mcommit 0ea86e3450d5cf5bcc979e2db89f37c9270e991f[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Tue Nov 26 06:51:09 2024 -0600
+
+    add cards groups
+
+[33mcommit 9bc780be955d7135f66106a66a2364e10d660995[m
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Tue Nov 26 04:30:44 2024 -0600
+
+    tytgu
+
+[33mcommit c79486a868c67b5a1c54ed9a3d017c8e5221713e[m
+Merge: 9cb2ad3 ebb5b90
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Tue Nov 26 04:30:19 2024 -0600
+
+    Merge branch 'Director' of https://github.com/IDS-HUGO/BRAINCS_FRON-END into Director
+
+[33mcommit 9cb2ad3b4bbc489a236d6a9b62b71177bdee8e17[m
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Tue Nov 26 04:27:29 2024 -0600
+
+    CONFLICTOS RESUELTOS
+
+[33mcommit cdc495b67f8202340a571232f4c6ea33a9ef3246[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Tue Nov 26 04:05:58 2024 -0600
+
+    chatbot
+
+[33mcommit ebb5b900e0479a7b6f7f8feb6b185371437f5f5e[m
+Merge: 0df6c75 41eedc3
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Tue Nov 26 04:01:53 2024 -0600
+
+    MERGE DIRECTOR-DEVELOP ADD STYLES AND VIEW IMAGE
+
+[33mcommit 0df6c757d08adba66a9f36ec4b21da46ed924168[m
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Tue Nov 26 03:54:17 2024 -0600
+
+    STYLES AND VIEW IMAGE FROM USER
+
+[33mcommit 28e7de85d840d79aa1e83f4f85a8092573296eb7[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 22:39:03 2024 -0600
+
+    add content whit IA
+
+[33mcommit 801c46547bb7feb9cbc640c7f3bb72b6fbcb3de4[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 22:07:39 2024 -0600
+
+    create activity and contenido
+
+[33mcommit 41eedc312a8997f13832c5a06280932331ab979c[m
+Merge: 22f5272 2b22506
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Mon Nov 25 19:27:12 2024 -0600
+
+    Visualizacion del Temario
+
+[33mcommit 27abd03542023f2bf6a7288d4ea5a8772030172b[m
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Mon Nov 25 19:12:41 2024 -0600
+
+    ALERT PARA PROCESOS
+
+[33mcommit a8dff120c8090d337425f603efaeaf3ac9a62910[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 16:26:47 2024 -0600
+
+    change flow in modals
+
+[33mcommit a5e7af63038c90ab6e2e76bb9d25837e5b7a51ed[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 16:16:57 2024 -0600
+
+    rediseño en modal de actividades
+
+[33mcommit a3015005e10b9afe1f4250f2865473e8f35600cd[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 16:05:10 2024 -0600
+
+    add link
+
+[33mcommit ed040c3f97ddbe4abd3d85f95a78457bcc2a17ff[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 15:15:08 2024 -0600
+
+    add get activities
+
+[33mcommit 22f5272fb34559173e2a5f35da9cc311d4e28e45[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Mon Nov 25 14:37:23 2024 -0600
+
+    Visualizacion del contenido
+
+[33mcommit 2b22506a585dc28bf59efc6d0b10d6219596c216[m
+Merge: 43b327b 905166d
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 14:34:09 2024 -0600
+
+    Merge branch 'Docente' of https://github.com/IDS-HUGO/BRAINCS_FRONT-END into develop
+
+[33mcommit 905166da7b30e0d3a05637d6536cdf368840d5d1[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 14:31:45 2024 -0600
+
+    Get activities
+
+[33mcommit 43b327b2acb9d26720e037a65817f34dd1035f38[m
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Mon Nov 25 12:12:14 2024 -0600
+
+    ADD DOCENTE FINISH
+
+[33mcommit 1bb820cfa019494484ffe3bc0decdea0be31cda0[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 12:01:44 2024 -0600
+
+    reoslve conflicts in modals
+
+[33mcommit fae22f6cd5146a3bc62c2fcadbaabf62e534e4f8[m
+Merge: 0218dcf 8733230
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Mon Nov 25 10:43:50 2024 -0600
+
+    Resueltos conflictos tras hacer pull desde develop
+
+[33mcommit 0218dcf7d8d53b465680ecd4c26ef3e55c6dad9b[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Mon Nov 25 10:33:27 2024 -0600
+
+    Alerts
+
+[33mcommit cd89889ef79138bc956622a1fe41c2c9a0f4f47a[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 06:08:50 2024 -0600
+
+    service createActivity
+
+[33mcommit be20d9f3870bea55c7b1805fa80e6dac97389a4d[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 05:18:09 2024 -0600
+
+    change flow the modals
+
+[33mcommit d3f9f2663eaed9150cf341e609d04c6fb5967505[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 05:13:25 2024 -0600
+
+    edit moldal and operations
+
+[33mcommit 2409eeca60f125c705a33dff06fb5e9ba8fea738[m
+Merge: 1aecb95 8733230
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Mon Nov 25 03:27:05 2024 -0600
+
+    Merge branch 'develop' of https://github.com/IDS-HUGO/BRAINCS_FRON-END into Director
+
+[33mcommit 873323090ffc7ddd1cd3a79673b8249f4ed6de77[m
+Merge: c241270 2bb548b
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Mon Nov 25 03:26:03 2024 -0600
+
+    CONFLICTOS RESUELTOS
+
+[33mcommit 1aecb95efc28fbdd6313fda315dabfbe3836e005[m
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Mon Nov 25 02:49:24 2024 -0600
+
+    CAMBIOS HUGO
+
+[33mcommit ecf3e16c5adc53daef123a40a83e4334c27c573e[m
+Merge: c241270 2bb548b
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Mon Nov 25 02:46:35 2024 -0600
+
+    CAMBIOS EN DIRECTOR (HUGO)
+
+[33mcommit c241270578e64ba981b8bf8a5ff16c9e93f49456[m
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Mon Nov 25 02:45:17 2024 -0600
+
+    CREATE MODULE HEADER-MODALS-HOME
+
+[33mcommit 2bb548b0e40f1e554d1b36a32a1c0861af51de94[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Mon Nov 25 01:40:15 2024 -0600
+
+    generate content whit ia
+
+[33mcommit 522a49ae1e4b3421a705204625a425bb740362b0[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sun Nov 24 19:36:12 2024 -0600
+
+    endConfig modal content
+
+[33mcommit 00a35cd07192ba8eb715884a75e55971d34181ef[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sun Nov 24 17:56:37 2024 -0600
+
+    Finish CRUD GROUP
+
+[33mcommit 0a871b735cd059532b7e62305d2bedcd1ef55e86[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Sun Nov 24 15:07:24 2024 -0600
+
+    add: conexion con la api
+
+[33mcommit 2457ddec487d004ffad4a06f6550c3b1106cf9bc[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sun Nov 24 14:43:59 2024 -0600
+
+    Add delete group
+
+[33mcommit 907bed611bbd07961269be5ad7242b2920acad3d[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sun Nov 24 11:07:40 2024 -0600
+
+    condition in login
+
+[33mcommit 2bf13692749e2ef4aaf006ec13b5c2ef86bcb734[m
+Merge: 6ae4bc1 b7962bb
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sun Nov 24 10:54:42 2024 -0600
+
+    Cards Docente
+
+[33mcommit 6ae4bc17578e25c70797e9db6d40e8aa1cd03127[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sun Nov 24 10:50:28 2024 -0600
+
+    modals
+
+[33mcommit b7962bb3d02bdf0f10f636f1679abc2605091901[m
+Merge: 707a6cb c770fe8
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Sun Nov 24 10:45:16 2024 -0600
+
+    ADD MODULE DIRECTOR
+
+[33mcommit 707a6cbd977c571928ccfdf4d1728fc99850e5ae[m
+Author: IDS-HUGO <hugofranciscoluis@gmail.com>
+Date:   Sun Nov 24 10:34:49 2024 -0600
+
+    ADD MODULE DIRECTOR
+
+[33mcommit c770fe8ce80cf12a41eb5b6ec11edcf6e8467cfe[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sat Nov 23 16:53:21 2024 -0600
+
+    connected : Group,AddGropu
+
+[33mcommit 65329affc48b19427c4b8687cf34dd1fd0f66e61[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Thu Nov 21 22:10:34 2024 -0600
+
+    Connected view groups
+
+[33mcommit 120fad1ce8ffff23cab020ba67d9d09e9fb67d5c[m[33m ([m[1;31morigin/auth[m[33m)[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Thu Nov 21 12:38:02 2024 -0600
+
+    connected whit API
+
+[33mcommit 3b5a04e5a7d9e6fca7615173b15ee592c50a5ade[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Wed Nov 20 12:44:01 2024 -0600
+
+    add color login and border cards
+
+[33mcommit 2d1c2aabc14201c1d7388f10562cf8abdde83e78[m
+Author: Alessandra Ulloa <233303@ids.upchiapas.edu.mx>
+Date:   Mon Nov 18 00:25:41 2024 -0600
+
+    refactor(cards): usar módulo shared para simplificar la estructura de las cards
+
+[33mcommit 9147f02cd7d6d50fcf160adeb636fafde8e6c0ee[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sun Nov 17 14:56:25 2024 -0600
+
+    end modal process(1)
+
+[33mcommit 0179cc00b233e4af6729fe4182af2cece5a082ea[m
+Author: Eduardo Mandujano <jesusgutierrez191105@gmail.com>
+Date:   Sun Nov 17 13:52:53 2024 -0600
+
+    Add more modal process

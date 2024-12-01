@@ -10,12 +10,14 @@ export class MenuModalsComponent {
   @Output() closeModal = new EventEmitter<void>();
   @Output() optionSelected = new EventEmitter<string>();
 
-  closeModalPopup() {
+  closeModalPopup(event: MouseEvent) {
+    event.stopPropagation();
     this.closeModal.emit();
   }
 
-  onOptionClick(option: string) {
+  onOptionClick(option: string, event: MouseEvent) {
+    event.stopPropagation();
     this.optionSelected.emit(option);
-    this.closeModalPopup();
+    this.closeModalPopup(event);
   }
 }

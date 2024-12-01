@@ -1,23 +1,23 @@
 <div>
-  <button (click)="closeModalPopup()" class="absolute -top-3 right-1 text-gray-400 hover:text-red-600 p-2">
+  <button (click)="closeModalPopup($event)" class="absolute -top-3 right-1 text-gray-400 hover:text-red-600 p-2">
     <span class="text-xl">&times;</span>
   </button>
 
   <ul class="mt-2">
     <li *ngIf="!isGroupView">
-      <button (click)="onOptionClick('inspect')" class="w-full text-left py-2 px-4 hover:bg-gray-100">
+      <button (click)="onOptionClick('inspect', $event)" class="w-full text-left py-2 px-4 hover:bg-gray-100">
         <img src="inspect.png" alt="Inspeccionar" class="inline-block mr-2 h-5" />
         Inspeccionar
       </button>
     </li>
     <li>
-      <button (click)="onOptionClick('edit')" class="w-full text-left py-2 px-4 hover:bg-gray-100">
+      <button (click)="onOptionClick('edit', $event)" class="w-full text-left py-2 px-4 hover:bg-gray-100">
         <img src="edit.png" alt="Editar" class="inline-block mr-2 h-5" />
         Editar
       </button>
     </li>
     <li>
-      <button (click)="onOptionClick('delete')" class="w-full text-left py-2 px-4 text-red-500 hover:bg-red-100">
+      <button (click)="onOptionClick('delete', $event)" class="w-full text-left py-2 px-4 text-red-500 hover:bg-red-100">
         <img src="delete.png" alt="Eliminar" class="inline-block mr-2 h-5" />
         Eliminar
       </button>
