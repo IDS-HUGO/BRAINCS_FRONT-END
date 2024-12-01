@@ -46,6 +46,9 @@
           break;
         case 'delete':
           console.log('Eliminar temario:', this.cardData.id_temario);
+          this.modalService.openModal('deleteTemario')
+          this.temarioSelected.setSelecteTemarioId(this.cardData.id_temario);
+          console.log('Emitir evento con ID del temario:', this.cardData.id_temario);
           break;
       }
       this.showModal = false;
