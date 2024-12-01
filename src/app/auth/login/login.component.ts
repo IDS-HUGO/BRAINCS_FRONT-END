@@ -57,4 +57,9 @@ export class LoginComponent {
       });
     }
   }
+
+  onGoBack() {
+    this.router.navigate(['']);
+  }
+
 }

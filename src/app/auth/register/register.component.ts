@@ -65,4 +65,11 @@ export class RegisterComponent {
       });
     }
   }
+
+
+  onGoBack() {
+    this.router.navigate(['']); 
+  }
+
+
 }
