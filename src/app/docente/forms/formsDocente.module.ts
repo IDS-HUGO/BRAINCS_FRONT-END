@@ -10,6 +10,7 @@ import { UpdateActivityComponent } from './update-activity/update-activity.compo
 import { DeleteGroupComponent } from './delete-group/delete-group.component';
 import { AddAlumnoComponent } from './add-alumno/add-alumno.component';
 import { AddTemarioComponent } from './add-temario/add-temario.component';
+import { DeleteActivityComponent } from './delete-activity/delete-activity.component';
 
 
 
@@ -23,7 +24,8 @@ import { AddTemarioComponent } from './add-temario/add-temario.component';
     UpdateActivityComponent,
     DeleteGroupComponent,
     AddAlumnoComponent,
-    AddTemarioComponent
+    AddTemarioComponent,
+    DeleteActivityComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { AddTemarioComponent } from './add-temario/add-temario.component';
     AddTemarioComponent,
     UpdateGroupComponent,
     UpdateActivityComponent,
-    DeleteGroupComponent
+    DeleteGroupComponent,
+    DeleteActivityComponent
   ]
 })
 export class FormsDocenteModule { }
