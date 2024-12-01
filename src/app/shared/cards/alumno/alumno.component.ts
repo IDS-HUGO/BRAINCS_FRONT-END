@@ -11,6 +11,7 @@ export class AlumnoComponent {
   @Input() cardData: any;
   @Input() isGroupView: boolean = true;
   @Output() openModal = new EventEmitter<any>();
+  idAlumno : number = 0;
   showModal: boolean = false;
 
   constructor (
@@ -25,17 +26,23 @@ export class AlumnoComponent {
     this.modalService.openModal('inspect-alumno');
   }  
 
-  toggleModal() {
+  toggleModal(event : MouseEvent) {
+    event.stopPropagation()
     this.showModal = !this.showModal;
   }
 
   handleOption(option: string) {
     switch (option) {
       case 'edit':
+        this.alumnoSelectedService.setSelectedAlumno(this.cardData);
+        this.alumnoSelectedService.setSelecteAlumnoId(this.cardData.matricula);
+        this.modalService.openModal('editAlumno');
         break;
       case 'delete':
+        this.modalService.openModal('deleteAlumno');
         break;
     }
     this.showModal = false;
-  }
+  }  
+  
 }
