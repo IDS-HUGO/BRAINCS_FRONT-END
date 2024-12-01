@@ -5,4 +5,5 @@ export interface LoginResponse {
     grado: number;
     grupo: string;
     rol: string;
+    id_director: number;
 }

@@ -32,6 +32,7 @@ export class LoginService {
           localStorage.setItem('grupo', response.grupo);
         } else if (response.rol === 'director') {
           localStorage.setItem('usuario', response.usuario);
+          localStorage.setItem('id_director', response.id_director.toString());
         }
 
         return response;
@@ -46,6 +47,7 @@ export class LoginService {
   logout(): void {
     localStorage.removeItem('role');
     localStorage.removeItem('id_docente');
+    localStorage.removeItem('id_director');
     localStorage.removeItem('usuario');
     localStorage.removeItem('grado');
     localStorage.removeItem('grupo');

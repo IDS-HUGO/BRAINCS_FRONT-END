@@ -24,7 +24,7 @@ import { environment } from '../../../../enviroment/enviroment';
     }
 
     getDirector(idDirector: number): Observable<any> {
-      return this.http.get(`${this.directorUrl}/2`);
+      return this.http.get(`${this.directorUrl}/${idDirector}`);
     }
 
     getImagenUsuario(usuarioId: string): Observable<ImagenResponse[]> {

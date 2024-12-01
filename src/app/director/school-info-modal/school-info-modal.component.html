@@ -1,5 +1,8 @@
 <div class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center" *ngIf="isVisible">
     <div class="bg-white rounded-lg shadow-lg w-[500px] p-6 relative">
+      <div *ngIf="loaderService.loading$ | async" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-teal-600"></div>
+      </div>
       <h2 class="text-2xl font-bold text-teal-600 mb-4">Subir Información de la Escuela</h2>
       <button
         class="absolute top-3 right-3 text-gray-400 hover:text-red-500"
@@ -38,7 +41,7 @@
             class="border rounded-md w-full py-2 px-3"
           />
         </div>
-        <button type="submit" class="bg-teal-600 text-white py-2 px-4 rounded">Subir</button>
+        <button type="submit" class="bg-teal-600 text-white py-2 px-4 rounded" [disabled]="loaderService.loading$ | async">Subir</button>
       </form>
     </div>
   </div>

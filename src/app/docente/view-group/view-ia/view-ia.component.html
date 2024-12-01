@@ -1,0 +1,45 @@
+<div class="fixed bottom-4 right-4 flex flex-col items-end space-y-4">
+    <div *ngIf="isChatOpen" class="bg-white w-72 rounded-lg shadow-lg flex flex-col border border-gray-200">
+  
+      <div class="bg-[#004C4C] text-white p-3 flex justify-between items-center rounded-t-lg">
+        <p class="font-semibold">Chatbot</p>
+        <button class="text-white font-bold text-lg" (click)="toggleChat()">✖</button>
+      </div>
+  
+      <div class="p-4 max-h-64 overflow-y-auto space-y-2">
+        <div *ngFor="let message of chatHistory" class="bg-gray-100 p-2 rounded-lg text-sm">
+          {{ message }}
+        </div>
+      </div>
+  
+      
+  
+      <div *ngIf="selectedPdf" class="p-3 text-sm text-gray-600">
+        <p>Descarga el manual: <a [href]="selectedPdf" target="_blank" class="text-[#004C4C]">Descargar PDF</a></p>
+      </div>
+  
+      <div class="flex items-center justify-between border-t border-gray-200 p-3">
+        <input
+          type="text"
+          [(ngModel)]="userMessage"
+          class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C] text-sm"
+          placeholder="Escribe tu mensaje..."
+          
+        />
+        <button
+          
+          class="p-2 rounded-full bg-[#004C4C] hover:bg-[#003636] flex items-center justify-center"
+        >
+          <img src="./enviar.png" alt="Enviar" class="w-4 h-4" />
+        </button>
+      </div>
+    </div>
+  
+    <div
+      class="w-16 h-16 bg-[#004C4C] flex items-center justify-center rounded-full shadow-lg cursor-pointer"
+      (click)="toggleChat()"
+    >
+      <img src="./ia.png" alt="Chatbot" class="w-8 h-8" />
+    </div>
+  </div>
+  

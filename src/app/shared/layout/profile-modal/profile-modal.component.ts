@@ -89,7 +89,7 @@ export class ProfileModalComponent implements OnInit {
   }
 
   private loadDirectorData(): void {
-    const idDirector = localStorage.getItem('usuario');
+    const idDirector = localStorage.getItem('id_director');
     if (!idDirector) {
       console.error('ID de director no encontrado en localStorage');
       this.isLoading = false;

@@ -9,6 +9,7 @@ import { ViewTemarioComponent } from './view-group/view-temario/view-temario.com
 import { SharedModule } from '../shared/shared.module';
 import { FormsDocenteModule } from "./forms/formsDocente.module";
 import { FormsModule } from '@angular/forms';
+import { ViewIAComponent } from './view-group/view-ia/view-ia.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     ViewActivityComponent,
     ViewAlumnosComponent,
     ViewTemarioComponent,
+    ViewIAComponent,
   ],
   imports: [
     CommonModule,
