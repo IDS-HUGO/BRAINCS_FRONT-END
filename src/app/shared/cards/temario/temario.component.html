@@ -1,23 +1,17 @@
-<div class="relative py-2 px-12 cursor-pointer" (click)="onCardClick()">
+<div class="relative py-2 px-12 cursor-pointer" (click)="onCardClick($event)">
   <div class="relative w-full h-16 bg-white border-2 border-[#004C4C99] rounded-lg shadow-md flex items-center justify-between px-4">
     <h3 class="text-lg font-semibold text-black">
-      Temario: Parcial 1
+      {{'Temario: '}} {{cardData.id_temario}}
     </h3>
     <div class="relative" *ngIf="userType !== 'alumno'">
-      <button 
-        (click)="toggleModal()"
-        class="flex items-center justify-center"
-      >
+      <button (click)="toggleModal($event)" class="flex items-center justify-center">
         <img src="menu_1.png" alt="Menú de opciones" class="w-6 h-6">
       </button>
-
-      <app-menu-modals
-        *ngIf="showModal"
-        [isGroupView]="isGroupView"
-        (closeModal)="showModal = false"
-        (optionSelected)="handleOption($event)"
-        class="absolute right-0 top-full mt-2 w-48 bg-white shadow-lg rounded-lg p-4 z-50"
-      >
+      <app-menu-modals *ngIf="showModal" 
+        [isGroupView]="isGroupView" 
+        (closeModal)="showModal = false" 
+        (optionSelected)="handleOption($event)" 
+        class="absolute right-0 top-full mt-2 w-48 bg-white shadow-lg rounded-lg p-4 z-50">
       </app-menu-modals>
     </div>
   </div>
