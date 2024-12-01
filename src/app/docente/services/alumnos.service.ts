@@ -9,16 +9,27 @@ import { Alumno } from '../models/alumno';
 })
 export class AlumnosService {
   private getAlumnoByGradoGrupo = `${environment.apiUrl}alumnos/alumnos/grado/`;
-  private addAlumno = `${environment.apiUrl}alumnos/alumnos/`;
+  private apiUrl = `${environment.apiUrl}alumnos/alumnos/`;
 
   constructor(private http: HttpClient) { }
+
+  createAlumno(alumno: Alumno): Observable<any> {
+    return this.http.post<any>(this.apiUrl, alumno);
+  }
 
   getAlumnos(grado: number, grupo: string): Observable<any> {
     const url = `${this.getAlumnoByGradoGrupo}${grado}/grupo/${grupo}`;
     return this.http.get<any[]>(url);
   }
 
-  createAlumno(alumno: Alumno): Observable<any> {
-    return this.http.post<any>(this.addAlumno, alumno);
+  getAlumnoByMatricula(matricula: string): Observable<Alumno> {
+    const url = `${this.apiUrl}${matricula}`;
+    return this.http.get<Alumno>(url);
   }
+
+  updateAlumnoByMatricula(matricula: string, alumno: Alumno): Observable<any> {
+    const url = `${this.apiUrl}${matricula}`;
+    return this.http.put<any>(url, alumno);
+  }
+
 }
