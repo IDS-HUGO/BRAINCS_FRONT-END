@@ -1,5 +1,8 @@
 <div class="w-[600px] h-[auto] mx-auto bg-white p-8 rounded-lg shadow-md">
-    <h2 class="text-2xl font-semibold text-[#004C4C] mb-6 text-left">
+  <div *ngIf="loaderService.loading$ | async" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-teal-600"></div>
+  </div>
+  <h2 class="text-2xl font-semibold text-[#004C4C] mb-6 text-left">
       Editar grupo
     </h2>
     <form (ngSubmit)="updateGroup()">
@@ -19,7 +22,7 @@
       </div>
   
       <div class="flex justify-between">
-        <button type="submit" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2">Aceptar</button>
+        <button type="submit" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2" [disabled]="loaderService.loading$ | async">Aceptar</button>
         <button type="button" (click)="closeModal()" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]">Cancelar</button>
       </div>
     </form>

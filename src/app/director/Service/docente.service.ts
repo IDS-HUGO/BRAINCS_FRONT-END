@@ -25,11 +25,12 @@ export class DocenteService {
     );
   }
 
+
   getDocenteById(id_docente: number): Observable<Docente> {
     return this.http.get<Docente>(`${this.apiUrl}docentes/docentes/${id_docente}`);
   }
 
-  updateDocente(id_docente: number, docente: Docente): Observable<Docente> {
+  updateDocente(docente: any, id_docente: number): Observable<Docente> {
     return this.http.put<Docente>(`${this.apiUrl}docentes/docentes/${id_docente}`, docente);
   }
 

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ModalService } from '../../../shared/modals/services/modal.service';
 import { GroupServiceService } from '../../services/group-service.service';
 import { GroupData } from '../../models/group-data';
+import { LoaderService } from '../../../shared/modals/services/loader.service';  // Importando LoaderService
+import { AlertService } from '../../../shared/modals/services/alert.service';    // Importando AlertService
 
 @Component({
   selector: 'app-add-group',
@@ -16,10 +18,12 @@ export class AddGroupComponent {
 
   constructor(
     private modalService: ModalService,
-    private groupService: GroupServiceService
+    private groupService: GroupServiceService,
+    public loaderService: LoaderService,  
+    private alertService: AlertService    
   ) {
     const storedIdDocente = localStorage.getItem('id_docente');
-    this.idDocente = storedIdDocente ? parseInt(storedIdDocente, 10) : null;
+    this.idDocente = storedIdDocente ? parseInt(storedIdDocente) : null;
   }
 
   closeModal() {
@@ -28,7 +32,12 @@ export class AddGroupComponent {
 
   addGroup() {
     if (this.idDocente === null) {
-      console.error('ID del docente no encontrado.');
+      this.alertService.showWarning('No se ha encontrado el ID del docente en el almacenamiento local.');
+      return;
+    }
+
+    if (!this.asignatura || !this.grado || !this.grupo) {
+      this.alertService.showWarning('Por favor, complete todos los campos antes de continuar.');
       return;
     }
 
@@ -40,12 +49,16 @@ export class AddGroupComponent {
       id_docente: this.idDocente
     };
 
+    this.loaderService.show();  
     this.groupService.addGroup(newGroup).subscribe({
       next: (response) => {
-        console.log('Grupo agregado con éxito', response);
+        this.loaderService.hide();  
+       this.alertService.showSuccess('Grupo agregado con éxito');
         this.closeModal();
       },
       error: (error) => {
+        this.loaderService.hide();  
+        this.alertService.showError(error.status);
         console.error('Error al agregar el grupo', error);
       }
     });

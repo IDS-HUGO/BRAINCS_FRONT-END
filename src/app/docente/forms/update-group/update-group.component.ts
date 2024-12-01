@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GroupServiceService } from '../../services/group-service.service';
 import { ModalService } from '../../../shared/modals/services/modal.service';
 import { GroupData } from '../../models/group-data';
+import { LoaderService } from '../../../shared/modals/services/loader.service';  // Importando LoaderService
+import { AlertService } from '../../../shared/modals/services/alert.service';    // Importando AlertService
 
 @Component({
   selector: 'app-update-group',
@@ -18,7 +20,9 @@ export class UpdateGroupComponent implements OnInit {
 
   constructor(
     private modalService: ModalService,
-    private groupService: GroupServiceService
+    private groupService: GroupServiceService,
+    public loaderService: LoaderService,  
+    private alertService: AlertService   
   ) {
     const storedIdDocente = localStorage.getItem('id_docente');
     this.idDocente = storedIdDocente ? parseInt(storedIdDocente, 10) : null;
@@ -31,7 +35,7 @@ export class UpdateGroupComponent implements OnInit {
         this.loadGroupDetails();
       }
     });
-  }  
+  }
 
   closeModal() {
     this.modalService.closeModal();
@@ -54,7 +58,7 @@ export class UpdateGroupComponent implements OnInit {
 
   updateGroup() {
     if (this.idDocente === null || this.groupId === null) {
-      console.error('ID del docente o del grupo no encontrado.');
+this.alertService.showError(400, 'Error en la actualización');
       return;
     }
 
@@ -65,12 +69,16 @@ export class UpdateGroupComponent implements OnInit {
       id_docente: this.idDocente
     };
 
+    this.loaderService.show();  
     this.groupService.updateGroup(this.groupId, updatedGroup).subscribe({
       next: (response) => {
-        console.log('Grupo actualizado con éxito', response);
+        this.loaderService.hide();  
+        this.alertService.showSuccess('Grupo actualizado con éxito');
         this.closeModal();
       },
       error: (error) => {
+        this.loaderService.hide(); 
+       this.alertService.showError(error.status);
         console.error('Error al actualizar el grupo', error);
       }
     });

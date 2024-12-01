@@ -3,6 +3,8 @@ import { ModalService } from '../../../shared/modals/services/modal.service';
 import { ActivityService } from '../../../shared/cards/services/activity.service';
 import { ActivitiesService } from '../../services/activities.service';
 import { ActivatedRoute } from '@angular/router';
+import { LoaderService } from '../../../shared/modals/services/loader.service';
+import { AlertService } from '../../../shared/modals/services/alert.service';  // Importando AlertService
 
 @Component({
   selector: 'app-update-activity',
@@ -20,7 +22,9 @@ export class UpdateActivityComponent implements OnInit {
     private modalService: ModalService,
     private activitiesService: ActivitiesService,
     private activityService: ActivityService,
-    private route : ActivatedRoute
+    private route: ActivatedRoute,
+    public loaderService: LoaderService,  // Inyectando LoaderService
+    private alertService: AlertService   // Inyectando AlertService
   ) {}
 
   ngOnInit() {
@@ -54,23 +58,30 @@ export class UpdateActivityComponent implements OnInit {
 
   handleSubmit() {
     if (this.tema && this.subtema && this.contenido && this.idActividad !== null) {
+      this.loaderService.show(); // Activar loader mientras se actualiza la actividad
+
       this.activitiesService.updateActivity(this.groupId, this.idActividad, this.tema, this.subtema, this.contenido).subscribe(
         response => {
-          console.log('Actividad actualizada exitosamente:', response);
+          this.loaderService.hide(); // Desactivar loader después de la respuesta
+          // Mostrar alerta de éxito
+          this.alertService.showSuccess('La actividad se actualizó correctamente.');
           this.closeModal();
         },
         error => {
+          this.loaderService.hide(); // Desactivar loader si ocurre un error
+          // Mostrar alerta de error
+          this.alertService.showError(error.status);
           console.error('Error al actualizar la actividad:', error);
         }
       );
     } else {
-      console.log('Faltan campos para completar');
+      // Si faltan campos, mostrar alerta de advertencia
+      this.alertService.showWarning('Por favor, completa todos los campos antes de continuar.');
     }
   }
-  
 
   closeModal() {
     this.modalService.closeModal();
-    this.activityService.clearSelectedActivity()
+    this.activityService.clearSelectedActivity();
   }
 }

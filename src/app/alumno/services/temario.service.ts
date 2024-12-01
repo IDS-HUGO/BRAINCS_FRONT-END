@@ -26,7 +26,6 @@ export class TemarioService {
       map((response) => {
         return response.map((temario) => {
           if (temario.documento_pdf) {
-            // Verificar si ya es una URL completa
             if (!temario.documento_pdf.startsWith('http')) {
               temario.documento_pdf = `${environment.apiUrl}${temario.documento_pdf}`;
             }

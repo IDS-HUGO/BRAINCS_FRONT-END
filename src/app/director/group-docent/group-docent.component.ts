@@ -18,10 +18,10 @@ export class GroupDocentComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.docenteId = +params['docenteId'];  // Obtener docenteId desde los parámetros de la ruta
-      console.log('docenteId recibido:', this.docenteId);  // Verifica que se haya recibido el docenteId
+      this.docenteId = +params['docenteId'];  
+      console.log('docenteId recibido:', this.docenteId);  
       if (this.docenteId) {
-        this.loadGrupos();  // Llamar al método para cargar los grupos
+        this.loadGrupos();  
       }
     });
   }

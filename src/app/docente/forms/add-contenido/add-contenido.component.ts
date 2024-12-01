@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalService } from '../../../shared/modals/services/modal.service';
 import { TareaService } from '../../services/tarea.service';
 import { ActivitiesService } from '../../services/activities.service';
+import { LoaderService } from '../../../shared/modals/services/loader.service';
+import { AlertService } from '../../../shared/modals/services/alert.service';  // Importando el AlertService
 
 @Component({
   selector: 'app-add-contenido',
@@ -13,13 +15,16 @@ export class AddContenidoComponent implements OnInit {
   groupId: number = 0;
   tema: string = '';
   subtema: string = '';
+  isLoading: boolean = false;
 
   @ViewChild('fileInput') fileInput!: ElementRef;
 
   constructor(
     private modalService: ModalService,
     private tareaService: TareaService,
-    private activitiesService: ActivitiesService
+    private activitiesService: ActivitiesService,
+    public loaderService: LoaderService,
+    private alertService: AlertService  
   ) {}
 
   ngOnInit() {
@@ -39,26 +44,27 @@ export class AddContenidoComponent implements OnInit {
       const file = this.fileInput.nativeElement.files[0];
 
       if (file) {
+        this.loaderService.show(); 
         this.activitiesService.createActivity(this.groupId, this.tema, this.subtema, file)
           .subscribe({
             next: (response) => {
-              console.log('Actividad creada con éxito:', response);
+              this.loaderService.hide(); 
               this.modalService.closeModal();
             },
             error: (error) => {
+              this.loaderService.hide();
+              this.alertService.showError(error.status);  
               console.error('Error al crear la actividad:', error);
             }
           });
       } else {
-        console.error('Debe seleccionar un archivo.');
+        this.alertService.showWarning('Por favor selecciona un archivo antes de continuar.');  
       }
-    } else {
-      console.log('Agregar contenido desde un enlace');
-    }
+    } 
   }
 
-  onAddContenidoIA(){
-    this.modalService.openModal('contenidoIA')
+  onAddContenidoIA() {
+    this.modalService.openModal('contenidoIA');
   }
 
   closeModal() {

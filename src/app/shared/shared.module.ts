@@ -13,12 +13,12 @@ import { LoaderComponent } from './loader/loader.component';
 import { CardTemarioComponent } from './cards/card-temario/card-temario.component';
 import { ProfileModalComponent } from './layout/profile-modal/profile-modal.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AddDocenteModalModule } from '../director/add-docente-modal/add-docente-modal.module';
 import { GenericModalComponent } from './modals/generic-modal/generic-modal.component';
 import { AlumnoComponent } from './cards/alumno/alumno.component';
 import { ActivityComponent } from './cards/activity/activity.component';
 import { TemarioComponent } from './cards/temario/temario.component';
 import { CardsModule } from "../docente/cards/cards.module";
+import { FormsDirecModule } from '../director/forms-direc/forms-direc.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { CardsModule } from "../docente/cards/cards.module";
     CommonModule,
     FormsModule,
     FormsDocenteModule,
-    AddDocenteModalModule,
+    FormsDirecModule,
     HttpClientModule,
     CardsModule
 ],

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 import { ActivitiesService } from '../../services/activities.service';
 import { ActivityService } from '../../../shared/cards/services/activity.service';
 import { ModalService } from '../../../shared/modals/services/modal.service';
+import { LoaderService } from '../../../shared/modals/services/loader.service';
+import { AlertService } from '../../../shared/modals/services/alert.service';  // Importando AlertService
 
 @Component({
   selector: 'app-delete-activity',
@@ -19,7 +20,9 @@ export class DeleteActivityComponent implements OnInit {
     private activitiesService: ActivitiesService,
     private activityService: ActivityService,
     private route: ActivatedRoute,
-    private modalService : ModalService
+    private modalService: ModalService,
+    public loaderService: LoaderService,  // Inyectando LoaderService
+    private alertService: AlertService  // Inyectando AlertService
   ) {}
 
   ngOnInit(): void {
@@ -29,28 +32,33 @@ export class DeleteActivityComponent implements OnInit {
         this.activityId = id;
       }
     });
-  
+
     console.log(this.groupId, this.activityId);
   }
 
   closeModal() {
-    this.modalService.closeModal()
+    this.modalService.closeModal();
   }
 
   confirmDelete() {
     if (this.groupId && this.activityId) {
+      this.loaderService.show(); 
       this.activitiesService.deleteActivity(this.groupId, this.activityId).subscribe(
         response => {
-          console.log('Actividad eliminada exitosamente:', response);
-          this.closeModal();
+          this.loaderService.hide(); 
+          this.alertService.showSuccess('La actividad se eliminó correctamente.');
+
+          this.closeModal(); 
         },
         error => {
+          this.loaderService.hide(); 
+          this.alertService.showError(error.status);
+
           console.error('Error al eliminar la actividad:', error);
         }
       );
     } else {
-      console.log('Faltan datos para eliminar la actividad');
+      this.alertService.showWarning('Faltan datos para eliminar la actividad.');
     }
   }  
-  
 }

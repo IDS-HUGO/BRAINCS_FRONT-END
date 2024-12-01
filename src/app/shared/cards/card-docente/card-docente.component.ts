@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalService } from '../../modals/services/modal.service';
 import { DocenteService } from '../../../director/Service/docente.service';
+import { DocentService } from '../services/docent.service';
 @Component({
   selector: 'app-card-docente',
   templateUrl: './card-docente.component.html',
@@ -11,12 +12,13 @@ export class CardDocenteComponent implements OnInit {
   @Input() subjectName!: string;
   @Input() userType!: string;
   @Input() grado!: number;
+  @Input() cardData: any;
   @Input() grupo!: string;
   @Input() docenteId!: number;
   @Input() userImage!: string;
   showModal: boolean = false;
 
-  constructor(private router: Router, private modalService: ModalService, private docenteService: DocenteService
+  constructor(private router: Router, private modalService: ModalService, private docenteService: DocenteService, private docentService: DocentService
   ) {}
 
   ngOnInit() {
@@ -46,11 +48,16 @@ export class CardDocenteComponent implements OnInit {
         }
         break;
       case 'edit':
-        this.modalService.openUpdateModal(this.docenteId);
+        this.docentService.setSelectedDocenteId(this.docenteId);
+          this.modalService.openModal('editDocente');
+          console.log('ID del Docente para editar:', this.docenteId);
+          break;   
         break;
       case 'delete':
-        this.modalService.openDeleteModal(this.docenteId);
-        break;
+          this.docentService.setSelectedDocenteId(this.docenteId);
+          this.modalService.openModal('deleteDocente');
+          console.log('ID del Docente para eliminar:', this.docenteId);
+          break;   
     }
     this.showModal = false;
   }
@@ -61,24 +68,6 @@ export class CardDocenteComponent implements OnInit {
 
   closeDeleteModal() {
     this.showModal = false;
-  }
-
-  navigateToGroupDocente() {
-    // Redirige a la vista de detalles del grupo del docente
-    this.router.navigate(['/docente/group-docente', this.docenteId]);
-  }
-
-  handleDelete(docenteId: number) {
-    // Aquí puedes agregar la lógica para eliminar al docente
-    this.docenteService.deleteDocente(docenteId).subscribe(
-      () => {
-        console.log('Docente eliminado');
-        // Puedes agregar un método para actualizar la lista de docentes o notificar al usuario
-      },
-      (error) => {
-        console.error('Error al eliminar docente', error);
-      }
-    );
   }
 
 
