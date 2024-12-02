@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { Docente } from '../Models/docente.interface';
 import { environment } from '../../../enviroment/enviroment';
 import { tap } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,17 @@ export class DocenteService {
 
   deleteDocente(id_docente: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}docentes/docentes/${id_docente}`);
+  }
+
+  uploadUserImage(usuarioId: string, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const url = `${this.apiUrl}imagen_usuario/upload-imagen/?usuario_id=${usuarioId}`;
+    return this.http.post(url, formData, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    });
   }
 }

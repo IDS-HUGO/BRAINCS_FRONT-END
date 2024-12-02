@@ -1,8 +1,11 @@
 <div class="w-[400px] h-auto mx-auto bg-white p-8 rounded-lg shadow-lg">
-  
+  <div *ngIf="loaderService.loading$ | async" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-teal-600"></div>
+  </div>
     <div class="flex justify-center mb-4">
       <img src="/pdf-icon.png" alt="Subir Archivo" class="w-16 h-16 object-cover">
     </div>
+
   
     <h2 class="text-2xl font-semibold text-[#004C4C] mb-6 text-center">
       Sube un archivo
