@@ -39,7 +39,9 @@ export class AlumnoComponent {
         this.modalService.openModal('editAlumno');
         break;
       case 'delete':
-        this.modalService.openModal('deleteAlumno');
+          this.alumnoSelectedService.setSelectedAlumno(this.cardData); 
+          this.alumnoSelectedService.setSelecteAlumnoId(this.cardData.matricula); 
+          this.modalService.openModal('deleteAlumno'); 
         break;
     }
     this.showModal = false;

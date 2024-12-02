@@ -33,10 +33,13 @@ export class UpdateAlumnoComponent implements OnInit {
   ngOnInit() {
     this.alumnoSelectedService.selectedAlumno$.subscribe(selectedAlumno => {
       if (selectedAlumno) {
+        console.log('Alumno seleccionado:', selectedAlumno);
         this.alumno = { ...selectedAlumno };
+      } else {
+        console.warn('No se seleccionó ningún alumno.');
       }
     });
-  }
+  }  
 
   nextStep() {
     if (this.step < 2) this.step++;
@@ -51,13 +54,18 @@ export class UpdateAlumnoComponent implements OnInit {
   }
 
   updateAlumno() {
+    console.log('Datos enviados al backend:', this.alumno);
     this.alumnosService.updateAlumnoByMatricula(this.alumno.matricula, this.alumno).subscribe(
       response => {
-        console.log('Alumno actualizado:', response);
+        console.log('Respuesta del backend:', response);
+        this.modalService.closeModal()
       },
       error => {
         console.error('Error al actualizar el alumno:', error);
+        this.modalService.closeModal()
       }
     );
   }
+  
+
 }
