@@ -49,6 +49,7 @@ export class AddContenidoComponent implements OnInit {
           .subscribe({
             next: (response) => {
               this.loaderService.hide(); 
+              this.alertService.showSuccess('Actividad creada con éxito.');
               this.modalService.closeModal();
             },
             error: (error) => {
