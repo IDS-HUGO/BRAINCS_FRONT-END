@@ -32,4 +32,9 @@ export class AlumnosService {
     return this.http.put<any>(url, alumno);
   }
 
+  deleteAlumnoByMatricula(matricula: string): Observable<any> {
+    const url = `${this.apiUrl}${matricula}`;
+    return this.http.delete<any>(url);
+  }  
+
 }
