@@ -47,7 +47,7 @@ export class DeleteActivityComponent implements OnInit {
         response => {
           this.loaderService.hide(); 
           this.alertService.showSuccess('La actividad se eliminó correctamente.');
-
+          this.activitiesService.notifyActivityCreated()
           this.closeModal(); 
         },
         error => {
