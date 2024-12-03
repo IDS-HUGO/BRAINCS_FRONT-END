@@ -1,16 +1,12 @@
 <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
   <div class="bg-white p-8 rounded-lg w-96 relative">
-    <div *ngIf="loaderService.loading$ | async" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
-      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-teal-600"></div>
-    </div>
-    
+
     <div class="flex flex-col items-center mb-4">
       <img src="agregar-usuario (1)(1).png" alt="Icon" class="h-16 w-16 mb-2">
       <h2 class="text-2xl font-bold text-teal-600">Añadir Docente</h2>
     </div>
 
-    <form (ngSubmit)="onSubmit()" #docenteForm="ngForm" novalidate>
-      <!-- Paso 1 -->
+    <form #docenteForm="ngForm" novalidate>
       <div *ngIf="step === 1">
         <label for="docenteImagen" class="block text-sm font-medium text-gray-700">Imagen del Docente:</label>
         <input id="docenteImagen" type="file" (change)="onFileSelected($event)" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md">
@@ -30,7 +26,7 @@
         </div>
       </div>
 
-      <!-- Paso 2 -->
+
       <div *ngIf="step === 2">
         <label for="docenteEmail" class="block text-sm font-medium text-gray-700">Correo:</label>
         <input id="docenteEmail" [(ngModel)]="docente.correo_electronico" name="correo_electronico" type="email" placeholder="Correo del docente" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
@@ -42,8 +38,12 @@
         <input id="docenteContrasena" [(ngModel)]="docente.contrasena" name="contrasena" type="password" placeholder="Contraseña" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
         
         <div class="flex space-x-2">
-          <button type="submit" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]"  [disabled]="loaderService.loading$ | async">Agregar</button>
-          <button type="button" (click)="closeModal()" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">Cancelar</button>
+          <button type="button" (click)="addDocente()" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">
+            Agregar
+          </button>
+          <button type="button" (click)="closeModal()" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">
+            Cancelar
+          </button>
         </div>
       </div>
     </form>

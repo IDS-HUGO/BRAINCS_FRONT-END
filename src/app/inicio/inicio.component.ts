@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
 })
 export class InicioComponent {
   constructor(private router: Router) {}
-
-  // Método para redirigir al componente Login
   navigateToLogin(): void {
     this.router.navigate(['/login']);
   }

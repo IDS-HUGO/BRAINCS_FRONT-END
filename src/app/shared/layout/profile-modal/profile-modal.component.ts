@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../Service/user.service';
 import { LoginService } from '../../../auth/services/login.service';
 import { ModalServiceProfile } from '../Service/ModalProfile.service';
+import { AlertService } from '../../modals/services/alert.service';
+import { LoaderService } from '../../modals/services/loader.service';
 
 @Component({
   selector: 'app-profile-modal',
@@ -13,11 +15,14 @@ export class ProfileModalComponent implements OnInit {
   userData: any = null;
   isLoading: boolean = false;
   imagen: string | null = null;
+  
 
   constructor(
     private userService: UserService,
     private modalService: ModalServiceProfile,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private alertService: AlertService,
+    public loaderService: LoaderService
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +38,7 @@ export class ProfileModalComponent implements OnInit {
   }
 
   fetchUserData(): void {
-    this.isLoading = true;
+    this.loaderService.show();
   
     if (this.role === 'docente') {
       this.loadDocenteData();
@@ -43,7 +48,7 @@ export class ProfileModalComponent implements OnInit {
       this.loadDirectorData();
     } else {
       console.warn('Rol no reconocido:', this.role);
-      this.isLoading = false;
+      this.loaderService.hide(); 
     }
   }
   
@@ -95,14 +100,14 @@ export class ProfileModalComponent implements OnInit {
       this.isLoading = false;
       return;
     }
-  
-    const directorId = Number(idDirector); 
+
+    const directorId = Number(idDirector);
     if (isNaN(directorId)) {
       console.error('El ID del director no es un número válido');
       this.isLoading = false;
       return;
     }
-  
+
     this.userService.getDirector(directorId).subscribe({
       next: (data) => {
         this.userData = data;
@@ -114,7 +119,6 @@ export class ProfileModalComponent implements OnInit {
       }
     });
   }
-  
 
   private loadUserImage(usuario: string): void {
     this.userService.getImagenUsuario(usuario).subscribe({
@@ -132,6 +136,63 @@ export class ProfileModalComponent implements OnInit {
       }
     });
   }
+  
+
+  onImageUpload(event: any): void {
+    const file = event.target.files[0];
+    if (!file) {
+      this.alertService.showWarning('No se seleccionó ningún archivo.', 'Advertencia');
+      return;
+    }
+
+    this.alertService.showConfirmation('¿Estás seguro de que quieres cargar esta nueva imagen?', 'Confirmar carga').then((result) => {
+      if (result.isConfirmed) {
+        const usuarioId = this.role === 'alumno' ? this.userData.matricula : this.userData.usuario;
+  
+        this.loaderService.show(); 
+        this.userService.uploadUserImage(usuarioId, file).subscribe({
+          next: (response) => {
+            this.alertService.showSuccess('Imagen cargada exitosamente.', '¡Éxito!');
+            this.loadUserImage(usuarioId); 
+          },
+          error: (err) => {
+            console.error('Error al cargar la imagen:', err);
+            this.alertService.showError(err.status, 'Error al cargar la imagen');
+          },
+          complete: () => {
+            this.loaderService.hide(); 
+          }
+        });
+      }
+    });
+  }
+
+  
+
+  onDeleteImage(): void {
+    this.alertService.showConfirmation('¿Estás seguro de que quieres eliminar la imagen?', 'Confirmar eliminación').then((result) => {
+      if (result.isConfirmed) {
+        const usuarioId = this.role === 'alumno' ? this.userData.matricula : this.userData.usuario;
+        
+        this.loaderService.show(); 
+        this.userService.deleteUserImage(usuarioId).subscribe({
+          next: (response) => {
+            this.alertService.showSuccess('Imagen eliminada exitosamente.', '¡Éxito!');
+            this.imagen = null; 
+          },
+          error: (err) => {
+            console.error('Error al eliminar la imagen:', err);
+            this.alertService.showError(err.status, 'Error al eliminar la imagen');
+          },
+          complete: () => {
+            this.loaderService.hide(); 
+          }
+        });
+      }
+    });
+  }
+  
+  
 
   closeModal(): void {
     this.modalService.closeModal('profile');
@@ -140,7 +201,6 @@ export class ProfileModalComponent implements OnInit {
   isModalOpen(id: string): boolean {
     return this.modalService.isModalOpen(id);
   }
-
 
   onLogout(): void {
     this.loginService.logout();

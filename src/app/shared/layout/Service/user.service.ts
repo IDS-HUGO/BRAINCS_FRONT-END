@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ImagenResponse } from '../../../director/Models/usuario.interface';
 import { environment } from '../../../../enviroment/enviroment';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
@@ -31,5 +32,27 @@ import { environment } from '../../../../enviroment/enviroment';
         console.log("Imgen del usuario docente fallido: ",`${this.apiBaseUrl}imagen_usuario/imagenes/${usuarioId}`)
         return this.http.get<ImagenResponse[]>(`${this.apiBaseUrl}imagen_usuario/imagenes/${usuarioId}`);
       }
+
+      uploadUserImage(usuarioId: string, file: File): Observable<any> {
+        const formData = new FormData();
+        formData.append('file', file);
+    
+        const url = `${this.apiBaseUrl}imagen_usuario/upload-imagen/?usuario_id=${usuarioId}`;
+        return this.http.post(url, formData, {
+          headers: new HttpHeaders({
+            'Accept': 'application/json'
+          })
+        });
+      }
+
+      deleteUserImage(usuarioId: string): Observable<any> {
+        const url = `${this.apiBaseUrl}imagen_usuario/imagen_usuario/${usuarioId}`;
+        return this.http.delete(url, {
+          headers: new HttpHeaders({
+            'Accept': 'application/json',
+          }),
+        });
+      }
+      
   }
   

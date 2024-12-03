@@ -4,7 +4,7 @@ import { Docente } from '../../Models/docente.interface';
 import { ModalService } from '../../../shared/modals/services/modal.service';
 import { LoaderService } from '../../../shared/modals/services/loader.service';
 import { AlertService } from '../../../shared/modals/services/alert.service';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-add-docente-modal',
   templateUrl: './add-docente-modal.component.html',
@@ -12,7 +12,7 @@ import { AlertService } from '../../../shared/modals/services/alert.service';
 })
 export class AddDocenteModalComponent {
   @Output() closeModalEvent = new EventEmitter<void>();
-  step=1;
+  step = 1;
   docente: Docente = {
     id_docente: 0,
     nombre: '',
@@ -43,7 +43,7 @@ export class AddDocenteModalComponent {
     }
   }
 
-  onSubmit() {
+  addDocente() {
     if (!this.docente.nombre || !this.docente.apellido_p || !this.docente.apellido_m ||
         !this.docente.correo_electronico || !this.docente.usuario || !this.docente.contrasena) {
       this.alertService.showWarning(
@@ -57,12 +57,12 @@ export class AddDocenteModalComponent {
 
     this.docenteService.addDocente(this.docente).subscribe(
       (response) => {
-       if (this.selectedFile) {
+        if (this.selectedFile) {
           this.docenteService.uploadUserImage(this.docente.usuario, this.selectedFile).subscribe(
             (imageResponse) => {
               this.loaderService.hide();
               this.alertService.showSuccess(
-                `El docente ${this.docente.nombre} fue registrado correctamente con su imagen.`,
+                `El docente ${this.docente.nombre} fue registrado correctamente.`,
                 '¡Docente agregado exitosamente!'
               );
               this.closeModal();
