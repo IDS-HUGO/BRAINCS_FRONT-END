@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../enviroment/enviroment';
 import { Alumno } from '../models/alumno';
 
@@ -10,7 +10,7 @@ import { Alumno } from '../models/alumno';
 export class AlumnosService {
   private getAlumnoByGradoGrupo = `${environment.apiUrl}alumnos/alumnos/grado/`;
   private apiUrl = `${environment.apiUrl}alumnos/alumnos/`;
-
+  private alumnoSubject = new Subject<void>();
   constructor(private http: HttpClient) { }
 
   createAlumno(alumno: Alumno): Observable<any> {
@@ -35,6 +35,14 @@ export class AlumnosService {
   deleteAlumnoByMatricula(matricula: string): Observable<any> {
     const url = `${this.apiUrl}${matricula}`;
     return this.http.delete<any>(url);
-  }  
+  }
+  
+  notifyAlumnoChange(): void {
+    this.alumnoSubject.next();
+  }
+
+  onAlumnoChange(): Observable<void> {
+    return this.alumnoSubject.asObservable();
+  }
 
 }

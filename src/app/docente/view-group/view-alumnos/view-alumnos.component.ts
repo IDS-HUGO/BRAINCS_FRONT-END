@@ -29,23 +29,30 @@ export class ViewAlumnosComponent implements OnInit {
     if (this.grado && this.grupo) {
       this.loadAlumnos();
     }
+
+    this.alumnosService.onAlumnoChange().subscribe(() => {
+      this.loadAlumnos();
+    });
   }
 
   loadAlumnos(): void {
     this.alumnosService.getAlumnos(this.grado, this.grupo).subscribe(
       (response) => {
         console.log('Respuesta de alumnos:', response);
-        if (Array.isArray(response)) {
+        if (Array.isArray(response) && response.length > 0) {
           this.alumnos = response;
         } else {
-          console.error('La respuesta no es un arreglo');
+          this.alumnos = [];
+          console.log('No hay alumnos o la respuesta no es válida');
         }
       },
       (error) => {
         console.error('Error al cargar alumnos:', error);
+        this.alumnos = [];
       }
     );
   }
+  
 
   onAlumnoSelected(alumno: any) {
     this.alumnoSelectedService.setSelectedAlumno(alumno);

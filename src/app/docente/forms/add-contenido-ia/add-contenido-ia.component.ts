@@ -62,7 +62,6 @@ export class AddContenidoIAComponent {
           clearInterval(interval);
         }
       }, 20);
-  
     } catch (error) {
       console.error('Error generando contenido:', error);
     }
@@ -86,8 +85,8 @@ export class AddContenidoIAComponent {
   
       this.activitiesService.createActivity(this.groupId, this.tema, this.subtema, pdfBlob).subscribe({
         next: () => {
-          this.closeModal();
           this.activitiesService.notifyActivityCreated();
+          this.modalService.closeModal();
         },
         error: (error) => {
           console.error('Error al enviar PDF:', error);

@@ -65,6 +65,7 @@ export class UpdateAlumnoComponent implements OnInit {
       response => {
         console.log('Respuesta del backend:', response);
         this.alertService.showSuccess('El alumno se actualizó correctamente.');
+        this.alumnosService.notifyAlumnoChange();
         this.modalService.closeModal();
       },
       error => {
