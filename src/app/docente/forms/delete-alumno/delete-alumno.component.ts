@@ -31,6 +31,7 @@ export class DeleteAlumnoComponent {
             this.loaderService.hide();
             console.log(`Alumno con matrícula ${matricula} eliminado exitosamente`);
             this.alertService.showSuccess('Alumno eliminado con éxito');
+            this.alumnosService.notifyAlumnoChange();
             this.modalService.closeModal()
           },
           error: (error: any) => {

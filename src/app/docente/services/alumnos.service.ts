@@ -11,10 +11,6 @@ export class AlumnosService {
   private getAlumnoByGradoGrupo = `${environment.apiUrl}alumnos/alumnos/grado/`;
   private apiUrl = `${environment.apiUrl}alumnos/alumnos/`;
   private alumnoSubject = new Subject<void>();
-
-  private alumnoUpdatedSubject = new Subject<void>();
-  groupUpdated$ = this.alumnoUpdatedSubject.asObservable();
-
   constructor(private http: HttpClient) { }
 
   createAlumno(alumno: Alumno): Observable<any> {
@@ -39,6 +35,14 @@ export class AlumnosService {
   deleteAlumnoByMatricula(matricula: string): Observable<any> {
     const url = `${this.apiUrl}${matricula}`;
     return this.http.delete<any>(url);
-  }  
+  }
+  
+  notifyAlumnoChange(): void {
+    this.alumnoSubject.next();
+  }
+
+  onAlumnoChange(): Observable<void> {
+    return this.alumnoSubject.asObservable();
+  }
 
 }
