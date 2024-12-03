@@ -4,7 +4,7 @@ import { ActivitiesService } from '../../services/activities.service';
 import { ActivityService } from '../../../shared/cards/services/activity.service';
 import { ModalService } from '../../../shared/modals/services/modal.service';
 import { LoaderService } from '../../../shared/modals/services/loader.service';
-import { AlertService } from '../../../shared/modals/services/alert.service';  // Importando AlertService
+import { AlertService } from '../../../shared/modals/services/alert.service';
 
 @Component({
   selector: 'app-delete-activity',
@@ -21,8 +21,8 @@ export class DeleteActivityComponent implements OnInit {
     private activityService: ActivityService,
     private route: ActivatedRoute,
     private modalService: ModalService,
-    public loaderService: LoaderService,  // Inyectando LoaderService
-    private alertService: AlertService  // Inyectando AlertService
+    public loaderService: LoaderService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -47,7 +47,7 @@ export class DeleteActivityComponent implements OnInit {
         response => {
           this.loaderService.hide(); 
           this.alertService.showSuccess('La actividad se eliminó correctamente.');
-
+          this.activitiesService.notifyActivityCreated()
           this.closeModal(); 
         },
         error => {

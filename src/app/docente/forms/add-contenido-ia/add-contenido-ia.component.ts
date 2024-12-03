@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ModalService } from '../../../shared/modals/services/modal.service';
 import { PdfService } from '../../services/pdf.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { ActivitiesService } from '../../services/activities.service';
 import { TareaService } from '../../services/tarea.service';
 
@@ -88,6 +87,7 @@ export class AddContenidoIAComponent {
       this.activitiesService.createActivity(this.groupId, this.tema, this.subtema, pdfBlob).subscribe({
         next: () => {
           this.closeModal();
+          this.activitiesService.notifyActivityCreated();
         },
         error: (error) => {
           console.error('Error al enviar PDF:', error);

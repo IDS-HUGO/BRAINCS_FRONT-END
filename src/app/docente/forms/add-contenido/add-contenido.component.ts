@@ -3,7 +3,7 @@ import { ModalService } from '../../../shared/modals/services/modal.service';
 import { TareaService } from '../../services/tarea.service';
 import { ActivitiesService } from '../../services/activities.service';
 import { LoaderService } from '../../../shared/modals/services/loader.service';
-import { AlertService } from '../../../shared/modals/services/alert.service';  // Importando el AlertService
+import { AlertService } from '../../../shared/modals/services/alert.service';
 
 @Component({
   selector: 'app-add-contenido',
@@ -51,6 +51,8 @@ export class AddContenidoComponent implements OnInit {
               this.loaderService.hide(); 
               this.alertService.showSuccess('Actividad creada con éxito.');
               this.modalService.closeModal();
+
+              this.activitiesService.notifyActivityCreated()
             },
             error: (error) => {
               this.loaderService.hide();
