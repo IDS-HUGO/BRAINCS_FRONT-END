@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ModalService } from '../../../shared/modals/services/modal.service';
 import { TemarioService } from '../../services/temario.service';
 import { ActivatedRoute } from '@angular/router';
-import { LoaderService } from '../../../shared/modals/services/loader.service';  // Importando LoaderService
-import { AlertService } from '../../../shared/modals/services/alert.service';    // Importando AlertService
+import { LoaderService } from '../../../shared/modals/services/loader.service';
+import { AlertService } from '../../../shared/modals/services/alert.service';
 
 @Component({
   selector: 'app-add-temario',
@@ -28,8 +28,12 @@ export class AddTemarioComponent {
     const file: File = event.target.files[0];
     if (file) {
       this.archivo = file;
+      console.log('Archivo seleccionado:', this.archivo);
+    } else {
+      console.error('No se ha seleccionado un archivo.');
     }
   }
+  
 
   closeModal(): void {
     this.modalService.closeModal();
@@ -40,14 +44,15 @@ export class AddTemarioComponent {
       this.alertService.showWarning('No se ha seleccionado un archivo para subir.');
       return;
     }
-    
+  
     console.log('Archivo seleccionado:', this.archivo);
-
-    this.loaderService.show();  
+  
+    this.loaderService.show();
     this.temarioService.addTemarioWithFile(this.archivo, this.groupId).subscribe(
       (response) => {
-        this.loaderService.hide();  
-       this.alertService.showSuccess('Temario subido con éxito');
+        this.loaderService.hide();
+        this.alertService.showSuccess('Temario subido con éxito');
+        this.temarioService.notifyTemarioChange();
         this.closeModal();
       },
       (error) => {
@@ -56,5 +61,6 @@ export class AddTemarioComponent {
         console.error('Error al subir el temario:', error);
       }
     );
-  }  
+  }
+   
 }

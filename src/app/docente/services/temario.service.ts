@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../../enviroment/enviroment';
 import { Temario } from '../models/temario';
@@ -13,6 +13,7 @@ export class TemarioService {
   private apiUrlGetTemarios : string = `${environment.apiUrl}temario/grupo/`;
   private apiUrl : string = `${environment.apiUrl}temario/`;
   private apiUrlGetTemarioByGroupId: string = `${environment.apiUrl}temario/grupo/`;
+  private temarioSubject = new Subject<void>();
 
   constructor(private http: HttpClient) { }
 
@@ -69,10 +70,10 @@ export class TemarioService {
     return this.http.delete(url);
   }
 
-  addTemarioWithFile(file: File, groupId: number): Observable<any> {
+  addTemarioWithFile(contenido: File, groupId: number): Observable<any> {
     const formData = new FormData();
-    formData.append('file', file);
-  
+    formData.append('contenido', contenido)
+    
     const url = `${this.apiUrl}?id_grupo=${groupId}`;
     return this.http.post(url, formData).pipe(
       catchError((error) => {
@@ -80,5 +81,13 @@ export class TemarioService {
         return throwError(() => new Error('Error al subir el archivo.'));
       })
     );
-  }  
+  }
+  
+  notifyTemarioChange(): void {
+    this.temarioSubject.next();
+  }
+
+  onTemarioChange(): Observable<void> {
+    return this.temarioSubject.asObservable();
+  }
 }

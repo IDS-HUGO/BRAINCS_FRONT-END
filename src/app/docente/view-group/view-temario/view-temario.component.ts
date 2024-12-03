@@ -32,14 +32,25 @@ export class ViewTemarioComponent implements OnInit {
     if (this.groupId) {
       this.loadTemarios();
     }
+
+    this.temarioService.onTemarioChange().subscribe(() => {
+      this.loadTemarios();
+    });
   }
 
   loadTemarios(): void {
-    this.temarioService.getTemarios(this.groupId).subscribe((response) => {
-      this.temarios = response;
-      console.log('Temarios cargados:', this.temarios);
+    this.temarioService.getTemarios(this.groupId).subscribe({
+      next: (response) => {
+        this.temarios = response && Array.isArray(response) ? response : [];
+        console.log('Temarios cargados:', this.temarios);
+      },
+      error: (error) => {
+        console.error('Error al cargar los temarios:', error);
+        this.temarios = [];
+      }
     });
-  }  
+  }
+    
 
   openTemarioInspectModal(temario: any) {
     if (temario) {
@@ -49,8 +60,6 @@ export class ViewTemarioComponent implements OnInit {
       console.error('Temario no válido:', temario);
     }
   }  
-  
-  
 
   openTemarioModal(){
     this.modalService.openModal('temario')

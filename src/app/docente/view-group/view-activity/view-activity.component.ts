@@ -51,12 +51,12 @@ export class ViewActivityComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error al cargar actividades:', error);
-          this.activities = []; // Asegurar que las actividades sean un array vacío en caso de error
+          this.activities = [];
         }
       });
     } else {
       console.error('groupId no encontrado o no válido');
-      this.activities = []; // Array vacío si groupId no está definido
+      this.activities = [];
     }
   }
    
