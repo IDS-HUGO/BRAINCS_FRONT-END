@@ -34,6 +34,7 @@
       event.stopPropagation();
       console.log('Emitir evento con datos:', this.cardData);
       this.temarioSelected.setSelectedTemario(this.cardData);
+      this.openModal.emit(this.cardData);
       this.modalService.openModal('inspect-temario');
     }  
 
