@@ -17,7 +17,7 @@ export class AddGroupComponent {
   idDocente: number | null = null;
 
   constructor(
-    private modalService: ModalService,
+    public modalService: ModalService,
     private groupService: GroupServiceService,
     public loaderService: LoaderService,  
     private alertService: AlertService    
@@ -27,9 +27,11 @@ export class AddGroupComponent {
   }
 
   closeModal() {
+    console.log('Intentando cerrar el modal');
     this.modalService.closeModal();
   }
-
+  
+    
   addGroup() {
     if (this.idDocente === null) {
       this.alertService.showWarning('No se ha encontrado el ID del docente en el almacenamiento local.');
