@@ -48,25 +48,26 @@ export class DeleteGroupComponent {
   confirmDelete() {
     const storedIdDocente = localStorage.getItem('id_docente');
     const idDocente = storedIdDocente ? parseInt(storedIdDocente, 10) : null;
-
+  
     if (this.groupId !== null && idDocente !== null) {
       this.loaderService.show();
-
+  
       this.groupService.deleteGroup(this.groupId, idDocente).subscribe({
         next: () => {
           this.loaderService.hide();
           console.log(`Grupo con ID ${this.groupId} eliminado exitosamente`);
           this.alertService.showSuccess('Grupo eliminado con éxito');
           this.closeModal();
+          this.groupService.notifyGroupUpdated();
         },
         error: (error: any) => {
-        this.loaderService.hide();
+          this.loaderService.hide();
           console.error('Error al eliminar el grupo:', error);
           this.alertService.showError(error.status, 'Error al eliminar el grupo');
         }
       });
     } 
-  }
+  }  
 
   closeModal() {
     this.modalService.closeModal();

@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GroupServiceService } from '../../services/group-service.service';
 import { ModalService } from '../../../shared/modals/services/modal.service';
 import { GroupData } from '../../models/group-data';
-import { LoaderService } from '../../../shared/modals/services/loader.service';  // Importando LoaderService
-import { AlertService } from '../../../shared/modals/services/alert.service';    // Importando AlertService
+import { LoaderService } from '../../../shared/modals/services/loader.service';
+import { AlertService } from '../../../shared/modals/services/alert.service';
 
 @Component({
   selector: 'app-update-group',
@@ -58,7 +58,7 @@ export class UpdateGroupComponent implements OnInit {
 
   updateGroup() {
     if (this.idDocente === null || this.groupId === null) {
-this.alertService.showError(400, 'Error en la actualización');
+      this.alertService.showError(400, 'Error en la actualización');
       return;
     }
 

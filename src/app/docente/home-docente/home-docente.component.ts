@@ -14,6 +14,7 @@ export class HomeDocenteComponent implements OnInit, OnDestroy {
   groups: GroupData[] = [];
   private modalSubscription: Subscription | undefined;
   private groupAddedSubscription: Subscription | undefined;
+  private groupUpdatedSubscription: Subscription | undefined;
 
   id_docente: number = Number(localStorage.getItem('id_docente'));
 
@@ -30,6 +31,10 @@ export class HomeDocenteComponent implements OnInit, OnDestroy {
     this.loadGroups();
 
     this.groupAddedSubscription = this.groupService.groupAdded$.subscribe(() => {
+      this.loadGroups();
+    });
+  
+    this.groupUpdatedSubscription = this.groupService.groupUpdated$.subscribe(() => {
       this.loadGroups();
     });
   }

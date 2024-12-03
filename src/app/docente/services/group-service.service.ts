@@ -15,11 +15,13 @@ export class GroupServiceService {
   private groupAddedSubject = new Subject<void>();
   groupAdded$ = this.groupAddedSubject.asObservable();
 
+  private groupUpdatedSubject = new Subject<void>();
+  groupUpdated$ = this.groupUpdatedSubject.asObservable();
+
   private apiUrlGetGroupById: string = `${environment.apiUrl}grupos/grupos/docente/`;
   private apiUrlAddGroup: string = `${environment.apiUrl}grupos/grupos`;
 
   addGroup(groupData: GroupData): Observable<GroupData> {
-    localStorage.clear()
     return this.http.post<GroupData>(this.apiUrlAddGroup, groupData).pipe(
       tap(() => this.groupAddedSubject.next())
     );
@@ -44,8 +46,10 @@ export class GroupServiceService {
 
   updateGroup(groupId: number, groupData: Partial<GroupData>): Observable<GroupData> {
     const url = `${environment.apiUrl}grupos/grupos/${groupId}`;
-    return this.http.put<GroupData>(url, groupData);
-  }
+    return this.http.put<GroupData>(url, groupData).pipe(
+      tap(() => this.groupUpdatedSubject.next())
+    );
+  }  
 
   deleteGroup(groupId: number, idDocente: number): Observable<any> {
     const url = `${environment.apiUrl}grupos/grupos/${groupId}`;
@@ -56,6 +60,10 @@ export class GroupServiceService {
       id_docente: idDocente
     };
     return this.http.delete(url, { body });
-  }  
+  }
+  
+  notifyGroupUpdated() {
+    this.groupUpdatedSubject.next();
+  }
 
 }
