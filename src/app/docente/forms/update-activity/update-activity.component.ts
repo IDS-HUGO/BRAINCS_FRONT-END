@@ -4,7 +4,7 @@ import { ActivityService } from '../../../shared/cards/services/activity.service
 import { ActivitiesService } from '../../services/activities.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoaderService } from '../../../shared/modals/services/loader.service';
-import { AlertService } from '../../../shared/modals/services/alert.service';  // Importando AlertService
+import { AlertService } from '../../../shared/modals/services/alert.service';
 
 @Component({
   selector: 'app-update-activity',
@@ -23,8 +23,8 @@ export class UpdateActivityComponent implements OnInit {
     private activitiesService: ActivitiesService,
     private activityService: ActivityService,
     private route: ActivatedRoute,
-    public loaderService: LoaderService,  // Inyectando LoaderService
-    private alertService: AlertService   // Inyectando AlertService
+    public loaderService: LoaderService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {
@@ -58,24 +58,22 @@ export class UpdateActivityComponent implements OnInit {
 
   handleSubmit() {
     if (this.tema && this.subtema && this.contenido && this.idActividad !== null) {
-      this.loaderService.show(); // Activar loader mientras se actualiza la actividad
+      this.loaderService.show();
 
       this.activitiesService.updateActivity(this.groupId, this.idActividad, this.tema, this.subtema, this.contenido).subscribe(
         response => {
-          this.loaderService.hide(); // Desactivar loader después de la respuesta
-          // Mostrar alerta de éxito
+          this.loaderService.hide();
           this.alertService.showSuccess('La actividad se actualizó correctamente.');
+          this.activitiesService.notifyActivityCreated();
           this.closeModal();
         },
         error => {
-          this.loaderService.hide(); // Desactivar loader si ocurre un error
-          // Mostrar alerta de error
+          this.loaderService.hide();
           this.alertService.showError(error.status);
           console.error('Error al actualizar la actividad:', error);
         }
       );
     } else {
-      // Si faltan campos, mostrar alerta de advertencia
       this.alertService.showWarning('Por favor, completa todos los campos antes de continuar.');
     }
   }

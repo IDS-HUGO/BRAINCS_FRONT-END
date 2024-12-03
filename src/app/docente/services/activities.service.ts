@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { environment } from '../../../enviroment/enviroment';
 
@@ -9,6 +9,7 @@ import { environment } from '../../../enviroment/enviroment';
 })
 export class ActivitiesService {
   private readonly apiUrl = `${environment.apiUrl}actividad/`;
+  private activityCreatedSubject = new Subject<void>();
 
   constructor(private http: HttpClient) { }
 
@@ -39,5 +40,13 @@ export class ActivitiesService {
   deleteActivity(idGrupo: number, idActividad: number): Observable<any> {
     const url = `${this.apiUrl}actividades/${idGrupo}/${idActividad}`;
     return this.http.delete(url);
+  }
+
+  notifyActivityCreated() {
+    this.activityCreatedSubject.next();
+  }
+
+  onActivityCreated(): Observable<void> {
+    return this.activityCreatedSubject.asObservable();
   }
 }
