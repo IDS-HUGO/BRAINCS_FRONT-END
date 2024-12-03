@@ -79,6 +79,7 @@ export class UpdateTemarioComponent implements OnInit {
         next: (response) => {
           this.alertService.showSuccess('Temario actualizado exitosamente.');
           console.log('Temario actualizado:', response);
+          this.temarioService.notifyTemarioChange();
           this.closeModal();
         },
         error: (error) => {

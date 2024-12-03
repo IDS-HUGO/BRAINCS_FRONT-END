@@ -58,6 +58,7 @@ export class DeleteTemarioComponent implements OnInit, OnDestroy {
       this.temarioService.deleteTemario(this.temarioId).subscribe({
         next: () => {
           this.alertService.showSuccess(`Temario con ID ${this.temarioId} eliminado exitosamente`);
+          this.temarioService.notifyTemarioChange();
           this.closeModal();
         },
         error: (error: any) => {
