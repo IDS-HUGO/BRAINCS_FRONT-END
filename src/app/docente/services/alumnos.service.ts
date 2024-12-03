@@ -41,13 +41,4 @@ export class AlumnosService {
     return this.http.delete<any>(url);
   }  
 
-  notifyAlumnoChange() {
-    this.alumnoUpdatedSubject.next();
-  }
-
-  onAlumnoChange(): Observable<void> {
-    return this.alumnoSubject.asObservable();
-  }
-
-
 }
