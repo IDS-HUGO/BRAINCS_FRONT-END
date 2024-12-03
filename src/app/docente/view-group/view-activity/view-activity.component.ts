@@ -21,10 +21,15 @@ export class ViewActivityComponent implements OnInit {
   ) {}
 
   @Output() addTarea = new EventEmitter<void>();
+  @Output() deleteTarea = new EventEmitter<void>();
 
   ngOnInit(): void {
     this.groupId = Number(this.route.snapshot.paramMap.get('id'));
     this.loadActivities();
+  
+    this.activitiesService.onActivityCreated().subscribe(() => {
+      this.loadActivities();
+    });
   }
 
   loadActivities() {
@@ -57,6 +62,7 @@ export class ViewActivityComponent implements OnInit {
   }
 
   onAddTarea() {
+    this.addTarea.emit();
     this.modalService.openModal('tarea');
   }
 }
