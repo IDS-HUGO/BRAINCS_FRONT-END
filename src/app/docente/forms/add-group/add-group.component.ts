@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ModalService } from '../../../shared/modals/services/modal.service';
 import { GroupServiceService } from '../../services/group-service.service';
 import { GroupData } from '../../models/group-data';
-import { LoaderService } from '../../../shared/modals/services/loader.service';  // Importando LoaderService
-import { AlertService } from '../../../shared/modals/services/alert.service';    // Importando AlertService
+import { LoaderService } from '../../../shared/modals/services/loader.service';
+import { AlertService } from '../../../shared/modals/services/alert.service';
 
 @Component({
   selector: 'app-add-group',
