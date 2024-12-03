@@ -21,11 +21,12 @@ export class InspectTemarioComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.temarioSelected.selectedTemario$.subscribe((temario) => {
       this.selectedTemario = temario;
-      if (!temario) {
-        console.log("No se recibió ningún temario");
+      if (!temario || !temario.documento_pdf) {
+        console.log("No se recibió un temario válido o el PDF no está disponible");
       }
     });
   }
+  
 
   ngOnDestroy() {
     if (this.subscription) {
