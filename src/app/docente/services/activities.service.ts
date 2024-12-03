@@ -44,7 +44,6 @@ export class ActivitiesService {
 
   notifyActivityCreated() {
     this.activityCreatedSubject.next();
-    console.log("Se elimino la actividad")
   }
 
   onActivityCreated(): Observable<void> {
