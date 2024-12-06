@@ -1,0 +1,31 @@
+<div class="flex flex-col items-center p-4">
+    <div class="flex items-center justify-between w-10/12 px-6 py-3">
+      <div>
+        <p class="text-3xl font-bold text-[#004C4C] mb-2">Temario</p>
+        <p class="text-2xl font-semibold px-6 text-[#008081]">Parcial 1</p>
+      </div>
+    </div>
+  
+    <div class="w-10/12">
+      <app-temario 
+        *ngFor="let temario of temarios" 
+        [cardData]="temario" 
+        cardType="temario" 
+        (openModal)="openTemarioModal(temario)"
+        class="w-full">
+      </app-temario>
+    </div> 
+    
+  <app-card-temario
+    *ngIf="isModalOpen"
+    [temarioDetails]="selectedTemario"
+    userType="alumno"
+    (close)="closeTemarioModal()">
+  </app-card-temario>
+
+  <div class="fixed bottom-4 right-4 z-50">
+    <app-chatbot-alumn></app-chatbot-alumn>
+  </div>
+
+  </div>
+  

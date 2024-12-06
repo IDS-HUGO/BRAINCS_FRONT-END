@@ -1,0 +1,34 @@
+<div class="w-[500px] h-auto mx-auto bg-white rounded-lg shadow-lg overflow-auto border border-gray-200 relative">
+
+  <button type="button" class="absolute top-2 right-4 text-2xl text-gray-500 hover:text-red-500 transition-colors duration-300"
+    (click)="closeModal()">x</button>
+
+  <div class="p-6">
+    <div class="flex items-center">
+      <img src="/hacer-alt.png" alt="Actividad" class="w-16 h-16 object-cover rounded-lg mr-4">
+      
+      <h2 class="text-[#004C4C] text-3xl font-bold leading-tight">
+        {{ selectedActivity?.tema }}
+      </h2>
+    </div>
+    
+    <p class="text-[#000000] text-lg mt-3 font-medium leading-relaxed pl-20 break-words whitespace-normal">
+      {{ selectedActivity?.subtema }}
+    </p>
+  </div>
+
+  <div class="flex gap-4 px-6 pb-6">
+    <button 
+      type="button" 
+      class="flex-1 bg-[#004C4C] text-white font-medium py-3 rounded-lg hover:bg-[#003838] transition duration-300">
+      Entregas
+    </button>
+    <button 
+      type="button" 
+      class="flex-1 bg-[#004C4C] text-white font-medium py-3 rounded-lg hover:bg-[#003838] transition duration-300"
+      (click)="openPdf(selectedActivity?.contenido)">
+      Contenido
+    </button>
+  </div>
+
+</div>

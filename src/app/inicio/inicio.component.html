@@ -1,0 +1,43 @@
+<div class="flex flex-col items-center bg-[#032328]">
+    <div
+      class="w-full h-screen bg-cover bg-center flex flex-col justify-start items-center text-teal-300 relative"
+      style="background-image: url('./Frame 31.png');"
+    >
+    <div class="absolute top-4 right-4 text-teal-300 flex items-center space-x-2">
+      <span>¿Eres director y no tienes cuenta? Regístrate aquí</span>
+      <button
+        class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+        (click)="navigateToRegister()"
+      >
+        Registro
+      </button>
+    </div>
+
+      <div class="text-center mt-20 ">
+        <h1 class="text-[#004C4C] text-9xl font-['Jomhuria'] font-normal uppercase tracking-[13px]">Conoce Braincs</h1>
+      </div>
+
+
+      <div class="flex flex-col items-center ">
+        <img src="./logo.png" alt="Logo Acceso" class="w-[200px] h-[200px]">
+        <button
+          class="mt-4 text-teal-300 font-bold text-4xl hover:underline"
+          (click)="navigateToLogin()"
+        >
+          Acceso
+        </button>
+      </div>
+    </div>
+
+    <div class="w-full flex flex-col items-center bg-white text-black px-8 py-12">
+      <h2 class="text-2xl font-bold text-center">
+        GENERA CONTENIDO MEDIANTE EL USO DE IA
+      </h2>
+      <p class="mt-4 text-center text-lg max-w-2xl">
+        Facilita la creación de tus actividades con nuestra plataforma que
+        ofrece el uso de la inteligencia artificial para poder crear contenido
+        más dinámico y eficiente para tus alumnos.
+      </p>
+      <img src="./logo_ia.png" alt="AI Logo" class="w-32 h-32 mt-8">
+    </div>
+  </div>

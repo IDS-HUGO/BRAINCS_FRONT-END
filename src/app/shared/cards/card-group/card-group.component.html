@@ -1,0 +1,28 @@
+<div class="bg-white rounded-lg shadow-md relative">
+  <div 
+    class="bg-[#004C4C] cursor-pointer text-white px-4 py-2 flex justify-between items-center rounded-t-lg"
+    [ngClass]="{'cursor-pointer': userType === 'alumno'}"
+    (click)="userType === 'alumno' && navigateToDetail()">
+    <h3 class="text-lg font-semibold">
+      {{ subjectName }} 
+      <span *ngIf="grado && grupo" class="ml-2 text-lg font-semibold">
+        {{ grado }} - {{ grupo }}
+      </span>
+    </h3>
+  </div>
+
+  <div class="p-4 relative min-h-[200px] rounded-b-lg">
+    <div *ngIf="userType === 'director' || userType === 'docente'" class="absolute bottom-4 right-4">
+      <button (click)="toggleModal()" class="text-gray-400 hover:text-gray-600">
+        <img class="h-8" src="./menu_1.png" alt="Menú de opciones" />
+      </button>
+    </div>
+
+    <app-menu-modals
+      *ngIf="showModal"
+      (closeModal)="showModal = false"
+      (optionSelected)="handleOption($event)"
+      class="bg-white shadow-lg rounded-lg w-48 p-4 absolute left-[58%] transform translate-y-1/2 z-50">
+    </app-menu-modals>  
+  </div>
+</div>

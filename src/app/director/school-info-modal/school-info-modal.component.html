@@ -1,0 +1,45 @@
+<div class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center" *ngIf="isVisible">
+    <div class="bg-white rounded-lg shadow-lg w-[500px] p-6 relative">
+      <h2 class="text-2xl font-bold text-teal-600 mb-4">Subir Información de la Escuela</h2>
+      <button
+        class="absolute top-3 right-3 text-gray-400 hover:text-red-500"
+        (click)="closeModal()"
+      >
+        &times;
+      </button>
+      <form (ngSubmit)="submitSchoolInfo()">
+        <div class="mb-4">
+          <label for="pregunta" class="block text-teal-600 font-bold mb-2">Pregunta:</label>
+          <input
+            id="pregunta"
+            type="text"
+            [(ngModel)]="schoolInfo.pregunta"
+            name="pregunta"
+            class="border rounded-md w-full py-2 px-3"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="respuesta" class="block text-teal-600 font-bold mb-2">Respuesta:</label>
+          <textarea
+            id="respuesta"
+            [(ngModel)]="schoolInfo.respuesta"
+            name="respuesta"
+            class="border rounded-md w-full py-2 px-3"
+            required
+          ></textarea>
+        </div>
+        <div class="mb-4">
+          <label for="pdf" class="block text-teal-600 font-bold mb-2">Archivo PDF:</label>
+          <input
+            id="pdf"
+            type="file"
+            (change)="onFileChange($event)"
+            class="border rounded-md w-full py-2 px-3"
+          />
+        </div>
+        <button type="submit" class="bg-teal-600 text-white py-2 px-4 rounded" [disabled]="loaderService.loading$ | async">Subir</button>
+      </form>
+    </div>
+  </div>
+  

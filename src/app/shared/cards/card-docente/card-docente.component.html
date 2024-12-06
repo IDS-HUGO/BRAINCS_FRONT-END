@@ -1,0 +1,23 @@
+<div class="bg-[#E6F5F5] shadow-md border-b-2 border-black relative p-4 flex items-center justify-between">
+  <div class="flex items-center gap-4">
+    <div class="bg-white w-10 h-10 rounded-full flex items-center justify-center border border-black">
+      <img  [src]="userImage"  alt="Ícono de perfil" class="h-6 w-6" />
+    </div>
+    <span class="text-black text-sm font-semibold truncate">
+      {{ subjectName }}
+    </span>
+  </div>
+
+  <div class="relative">
+    <button (click)="toggleModal()" class="text-gray-400 hover:text-gray-600">
+      <img class="h-8" src="./menu_1.png" alt="Menú de opciones" />
+    </button>
+    <app-menu-modals
+      *ngIf="showModal"
+      (closeModal)="showModal = false"
+      (optionSelected)="handleOption($event)"
+      class="absolute right-0 top-full mt-2 w-48 bg-white shadow-lg rounded-lg p-4 z-50">
+      >
+    </app-menu-modals>
+  </div>
+</div>

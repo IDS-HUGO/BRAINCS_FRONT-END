@@ -1,0 +1,134 @@
+<div class="flex justify-center items-center min-h-screen bg-[#032328]">
+
+  <button
+    class="absolute top-4 left-4 bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center"
+    (click)="onGoBack()"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 mr-2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    </svg>
+    Regresar
+  </button>
+
+  <div class="w-full max-w-lg p-8 bg-[#004C4C] text-teal-300 rounded-lg shadow-lg">
+    <h2 class="text-3xl font-bold text-center mb-6">Registro de Directores</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="space-y-4">
+      <!-- Campo Usuario -->
+      <div>
+        <label for="usuario" class="block text-lg font-semibold">Usuario</label>
+        <input
+          id="usuario"
+          type="text"
+          formControlName="usuario"
+          class="w-full p-3 rounded bg-[#032328] text-teal-300 border border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-300"
+          placeholder="Ingrese su usuario"
+        />
+        <small *ngIf="registerForm.get('usuario')?.hasError('pattern') && registerForm.get('usuario')?.touched" class="text-red-500">
+          Usuario inválido. Debe tener entre 4 y 16 caracteres alfanuméricos.
+        </small>
+        <small *ngIf="registerForm.get('usuario')?.hasError('required') && registerForm.get('usuario')?.touched" class="text-red-500">
+          Este campo es obligatorio.
+        </small>
+      </div>
+
+      <!-- Campo Nombre -->
+      <div>
+        <label for="nombre" class="block text-lg font-semibold">Nombre</label>
+        <input
+          id="nombre"
+          type="text"
+          formControlName="nombre"
+          class="w-full p-3 rounded bg-[#032328] text-teal-300 border border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-300"
+          placeholder="Ingrese su nombre"
+        />
+        <small *ngIf="registerForm.get('nombre')?.hasError('pattern') && registerForm.get('nombre')?.touched" class="text-red-500">
+          Nombre inválido. Solo se permiten letras y espacios.
+        </small>
+        <small *ngIf="registerForm.get('nombre')?.hasError('required') && registerForm.get('nombre')?.touched" class="text-red-500">
+          Este campo es obligatorio.
+        </small>
+      </div>
+
+      <!-- Campo Apellido Paterno -->
+      <div>
+        <label for="apellido_p" class="block text-lg font-semibold">Apellido Paterno</label>
+        <input
+          id="apellido_p"
+          type="text"
+          formControlName="apellido_p"
+          class="w-full p-3 rounded bg-[#032328] text-teal-300 border border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-300"
+          placeholder="Ingrese su apellido paterno"
+        />
+        <small *ngIf="registerForm.get('apellido_p')?.hasError('pattern') && registerForm.get('apellido_p')?.touched" class="text-red-500">
+          Apellido inválido. Solo se permiten letras y espacios.
+        </small>
+        <small *ngIf="registerForm.get('apellido_p')?.hasError('required') && registerForm.get('apellido_p')?.touched" class="text-red-500">
+          Este campo es obligatorio.
+        </small>
+      </div>
+
+      <!-- Campo Apellido Materno -->
+      <div>
+        <label for="apellido_m" class="block text-lg font-semibold">Apellido Materno</label>
+        <input
+          id="apellido_m"
+          type="text"
+          formControlName="apellido_m"
+          class="w-full p-3 rounded bg-[#032328] text-teal-300 border border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-300"
+          placeholder="Ingrese su apellido materno"
+        />
+        <small *ngIf="registerForm.get('apellido_m')?.hasError('pattern') && registerForm.get('apellido_m')?.touched" class="text-red-500">
+          Apellido inválido. Solo se permiten letras y espacios.
+        </small>
+        <small *ngIf="registerForm.get('apellido_m')?.hasError('required') && registerForm.get('apellido_m')?.touched" class="text-red-500">
+          Este campo es obligatorio.
+        </small>
+      </div>
+
+      <!-- Campo Correo Electrónico -->
+      <div>
+        <label for="correo_electronico" class="block text-lg font-semibold">Correo Electrónico</label>
+        <input
+          id="correo_electronico"
+          type="email"
+          formControlName="correo_electronico"
+          class="w-full p-3 rounded bg-[#032328] text-teal-300 border border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-300"
+          placeholder="ejemplo@correo.com"
+        />
+        <small *ngIf="registerForm.get('correo_electronico')?.hasError('pattern') && registerForm.get('correo_electronico')?.touched" class="text-red-500">
+          Ingresa un correo válido de Gmail.
+        </small>
+        <small *ngIf="registerForm.get('correo_electronico')?.hasError('required') && registerForm.get('correo_electronico')?.touched" class="text-red-500">
+          Este campo es obligatorio.
+        </small>
+      </div>
+
+      <!-- Campo Contraseña -->
+      <div>
+        <label for="contrasena" class="block text-lg font-semibold">Contraseña</label>
+        <input
+          id="contrasena"
+          type="password"
+          formControlName="contrasena"
+          class="w-full p-3 rounded bg-[#032328] text-teal-300 border border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-300"
+          placeholder="Ingrese su contraseña"
+        />
+        <small *ngIf="registerForm.get('contrasena')?.hasError('minlength') && registerForm.get('contrasena')?.touched" class="text-red-500">
+          La contraseña debe tener al menos 6 caracteres.
+        </small>
+        <small *ngIf="registerForm.get('contrasena')?.hasError('required') && registerForm.get('contrasena')?.touched" class="text-red-500">
+          Este campo es obligatorio.
+        </small>
+      </div>
+
+      <!-- Botón de registro -->
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid"
+        class="w-full p-3 bg-teal-500 hover:bg-teal-700 text-white font-bold rounded-lg transition duration-300"
+      >
+        Registrarse
+      </button>
+    </form>
+  </div>
+</div>

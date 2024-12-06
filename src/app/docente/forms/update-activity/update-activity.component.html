@@ -1,0 +1,27 @@
+<div class="w-[600px] h-[auto] mx-auto bg-white p-8 rounded-lg shadow-md">
+
+  <h2 class="text-2xl font-semibold text-[#004C4C] mb-6 text-left">
+      Editar actividad
+    </h2>
+    <form (ngSubmit)="handleSubmit()">
+      <div class="mb-4">
+        <label for="tema" class="block text-gray-700 font-medium mb-2">Tema</label>
+        <input type="text" id="tema" name="tema" [(ngModel)]="tema" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" placeholder="Ingrese el tema" required>
+      </div>
+  
+      <div class="mb-4">
+        <label for="subtema" class="block text-gray-700 font-medium mb-2">Subtema</label>
+        <input type="text" id="subtema" name="subtema" [(ngModel)]="subtema" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" placeholder="Ingrese el subtema" required>
+      </div>
+  
+      <div class="mb-6">
+        <label for="contenido" class="block text-gray-700 font-medium mb-2">Archivo de contenido</label>
+        <input type="file" id="contenido" name="contenido" (change)="onFileChange($event)" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt">
+      </div>
+  
+      <div class="flex justify-between">
+        <button type="submit" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2" [disabled]="loaderService.loading$ | async">Aceptar</button>
+        <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]" (click)="closeModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>  

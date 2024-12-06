@@ -1,0 +1,53 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+  <div class="bg-white p-8 rounded-lg w-96 relative">
+    <button type="button" class="absolute top-2 right-2 text-gray-700 font-semibold text-xl hover:text-red-700" (click)="closeModal()">
+      ×
+    </button>
+    <div class="flex flex-col items-center mb-4">
+      <img src="agregar-usuario (1)(1).png" alt="Icon" class="h-16 w-16 mb-2">
+      <h2 class="text-2xl font-bold text-teal-600">Añadir Docente</h2>
+    </div>
+
+    <form #docenteForm="ngForm" novalidate>
+      <div *ngIf="step === 1">
+        <label for="docenteImagen" class="block text-sm font-medium text-gray-700">Imagen del Docente:</label>
+        <input id="docenteImagen" type="file" (change)="onFileSelected($event)" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md">
+        
+        <label for="docenteName" class="block text-sm font-medium text-gray-700">Nombre(s):</label>
+        <input id="docenteName" [(ngModel)]="docente.nombre" name="nombre" type="text" placeholder="Nombre del docente" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+        
+        <label for="docenteApellidoP" class="block text-sm font-medium text-gray-700">Apellido Paterno:</label>
+        <input id="docenteApellidoP" [(ngModel)]="docente.apellido_p" name="apellido_p" type="text" placeholder="Apellido Paterno" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+
+        <label for="docenteApellidoM" class="block text-sm font-medium text-gray-700">Apellido Materno:</label>
+        <input id="docenteApellidoM" [(ngModel)]="docente.apellido_m" name="apellido_m" type="text" placeholder="Apellido Materno" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+
+        <div class="mb-3">
+          <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-3 rounded-lg hover:bg-[#003838]"
+            (click)="nextStep()">Siguiente</button>
+        </div>
+      </div>
+
+
+      <div *ngIf="step === 2">
+        <label for="docenteEmail" class="block text-sm font-medium text-gray-700">Correo:</label>
+        <input id="docenteEmail" [(ngModel)]="docente.correo_electronico" name="correo_electronico" type="email" placeholder="Correo del docente" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+        
+        <label for="docenteUsuario" class="block text-sm font-medium text-gray-700">Usuario:</label>
+        <input id="docenteUsuario" [(ngModel)]="docente.usuario" name="usuario" type="text" placeholder="Usuario" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+        
+        <label for="docenteContrasena" class="block text-sm font-medium text-gray-700">Contraseña:</label>
+        <input id="docenteContrasena" [(ngModel)]="docente.contrasena" name="contrasena" type="password" placeholder="Contraseña" class="w-full p-2 mt-1 mb-4 border border-gray-300 rounded-md" required>
+        
+        <div class="flex space-x-2">
+          <button type="button" (click)="addDocente()" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">
+            Agregar
+          </button>
+          <button type="button" (click)="closeModal()" class="w-1/2 bg-[#004c4c] text-white py-2 rounded-md hover:bg-[#003636]">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

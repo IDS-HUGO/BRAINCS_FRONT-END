@@ -1,0 +1,39 @@
+<div 
+  *ngFor="let docente of docentes" 
+  class="bg-teal-50 rounded-lg p-4 mb-4 cursor-pointer hover:shadow-lg transition-shadow w-[1250px] h-auto">
+  
+  <div 
+    class="flex items-center justify-between border-b border-black pb-2"
+    (click)="toggleGrupos(docente.id_docente)">
+    <div class="flex items-center">
+      <div class="flex items-center justify-center bg-teal-700 text-white rounded-full h-10 w-10">
+        <img *ngIf="docenteImages[docente.usuario]" 
+             [src]="docenteImages[docente.usuario]" 
+             alt="Imagen del docente" 
+             class="h-full w-full object-cover rounded-full" />
+        <ng-container *ngIf="!docenteImages[docente.usuario]">
+          <i class="fa fa-user"></i>
+        </ng-container>
+      </div>
+      <span class="ml-3 font-bold text-gray-700">{{ docente.nombre }} {{ docente.apellido_p }} {{ docente.apellido_m }}</span>
+    </div>
+    <button 
+      class="bg-red-500 text-white text-xs px-3 py-1 rounded hover:bg-red-600 transition-colors"
+      (click)="deleteDocente(docente.id_docente, $event)">
+      <i class="fa fa-trash"></i>
+    </button>
+  </div>
+
+  <div *ngIf="selectedDocente === docente.id_docente" class="mt-4">
+    <h3 class="text-gray-600 font-bold mb-2">Grupos:</h3>
+    <ul *ngIf="docenteGrupos[docente.id_docente]; else loading">
+      <li *ngFor="let grupo of docenteGrupos[docente.id_docente]" class="bg-gray-100 rounded-lg p-2 mb-2">
+        <h4 class="font-semibold">{{ grupo.asignatura }}</h4>
+        <p class="text-sm text-gray-600">{{ grupo.grado }} - {{  grupo.grupo }}</p>
+      </li>
+    </ul>
+    <ng-template #loading>
+      <p class="text-sm text-gray-500">Cargando grupos...</p>
+    </ng-template>
+  </div>
+</div>

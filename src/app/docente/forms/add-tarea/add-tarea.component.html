@@ -1,0 +1,41 @@
+<div class="w-[600px] h-[auto] mx-auto bg-white p-8 rounded-lg shadow-md">
+  <div class="flex justify-center mb-6">
+    <img src="/tarea.png" alt="Imagen ilustrativa" class="w-auto h-[80px] object-contain">
+  </div>
+
+  <h2 class="text-2xl font-semibold text-[#004C4C] mb-6 text-justify">
+    Añadir detalles de la nueva tarea
+  </h2>
+
+  <form class="space-y-6 border border-[#004C4C99] p-6 rounded-lg mb-6">
+    <div class="mb-4">
+      <label for="tema" class="block text-gray-700 font-medium mb-2">Tema</label>
+      <input
+        type="text"
+        id="tema"
+        name="tema" 
+        [(ngModel)]="tema"
+        class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]"
+        placeholder="Ingrese el tema"
+      />
+    </div>
+  
+    <div class="mb-4">
+      <label for="subtema" class="block text-gray-700 font-medium mb-2">Subtema</label>
+      <input
+        type="text"
+        id="subtema"
+        name="subtema" 
+        [(ngModel)]="subtema"
+        class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]"
+        placeholder="Ingrese el subtema"
+      />
+    </div>
+  </form>
+  
+
+  <div class="flex justify-between">
+    <button (click)="onAddContent()" type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838] mr-2">Siguiente</button>
+    <button type="button" (click)="closeModal()" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-4 rounded-lg hover:bg-[#003838]">Cancelar</button>
+  </div>
+</div>

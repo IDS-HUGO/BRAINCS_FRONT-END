@@ -1,0 +1,99 @@
+<div class="w-[400px] h-auto mx-auto bg-white p-6 rounded-lg shadow-md relative">
+
+    <button type="button" class="absolute top-2 right-5 text-gray-700 font-semibold text-xl hover:text-red-700" (click)="closeModal()">
+      ×
+    </button>
+  
+    <div class="flex justify-center mb-4">
+      <img src="/edit-usuario.png" alt="Editar Alumno" class="w-16 h-16 object-cover">
+    </div>
+  
+    <h2 class="text-xl font-semibold text-[#004C4C] mb-4 text-center">
+      Editar Información
+    </h2>
+  
+    <div class="border border-[#004C4C99] rounded-md p-4">
+      <form (ngSubmit)="updateAlumno()">
+        <div *ngIf="step === 1">
+          <div class="mb-3">
+            <label for="matricula" class="block text-gray-700 font-medium mb-1">Matrícula</label>
+            <input
+              type="text"
+              id="matricula"
+              [(ngModel)]="alumno.matricula"
+              name="matricula"
+              class="w-full p-2 border rounded-md bg-gray-100 focus:outline-none"
+              readonly
+            />
+          </div>
+          <div class="mb-3">
+            <label for="nombre" class="block text-gray-700 font-medium mb-1">Nombre(s)</label>
+            <input
+              type="text"
+              id="nombre"
+              [(ngModel)]="alumno.nombre"
+              name="nombre"
+              class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="apellidoP" class="block text-gray-700 font-medium mb-1">Apellido Paterno</label>
+            <input
+              type="text"
+              id="apellidoP"
+              [(ngModel)]="alumno.apellido_p"
+              name="apellidoP"
+              class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="apellidoM" class="block text-gray-700 font-medium mb-1">Apellido Materno</label>
+            <input
+              type="text"
+              id="apellidoM"
+              [(ngModel)]="alumno.apellido_m"
+              name="apellidoM"
+              class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]"
+              required
+            />
+          </div>
+          <button type="button" class="w-full bg-[#004C4C] text-white font-semibold py-2 px-3 rounded-lg hover:bg-[#003838]" 
+            (click)="nextStep()">Siguiente</button>
+        </div>
+        
+        <div *ngIf="step === 2">
+          <div class="mb-3">
+            <label for="correo" class="block text-gray-700 font-medium mb-1">Correo Electrónico</label>
+            <input
+              type="email"
+              id="correo"
+              [(ngModel)]="alumno.correo_electronico"
+              name="correo"
+              class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="calificacion" class="block text-gray-700 font-medium mb-1">Calificación Total</label>
+            <input
+              type="number"
+              id="calificacion"
+              [(ngModel)]="alumno.calif_total"
+              name="calificacion"
+              class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004C4C]"
+            />
+          </div>
+          <div class="flex justify-between mt-4">
+            <button type="button" class="w-1/2 bg-gray-400 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-600 mr-2"
+              (click)="prevStep()">Anterior</button>
+            <button type="submit" class="w-1/2 bg-[#004C4C] text-white font-semibold py-2 px-3 rounded-lg hover:bg-[#003838]">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
